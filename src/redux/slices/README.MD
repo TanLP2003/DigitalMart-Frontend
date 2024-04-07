@@ -1,0 +1,1 @@
+- thư mục chứa các file để tạo ra các khởi tạo các state trong redux

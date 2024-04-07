@@ -1,0 +1,1 @@
+- thư mục chứa dữ liệu giả mô phỏng, dùng để test giao diện khi BE chưa hoàn thành 
