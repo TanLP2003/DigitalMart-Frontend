@@ -5,9 +5,12 @@ import CustomerLayout from "./components/layouts/CustomerLayout"
 import Login from "./pages/Auth/Login"
 import AuthLayout from "./components/layouts/AuthLayout"
 import SignUp from "./pages/Auth/Signup"
+import ProtectedRoute from "./components/common/ProtectedRoute"
+import { getProducts } from "./redux/fake-apis/product-fake-api"
 
 function App() {
-
+  const products = getProducts();
+  console.log(products);
   return (
     <>
       <Router>
@@ -19,7 +22,7 @@ function App() {
           <Route path="/" element={<CustomerLayout />}>
             
           </Route>
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
 
           </Route>
           <Route path="*" element={<NotFound />} />
