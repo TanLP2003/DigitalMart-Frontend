@@ -7,6 +7,7 @@ import AuthLayout from "./components/layouts/AuthLayout"
 import SignUp from "./pages/Auth/Signup"
 import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
+import ExamplePage from "./pages/Customer/ExamplePage"
 
 function App() {
   const products = getProducts();
@@ -20,7 +21,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
           </Route>
           <Route path="/" element={<CustomerLayout />}>
-            
+            <Route path="/example" element={<ExamplePage />}/>  
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
 
