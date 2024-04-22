@@ -6,7 +6,7 @@ import loginUser from "../../redux/slices/UserSlice"
 
 const Login = () => {
 
-    const [email, setEmail] = useState('');
+    const [phonenumber, setPhonenumber] = useState('');
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
@@ -15,11 +15,11 @@ const Login = () => {
     const handleLoginEvent=(e)=> {
         e.preventDefault();
         let userCredentials={
-            email, password
+            phonenumber, password
         }
         dispatchEvent(loginUser(userCredentials)).then((result)=>{
             if(result.payload) {
-                setEmail('');
+                setPhonenumber('');
                 setPassword('')
                 navigate('/')
             }
@@ -31,9 +31,9 @@ const Login = () => {
             <h2>Login</h2>
             <form id="login-form">
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" 
-                        value={email} onChange={(e)=>setEmail(e.target.value)}
+                    <label htmlFor="phonenumber">phonenumber:</label>
+                    <input type="phonenumber" id="phonenumber" name="phonenumber" 
+                        value={phonenumber} onChange={(e)=>setPhonenumber(e.target.value)}
                         required />
                 </div>
                 <div className="form-group">
