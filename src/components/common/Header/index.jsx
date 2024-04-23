@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import "./styles.css"
 
-export const Header = () => {
+const Header = () => {
   return (
     <>
       <header className="header-top-strip py-3">

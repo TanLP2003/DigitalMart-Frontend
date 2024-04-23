@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsGithub, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
 import "./styles.css"
-export const Footer = () => {
+const Footer = () => {
   return (
     <>
       <footer className="py-3">
