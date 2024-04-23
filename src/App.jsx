@@ -1,29 +1,35 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import Login from "./pages/Login/Login"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import NotFound from "./pages/NotFound"
+import AdminLayout from "./components/layouts/AdminLayout"
+import CustomerLayout from "./components/layouts/CustomerLayout"
+import Login from "./pages/Auth/Login"
+import AuthLayout from "./components/layouts/AuthLayout"
+import SignUp from "./pages/Auth/Signup"
+import ProtectedRoute from "./components/common/ProtectedRoute"
+import { getProducts } from "./redux/fake-apis/product-fake-api"
+import ExamplePage from "./pages/Customer/ExamplePage"
 
 function App() {
-
+  const products = getProducts();
+  console.log(products);
   return (
-    <div className="wrapper">
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="products" element={<OurStore />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="compare-products" element={<CompareProducts />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="login" element={<Login />} />
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
-          <Route path="products/:id" element={<ProductDetails />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/auth" element={<AuthLayout />}>
+            <Route index element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+          </Route>
+          <Route path="/" element={<CustomerLayout />}>
+            <Route path="/example" element={<ExamplePage />}/>  
+          </Route>
+          <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
+
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </>
   )
 }
 
