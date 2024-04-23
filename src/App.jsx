@@ -21,7 +21,15 @@ function App() {
             <Route path="signup" element={<SignUp />} />
           </Route>
           <Route path="/" element={<CustomerLayout />}>
-            <Route path="/example" element={<ExamplePage />}/>  
+            <Route index element={<ExamplePage />} />
+            <Route path="about" element={<ExamplePage />} />
+            <Route path="contact" element={<ExamplePage />} />
+            <Route path="products" element={<ExamplePage />} />
+            <Route path="blogs" element={<ExamplePage />} />
+            <Route path="compare-products" element={<ExamplePage />} />
+            <Route path="wishlist" element={<ExamplePage />} />
+            <Route path="login" element={<ExamplePage />} />
+            <Route path="cart" element={<ExamplePage />} />
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
 

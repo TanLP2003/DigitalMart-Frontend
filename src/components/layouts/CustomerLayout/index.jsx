@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
+import { Header } from "../../common/Header";
+
 
 const CustomerLayout = () => {
-    return <div>
-        <p>CustomerLayout</p>
+    return (
+    <>
+        <Header />
         <Outlet />
-    </div>
+    </>
+    )
 }
 
 export default CustomerLayout;
