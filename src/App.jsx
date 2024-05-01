@@ -8,6 +8,8 @@ import SignUp from "./pages/Auth/Signup"
 import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
+import Home from "./pages/Home"
+import OurStore from "./pages/Our Store"
 
 function App() {
   const products = getProducts();
@@ -21,10 +23,10 @@ function App() {
             <Route path="signup" element={<SignUp />} />
           </Route>
           <Route path="/" element={<CustomerLayout />}>
-            <Route index element={<ExamplePage />} />
+            <Route index element={<Home />} />
             <Route path="about" element={<ExamplePage />} />
             <Route path="contact" element={<ExamplePage />} />
-            <Route path="products" element={<ExamplePage />} />
+            <Route path="products" element={<OurStore/>} />
             <Route path="blogs" element={<ExamplePage />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
