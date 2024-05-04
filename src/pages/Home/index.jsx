@@ -24,43 +24,43 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='col-6'>
-                    <div className="d-flex flex-wrap gap-10 justify-content-between align-items-center">
-                    <div className='small-banner position-relative p-3'>
-                        <img src="../images/catbanner-01.jpg" alt="" className='img-fluid rounded-3'></img>
-                        <div className="small-banner-content position-absolute">
-                            <h4>BEST SALES</h4>
-                            <h5>Laptop Max.</h5>
-                            <p>From $999.00 <br/> or $41.62/mo</p>
-                            
+                    <div className="d-flex flex-wrap justify-content-between align-items-center">
+                        <div className='small-banner position-relative p-3'>
+                            <img src="../images/catbanner-01.jpg" alt="" className='img-fluid rounded-3'></img>
+                            <div className="small-banner-content position-absolute">
+                                <h4>BEST SALES.</h4>
+                                <h5>iPad S13+ Pro.</h5>
+                                <p>From $999.00 or $41.62/mo</p>
+                                
+                            </div>
                         </div>
-                    </div>
-                    <div className='small-banner position-relative p-3'>
-                        <img src="../images/catbanner-02.jpg" alt="" className='img-fluid rounded-3'></img>
-                        <div className="small-banner-content position-absolute">
-                            <h4>NEW ARIVALS</h4>
-                            <h5>Buy iPad Air</h5>
-                            <p>From $999.00 <br/> or $41.62/mo </p>
-                            
+                        <div className='small-banner position-relative p-3'>
+                            <img src="../images/catbanner-02.jpg" alt="" className='img-fluid rounded-3'></img>
+                            <div className="small-banner-content position-absolute">
+                                <h4>NEW ARRIVALS.</h4>
+                                <h5>iPad Air.</h5>
+                                <p>From $999.00 or $41.62/mo</p>
+                                
+                            </div>
                         </div>
-                    </div>
-                    <div className='small-banner position-relative p-3'>
-                        <img src="../images/catbanner-03.jpg" alt="" className='img-fluid rounded-3'></img>
-                        <div className="small-banner-content position-absolute">
-                            <h4>NEW ARIVALS</h4>
-                            <h5>Buy iPad Air</h5>
-                            <p>From $999.00 <br/> or $41.62/mo </p>
-                            
+                        <div className='small-banner position-relative p-3'>
+                            <img src="../images/catbanner-03.jpg" alt="" className='img-fluid rounded-3'></img>
+                            <div className="small-banner-content position-absolute">
+                                <h4>BEST SALES.</h4>
+                                <h5>iPad S13+ Pro.</h5>
+                                <p>From $999.00 or $41.62/mo</p>
+                                
+                            </div>
                         </div>
-                    </div>
-                    <div className='small-banner position-relative p-3'>
-                        <img src="../images/catbanner-04.jpg" alt="" className='img-fluid rounded-3'></img>
-                        <div className="small-banner-content position-absolute">
-                            <h4>NEW ARIVALS</h4>
-                            <h5>Buy iPad Air</h5>
-                            <p>From $999.00 <br/> or $41.62/mo </p>
-                            
+                        <div className='small-banner position-relative p-3'>
+                            <img src="../images/catbanner-04.jpg" alt="" className='img-fluid rounded-3'></img>
+                            <div className="small-banner-content position-absolute">
+                                <h4>NEW ARRIVALS.</h4>
+                                <h5>iPad Air.</h5>
+                                <p>From $999.00 or $41.62/mo</p>
+                                
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>   
             </div> 
@@ -309,10 +309,20 @@ const Home = () => {
                 <div className="col-12">
                     <h3 className='section-heading'>Our Latest Blogs</h3>
                 </div>
-                <BlogCart/>
-                <BlogCart/>
-                <BlogCart/>
-                <BlogCart/>
+                <div className="row">
+                    <div className="col-3">
+                        <BlogCart/>
+                    </div>
+                    <div className="col-3">
+                        <BlogCart/>
+                    </div>
+                    <div className="col-3">
+                        <BlogCart/>
+                    </div>
+                    <div className="col-3">
+                        <BlogCart/>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

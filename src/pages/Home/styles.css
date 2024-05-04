@@ -36,7 +36,7 @@
 }
 .small-banner-content{
     top: 15%;
-    left: 10%;
+    left: 5%;
 }
 .small-banner-content h4{
     font-size: 16px;
@@ -49,14 +49,14 @@
 }
 .small-banner-content h5{
     font-size: 22px;
-    line-height: 64px;
+    line-height: 34px;
     letter-spacing: -2px;
     font-weight: 500;
     text-transform: none;
 }
 .small-banner-content p{
     font-size: 14px;
-    line-height: 28px;
+    line-height: 22px;
     letter-spacing: 0.4;
     color: #131921;
 }
