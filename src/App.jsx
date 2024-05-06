@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
 
+
 function App() {
   const products = getProducts();
   console.log(products);
@@ -28,7 +29,7 @@ function App() {
             <Route path="blogs" element={<ExamplePage />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
-            <Route path="login" element={<ExamplePage />} />
+            <Route path="login" element={<Login />} />
             <Route path="cart" element={<ExamplePage />} />
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
