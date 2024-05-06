@@ -8,5 +8,5 @@ const register=async(userData)=>{
 }
 
 export const authService={
-    resgister
+    register
 }

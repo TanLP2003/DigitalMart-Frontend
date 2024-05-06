@@ -5,7 +5,7 @@ export const registerUser = createAsyncThunk(
     "auth/register",
     async (userData, thunkAPI)=>{
     try{
-        return await authService.resgister(userData)
+        return await authService.register(userData)
     }catch(error) {
         return thunkAPI.rejectWithValue(error)
     }
