@@ -5,6 +5,7 @@ import CustomerLayout from "./components/layouts/CustomerLayout"
 import Login from "./pages/Auth/Login"
 import AuthLayout from "./components/layouts/AuthLayout"
 import SignUp from "./pages/Auth/Signup"
+import ForgotPassword from "./pages/Auth/ForgotPassword"
 import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
@@ -30,6 +31,8 @@ function App() {
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
             <Route path="login" element={<Login />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="cart" element={<ExamplePage />} />
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
