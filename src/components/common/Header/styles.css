@@ -1,19 +1,6 @@
 
   /* Header Part */
   
-  .button {
-    background-color: var(--color-232f3e);
-    color: white;
-    font-size: 14px;
-    padding: 13px 33px;
-    border-radius: 25px;
-  }
-  
-  .button:hover {
-    background-color: var(--color-febd69);
-    color: var(--color-131921)
-  }
-  
   .header-top-strip {
     border-bottom: 1px solid var(--color-3b4149);
     background-color: var(--color-131921);

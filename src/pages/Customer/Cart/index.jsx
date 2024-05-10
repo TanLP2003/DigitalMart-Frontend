@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BreadCrumb from "../../../components/common/BreadCrumb";
 import Meta from "../../../components/common/Meta";
-import { RiDeleteBinFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import CartItem from "./CartItem";
+import CartHeader from "./CartHeader";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  calculateTotal,
+  getCartItems,
+} from "../../../redux/slices/cartSlice/cartSlice";
+import { memo } from "react";
+
 const Cart = () => {
+  const dispatch = useDispatch();
+  const { cartItems, total, isLoading } = useSelector((store) => store.cart);
+
+  const handleCheckout = () => {
+    localStorage.setItem("payment-list", JSON.stringify(cartItems));
+    localStorage.setItem("subtotal", JSON.stringify(total));
+  };
+
+  useEffect(() => {
+    dispatch(calculateTotal());
+  }, [cartItems]);
+
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <>
       <BreadCrumb title="Cart" />
@@ -13,47 +44,10 @@ const Cart = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-              <div className="cart-header d-flex justify-content-between align-items-center">
-                <h4 className="cart-col-1">Product</h4>
-                <h4 className="cart-col-2">Price</h4>
-                <h4 className="cart-col-3">Quantity</h4>
-                <h4 className="cart-col-4">Total</h4>
-              </div>
-              <div className="cart-data d-flex justify-content-between align-items-center mb-2">
-                <div className="cart-col-1 d-flex align-items-center gap-15">
-                  <div className="w-25">
-                    <img
-                      src="./images/watch.jpg"
-                      className="img-fluid"
-                      alt="watch"
-                    />
-                  </div>
-                  <div className="w-75">
-                    <h5 className="title mb-0">abc</h5>
-                    <p className="size mb-0">S</p>
-                    <p className="color mb-0">#fff</p>
-                  </div>
-                </div>
-                <div className="cart-col-2">
-                  <h5 className="price">$ 100</h5>
-                </div>
-                <div className="cart-col-3 d-flex align-items-center gap-15">
-                  <div>
-                    <input
-                      className="form-control"
-                      min={1}
-                      max={10}
-                      type="number"
-                      name=""
-                      id=""
-                    />
-                  </div>
-                  <div>
-                    <RiDeleteBinFill className="fs-3 text-danger" />
-                  </div>
-                </div>
-                <div className="cart-col-4"></div>
-              </div>
+              <CartHeader />
+              {cartItems?.map((item) => {
+                return <CartItem key={item.id} {...item} />;
+              })}
             </div>
             <div className="col-12 py-2 mt-4">
               <div className="d-flex justify-content-between align-items-baseline">
@@ -61,11 +55,24 @@ const Cart = () => {
                   Continue to Shopping
                 </Link>
                 <div className="d-flex align-items-end flex-column">
-                  <h4>Subtotal: $100</h4>
+                  <h4>Subtotal: ${total.toFixed(2)}</h4>
                   <p>Taxes and shipping calculated at checkout</p>
-                  <Link to={"/checkout"} className="button">
+                  {/* <Link to={"/checkout"} className="button">
                     Check Out
-                  </Link>
+                  </Link> */}
+                  {total === 0 ? (
+                    <Link to={"/checkout"} className="button disabled">
+                      Check Out
+                    </Link>
+                  ) : (
+                    <Link
+                      to={"/checkout"}
+                      className="button"
+                      onClick={handleCheckout}
+                    >
+                      Check Out
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -76,4 +83,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default memo(Cart);

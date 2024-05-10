@@ -30,6 +30,11 @@
   width: 15%;
 }
 
+.cart-col-3 button {
+  border: none !important;
+}
+
 .cart-col-4 {
   width: 15%;
 }
+
