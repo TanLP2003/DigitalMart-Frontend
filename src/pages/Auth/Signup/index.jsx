@@ -96,8 +96,8 @@ const SignUp = () => {
                                 </form>
 
                                 <div>
-
                                     <div className='mt-3 d-flex justify-content-center gap-15 align-items-center'>
+                                        <Link className='button signup' to='/login'>Back to Login Page</Link>
                                         <Link className='button signup' to='/sign-up'>Submit</Link>
                                     </div>
                                 </div>
