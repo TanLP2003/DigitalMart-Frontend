@@ -8,6 +8,12 @@ import SignUp from "./pages/Auth/Signup"
 import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
+import CategoryAdmin from "./pages/Admin/CategoryAdmin"
+import ProductAdmin from "./pages/Admin/ProductAdmin"
+import OrderAdmin from "./pages/Admin/OrderAdmin"
+import InventoryAdmin from "./pages/Admin/InventoryAdmin"
+import CustomerAdmin from "./pages/Admin/CustomerAdmin"
+import ChatAdmin from "./pages/Admin/ChatAdmin"
 
 function App() {
   const products = getProducts();
@@ -31,7 +37,13 @@ function App() {
             <Route path="login" element={<ExamplePage />} />
             <Route path="cart" element={<ExamplePage />} />
           </Route>
-          <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />}/>}>
+          <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
+            <Route index element={<CustomerAdmin />} />
+            <Route path="category" element={<CategoryAdmin />} />
+            <Route path="product" element={<ProductAdmin />} />
+            <Route path="order" element={<OrderAdmin />} />
+            <Route path="inventory" element={<InventoryAdmin />} />
+            <Route path="chat" element={<ChatAdmin />} />
 
           </Route>
           <Route path="*" element={<NotFound />} />
