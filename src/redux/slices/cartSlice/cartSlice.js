@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "http://localhost:3000/";
+const url = "http://localhost:3000/"; // fix later
 const initialState = {
   cartItems: [1, 2, 3],
   amount: 0, // type

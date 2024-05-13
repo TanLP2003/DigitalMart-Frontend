@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { openModal } from "../../../redux/slices/modal/modalSlice";
 const CustomerForm = () => {
+  const dispatch = useDispatch();
   const [info, setInfo] = useState({
     firstname: "",
     lastname: "",
@@ -90,42 +92,42 @@ const CustomerForm = () => {
         </div>
         <div className="flex-grow-1">
           <select
-            defaultValue={"default"}
+            // defaultValue={"default"}
             name="city"
             id="city"
             className="form-control form-select"
             value={info.city}
             onChange={handleChange}
           >
-            <option value="default" disabled selected>
+            <option value="city" disabled={true}>
               --Province/City
             </option>
           </select>
         </div>
         <div className="flex-grow-1">
           <select
-            defaultValue={"default"}
+            // defaultValue={"default"}
             name="state"
             id="state"
             className="form-control form-select"
             value={info.state}
             onChange={handleChange}
           >
-            <option value="default" disabled selected>
+            <option value="district" disabled={true}>
               --District
             </option>
           </select>
         </div>
         <div className="flex-grow-1">
           <select
-            defaultValue={"default"}
+            // defaultValue={"default"}
             name="wards"
             id="wards"
             className="form-control form-select"
             value={info.ward}
             onChange={handleChange}
           >
-            <option value="default" disabled selected>
+            <option value="wards" disabled={true}>
               --Wards
             </option>
           </select>
@@ -153,13 +155,18 @@ const CustomerForm = () => {
         <div className="w-100">
           <div className="d-flex justify-content-between align-items-center">
             <Link to="/cart" className="text-dark mb-0">
-              {" "}
               <IoMdArrowRoundBack className="me-2 fs-3" />
               Return to Cart
             </Link>
-            <Link to="/" className="button">
+            <button
+              className="button"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(openModal());
+              }}
+            >
               Continue to Shipping
-            </Link>
+            </button>
           </div>
         </div>
       </form>
