@@ -2,9 +2,10 @@ import React from "react";
 import { closeModal } from "../../../redux/slices/modal/modalSlice";
 import { useDispatch } from "react-redux";
 import styles from "./styles.module.scss";
-const Modal = ( ) => {
+import { postOrderForm } from "../../../redux/slices/orderSlice";
+const Modal = () => {
   const dispatch = useDispatch();
-  console.log("modal");
+  // console.log("modal");
   return (
     <aside className={styles.modal_container}>
       <div className={styles.modal}>
@@ -15,6 +16,8 @@ const Modal = ( ) => {
             className="button confirm-btn"
             onClick={() => {
               //   dispatch(); --> order button
+              dispatch(postOrderForm());
+              // hiển thị thông báo mua hàng thành công nữa.
               dispatch(closeModal());
             }}
           >

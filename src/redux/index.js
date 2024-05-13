@@ -3,11 +3,14 @@ import { userReducers } from "./slices/userSlice";
 import { productReducers } from "./slices/productSlice";
 import cartReducer from "./slices/cartSlice/cartSlice";
 import modalReducer from "./slices/modal/modalSlice";
+import orderReducer from "./slices/orderSlice";
 const rootReducer = combineReducers({
   user: userReducers,
   products: productReducers,
   cart: cartReducer,
   modal: modalReducer,
+  order: orderReducer,
+
 });
 
 export const store = configureStore({

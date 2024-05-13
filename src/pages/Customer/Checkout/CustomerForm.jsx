@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { openModal } from "../../../redux/slices/modal/modalSlice";
+import { storeFormData } from "../../../redux/slices/orderSlice";
 const CustomerForm = () => {
   const dispatch = useDispatch();
+  const { firstname, lastname, email, address, city, district, wards, phone } =
+    useSelector((store) => store.order);
   const [info, setInfo] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    address: "",
-    city: "",
-    district: "",
-    wards: "",
-    phone: "",
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+    address: address,
+    city: city,
+    district: district,
+    wards: wards,
+    phone: phone,
   });
 
   const handleChange = (e) => {
@@ -158,15 +161,18 @@ const CustomerForm = () => {
               <IoMdArrowRoundBack className="me-2 fs-3" />
               Return to Cart
             </Link>
-            <button
+            <Link
               className="button"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(openModal());
+                dispatch(storeFormData(info));
+                console.log(info);
+                
               }}
             >
               Continue to Shipping
-            </button>
+            </Link>
           </div>
         </div>
       </form>
