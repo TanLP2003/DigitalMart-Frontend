@@ -1,0 +1,37 @@
+.category {
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    &-item {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #000;
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px 0px;
+        box-shadow: 0px 0px 2px 2px #999;
+
+        img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 3px;
+        }
+
+        div {
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &:hover {
+            position: relative;
+            top: -5px;
+            left: -5px;
+        }
+    }
+}

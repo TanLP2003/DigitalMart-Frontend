@@ -1,20 +1,21 @@
 import './Sidebar.scss'
-import { FiUser } from "react-icons/fi";
+import { RxDashboard } from "react-icons/rx";
 import { RiBillLine } from "react-icons/ri";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { RiProductHuntLine } from "react-icons/ri";
 import { MdOutlineCategory, MdOutlineChatBubbleOutline } from "react-icons/md";
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-    const [activeItem, setActiveItem] = useState(null);
     const navigate = useNavigate();
+    const paths = useLocation().pathname.split('/');
+
     const sidebarList = [
         {
-            name: "Customer",
+            name: "Dashboard",
             link: "",
-            icon: <FiUser size={25} />
+            icon: <RxDashboard size={25} />
         },
         {
             name: "Order",
@@ -44,10 +45,9 @@ const Sidebar = () => {
     ];
     const menuList = sidebarList.map((item, index) => {
         return (
-            <div className={`menu-item ${activeItem === index ? 'active' : ''}`}
+            <div className={`menu-item ${paths[paths.length - 1] === item.link ? 'active' : ''}`}
                 key={index}
                 onClick={() => {
-                    setActiveItem(index)
                     navigate(item.link)
                 }}
             >

@@ -1,6 +1,11 @@
+import CreateProduct from './CreateProduct';
+import './style.scss';
+
 const ProductAdmin = () => {
     return (
-        <div>Product</div>
+        <div className='ad-product'>
+            <CreateProduct />
+        </div>
     )
 }
 
