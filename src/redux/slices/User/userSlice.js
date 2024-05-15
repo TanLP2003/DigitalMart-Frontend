@@ -9,21 +9,37 @@ export const registerUser = createAsyncThunk(
     try{
         return await authService.register(userData)
     }catch(error) {
-        return thunkAPI.rejectWithValue(error)
+        return thunkAPI.rejectWithValue({
+            message: error.response.data.message || error.message,
+            status: error.response.status
+        });
+    }
+})
+
+export const loginUser = createAsyncThunk(
+    "auth/login",
+    async (userData, thunkAPI)=>{
+    try{
+        return await authService.login(userData)
+    }catch(error) {
+        return thunkAPI.rejectWithValue({
+            message: error.response.data.message || error.message,
+            status: error.response.status
+        });
     }
 })
 
 const initialState = {
-    user: "",
+    user: null,
     isError: false,
     isSuccess: false,
     isLoading: false,
-    message: ""
+    message: ''
 }
 
-export const authSlice = createSlice({
-    name: "auth",
-    initialState: "",
+export const userSlice = createSlice({
+    name: 'user',
+    initialState,
     reducers: {
 
     },
@@ -39,7 +55,7 @@ export const authSlice = createSlice({
             state.createdUser = action.payload;
 
             if(state.isSuccess == true) {
-                toast.info("User Created Successfully!");
+                toast.info("Please Verify Your Email To Complete Your Registration!");
             }
         })
         .addCase(registerUser.rejected, (state, action)=>{
@@ -52,8 +68,31 @@ export const authSlice = createSlice({
                 toast.info(action.error);
             }
         })
+        .addCase(loginUser.pending, (state)=>{
+            state.isLoading=true;
+        })
+        .addCase(loginUser.fulfilled, (state, action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.user = action.payload;
+
+            if(state.isSuccess == true) {
+                toast.info("User Logged In Successfully!");
+            }
+        })
+        .addCase(loginUser.rejected, (state, action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.message=action.error;
+
+            if(state.isError == true) {
+                toast.info("Email or Password is not corrrect!");
+            }
+        });
     }
 });
 
 
-export default authSlice.reducer;
+export default userSlice.reducer;
