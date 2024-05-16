@@ -1,3 +1,4 @@
+import { RestoreTwoTone } from "@mui/icons-material";
 import axios from "axios";
 
 const register=async(userData)=>{
@@ -13,7 +14,20 @@ const login=async(userData)=>{
         return response.data;
     }
 }
+
+const reset=async(userData)=>{
+    const token = localStorage.getItem("token");
+    const response = await axios.put("http://localhost:8000/api/user/changePassword/", userData, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    });
+    if(response.data) {
+        return response.data;
+    }
+}
 export const authService={
     register,
-    login
+    login,
+    reset
 }
