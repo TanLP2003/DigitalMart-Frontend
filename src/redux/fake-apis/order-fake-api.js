@@ -1,4 +1,4 @@
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 export const getOrder = () => {
     return {
@@ -17,7 +17,6 @@ export const getOrder = () => {
                     price: 12490000
                 },
                 quantity: 3,
-                subTotalPrice: 3 * 12490000
             },
             {
                 product: {
@@ -31,7 +30,6 @@ export const getOrder = () => {
                     price: 12490000
                 },
                 quantity: 2,
-                subTotalPrice: 2 * 12490000
             }
         ],
         totalPrice: 5 * 12490000,
