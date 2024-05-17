@@ -10,6 +10,7 @@ import ResetPassword from "./pages/Auth/ResetPassword"
 import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
+import MyProfile from "./pages/Customer/ExamplePage/My Profile"
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="wishlist" element={<ExamplePage />} />
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
+            <Route path="profile" element={<MyProfile />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="reset-password" element={<ResetPassword />} />
             <Route path="cart" element={<ExamplePage />} />
