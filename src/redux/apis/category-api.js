@@ -13,10 +13,3 @@ export const getAllCategory = createAsyncThunk(
         return response.data
     }
 )
-
-// get-all-category/fullfilled
-// get-all-category/reject
-// get-all-category/pending
-// payload
-
-dispatch()
