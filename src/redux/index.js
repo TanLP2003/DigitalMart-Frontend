@@ -1,9 +1,18 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/User/userSlice";
-
+import { userReducers } from "./slices/userSlice";
+import { productReducers } from "./slices/productSlice";
+import { categoryReducers } from './slices/categorySlice';
+import { basketReducers } from "./slices/basketSlice";
+import { orderReducers } from "./slices/orderSlice";
+import { inventoryReducers } from "./slices/inventorySlice";
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    user: userReducers,
+    products: productReducers,
+    categories: categoryReducers,
+    baskets: basketReducers,
+    orders: orderReducers,
+    inventories: inventoryReducers
 });
 
 export const store = configureStore({

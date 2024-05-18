@@ -1,1 +1,0 @@
-- thư mục này chứa các hàm để gọi API từ server
