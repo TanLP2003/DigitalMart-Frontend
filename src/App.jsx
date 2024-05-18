@@ -21,6 +21,7 @@ import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
 import { Bounce, ToastContainer } from "react-toastify";
+import { MyProfile } from "./pages/Customer/My Profile";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {

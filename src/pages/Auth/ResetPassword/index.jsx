@@ -6,7 +6,7 @@ import "./styles.css";
 import * as yup from "yup";
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { resetPassword } from './../../../redux/slices/User/userSlice';
+import { changePassword } from './../../../redux/apis/user-api';
 
 const resetPasswordSchema = yup.object({
     oldPassword: yup.string().required("Old Password is required"),
@@ -24,7 +24,7 @@ const ResetPassword = () => {
         },
         validationSchema: resetPasswordSchema,
         onSubmit: (values) => {
-           dispatch(resetPassword(values)); 
+           dispatch(changePassword(values)); 
         }
     });
     return (

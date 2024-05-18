@@ -7,7 +7,7 @@ import "./styles.css";
 import * as yup from "yup";
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { registerUser } from './../../../redux/slices/User/userSlice';
+import { signup } from './../../../redux/apis/user-api';
 
 const signUpSchema = yup.object({
     username: yup.string().required("Username is required"),
@@ -29,7 +29,7 @@ const SignUp = () => {
         validationSchema: signUpSchema,
         onSubmit: (values) => {
             console.log('Form Values:', values);  // Debug log
-           dispatch(registerUser(values)); 
+           dispatch(signup(values)); 
         }
     });
 

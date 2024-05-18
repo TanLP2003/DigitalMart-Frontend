@@ -1,31 +1,58 @@
 import React, { useState } from 'react';
 import './styles.css';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logout, updateUserInfo, changeAvatar } from './../../../redux/apis/user-api';
+import { toast } from 'react-toastify';
 
-const MyProfile = () => {
+export const MyProfile = () => {
 
-  const userData = useSelector(state => state.auth)
+  const dispatch = useDispatch();
+
+  const userData = JSON.parse(localStorage.getItem('currentUser'));
 
   const [username,setUsername] = useState(userData.username);
   const [email] = useState(userData.email);
   const [phonenumber, setPhonenumber] = useState(userData.phonenumber);
   const [gender, setGender] = useState(userData.gender);
-  const [profilePicture, setProfilePicture] = useState(null);
+  const [profilePicture, setProfilePicture] = useState(userData.avatar);
   const [isEditable, setIsEditable] = useState(false);
 
-  const handlePictureChange = (e) => {
-    setProfilePicture(e.target.files[0]);
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+  const handlePictureChange = async (e) => {
+    try {
+      if (e.target.files && e.target.files[0]) {
+        const file = e.target.files[0];
+        const newAvatarUrl = await dispatch(changeAvatar(file)).unwrap();
+        setProfilePicture(newAvatarUrl);
+      }
+    } catch (err) {
+      toast.error("Change avatar failed: " + err.message);
+    }
   };
 
   const handleEditToggle = () => {
     setIsEditable(!isEditable);
   };
 
-  const handleSave = () => {
-    // Add your save logic here
-    console.log('Profile saved');
-    setIsEditable(false);
+  const handleSave = async () => {
+    const updatedUser = {
+      username,
+      phonenumber,
+      gender,
+    };
+
+    try {
+      await dispatch(updateUserInfo(updatedUser)).unwrap();
+      setIsEditable(false);
+    } catch (err) {
+      toast.info('Failed to save the profile: ', err);
+    }
   };
+
+  
 
   return (
     <div className="profile-container">
@@ -33,12 +60,34 @@ const MyProfile = () => {
       <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
       <div className="profile-form">
         <div className="form-group">
+            <label>Ảnh đại diện</label>
+            <img
+              src={profilePicture}
+              alt="Profile"
+              className="profile-picture-preview"
+            />
+            <input
+              type="file"
+              id="avatarInput"
+              style={{ display: 'none' }}
+              onChange={handlePictureChange}
+            />
+            <button
+              className="change-avatar-button"
+              onClick={() => document.getElementById('avatarInput').click()}
+            >
+              Change Avatar
+            </button>
+          </div>
+        <div className="form-group">
           <label>Tên đăng nhập</label>
           <input 
             type="text" 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            readOnly={!isEditable} />
+            readOnly={!isEditable}
+            className="input-field"
+          />
         </div>
         <div className="form-group">
           <label>Email</label>
@@ -46,6 +95,7 @@ const MyProfile = () => {
             type="email"
             value={email}
             readOnly
+            className="input-field"
           />
         </div>
         <div className="form-group">
@@ -55,6 +105,7 @@ const MyProfile = () => {
             value={phonenumber}
             onChange={(e) => setPhonenumber(e.target.value)}
             readOnly={!isEditable}
+            className="input-field"
           />
         </div>
         <div className="form-group">
@@ -92,13 +143,6 @@ const MyProfile = () => {
             <label htmlFor="other">Khác</label>
           </div>
         </div>
-        <div className="form-group">
-          <label>Ảnh đại diện</label>
-          <input type="file" onChange={handlePictureChange} disabled={!isEditable} />
-          {profilePicture && (
-            <img src={URL.createObjectURL(profilePicture)} alt="Profile" className="profile-picture-preview" />
-          )}
-        </div>
         <div className="form-actions">
           <button className="edit-button" onClick={handleEditToggle}>
             {isEditable ? 'Cancel' : 'Edit Profile'}
@@ -106,10 +150,10 @@ const MyProfile = () => {
           {isEditable && (
             <button className="save-button" onClick={handleSave}>Save</button>
           )}
+          <button className="edit-button" onClick={handleLogout}>Logout</button> 
         </div>
+        
       </div>
     </div>
   );
 };
-
-export default MyProfile;

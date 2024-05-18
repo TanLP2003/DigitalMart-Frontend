@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 import CustomInput from "../CustomInput";
 import "./styles.css";
 import * as yup from "yup";
-import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { loginUser } from './../../../redux/slices/User/userSlice';
+import { login } from './../../../redux/apis/user-api';
 
 const loginSchema = yup.object({
     email: yup.string().email("Email should be valid"),
@@ -17,7 +16,6 @@ const loginSchema = yup.object({
 
 const Login = () => {
 
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -27,11 +25,7 @@ const Login = () => {
         },
         validationSchema: loginSchema,
         onSubmit: (values) => {
-            const response = dispatch(loginUser(values));
-            if (response.payload) {
-                // Redirect to homepage after successful login
-                history.push('/');
-            }
+            dispatch(login(values));
         }
     });
 
