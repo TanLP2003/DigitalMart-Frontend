@@ -3,7 +3,7 @@ import axios from "axios";
 
 const url = "http://localhost:3000/"; // fix later
 const initialState = {
-  cartItems: [1, 2, 3],
+  cartItems: [],
   amount: 0, // type
   total: 0,
   isLoading: true,
