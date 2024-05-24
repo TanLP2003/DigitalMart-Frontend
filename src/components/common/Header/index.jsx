@@ -2,8 +2,12 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import "./styles.css"
+import { useAuth } from "./../../hooks/AuthContext";
 
 export const Header = () => {
+
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
       <header className="header-top-strip py-3">
@@ -60,10 +64,10 @@ export const Header = () => {
                   </Link>
                 </div>
                 <div>
-                  <Link className="d-flex align-items-center gap-10 text-white" to={'/login'}>
+                  <Link className="d-flex align-items-center gap-10 text-white" to={isAuthenticated ? '/profile' : '/login'}>
                     <img src="images/user.svg" alt="user" />
                     <p className='mb-0'>
-                      Login <br /> My Account
+                      {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}
                     </p>
                   </Link>
                 </div>

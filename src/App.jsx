@@ -5,6 +5,8 @@ import CustomerLayout from "./components/layouts/CustomerLayout"
 import Login from "./pages/Auth/Login"
 import AuthLayout from "./components/layouts/AuthLayout"
 import SignUp from "./pages/Auth/Signup"
+import ForgotPassword from "./pages/Auth/ForgotPassword"
+import ResetPassword from "./pages/Auth/ResetPassword"
 import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
@@ -19,6 +21,7 @@ import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
 import { Bounce, ToastContainer } from "react-toastify";
+import { MyProfile } from "./pages/Customer/My Profile";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -54,7 +57,11 @@ function App() {
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
-            <Route path="login" element={<ExamplePage />} />
+            <Route path="login" element={<Login />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="reset-password" element={<ResetPassword />} />
             <Route path="cart" element={<ExamplePage />} />
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
