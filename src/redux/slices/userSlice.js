@@ -50,9 +50,14 @@ export const userSlice = createSlice({
             state.isError=false;
             state.isSuccess=true;
             state.user = action.payload;
-            if(state.isSuccess == true) {
+            if (state.isSuccess === true) {
                 toast.info("User Logged In Successfully!");
-                window.location.href = '/';
+                
+                if (state.user.role === 'CUSTOMER') {
+                    window.location.href = '/';
+                } else if (state.user.role === 'ADMIN') {
+                    window.location.href = '/admin';
+                }
             }
         })
         .addCase(login.rejected, (state, action)=>{

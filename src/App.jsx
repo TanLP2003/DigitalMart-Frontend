@@ -66,6 +66,7 @@ function App() {
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
             <Route index element={<Dashboard />} />
+            <Route path="profile" element={<MyProfile />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="product" element={<ProductAdmin />} />
             <Route path="order" element={<OrderAdmin />} />
