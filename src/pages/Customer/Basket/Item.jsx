@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { RiDeleteBinFill } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  decrease,
+  increaseItem,
+  decreaseItem,
   removeItem,
-  increase,
-} from "../../../redux/slices/cartSlice/cartSlice";
+} from "../../../redux/slices/basketSlice";
 
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+import { updateBasket } from "../../../redux/apis/basket-api";
 
-
-const CartItem = ({ id, img, title, price, quantity, size, color }) => {
+const Item = ({ product, quantity }) => {
   const dispatch = useDispatch();
-  // console.log(quantity);
+  const { id, name, description, images, brand, category, metadata, price } =
+    product;
+  // console.log(items, 1);
   return (
     <div className="cart-data d-flex justify-content-between align-items-center mb-2">
       <div className="cart-col-1 d-flex align-items-center gap-15">
         <div className="w-25">
-          <img src={img} className="img-fluid" alt={title} />
+          <img src={images[0]} className="img-fluid" alt={name} />
         </div>
         <div className="w-75">
-          <h5 className="title mb-0">{title}</h5>
-          <p className="size mb-0">{size}</p>
-          <p className="color mb-0">{color}</p>
+          <h5 className="title mb-0">{name}</h5>
+          <p className="mb-0">{brand}</p>
+          <p className="mb-0">{description}</p>
         </div>
       </div>
       <div className="cart-col-2">
@@ -36,7 +38,7 @@ const CartItem = ({ id, img, title, price, quantity, size, color }) => {
                 dispatch(removeItem(id));
                 return;
               }
-              dispatch(decrease(id));
+              dispatch(decreaseItem(id));
             }}
           >
             <FaChevronCircleLeft style={{ fontSize: "1.4rem" }} />
@@ -44,8 +46,9 @@ const CartItem = ({ id, img, title, price, quantity, size, color }) => {
           <p className="mb-0 fs-5">{quantity}</p>
           <button
             onClick={() => {
-              if (quantity < 10)
-                dispatch(increase(id));
+              if (quantity < 10) {
+                dispatch(increaseItem(id));
+              }
             }}
           >
             <FaChevronCircleRight style={{ fontSize: "1.4rem" }} />
@@ -54,15 +57,17 @@ const CartItem = ({ id, img, title, price, quantity, size, color }) => {
         <div>
           <RiDeleteBinFill
             className="fs-3 text-danger"
-            onClick={() => dispatch(removeItem(id))}
+            onClick={() => {
+              dispatch(removeItem(id));
+            }}
           />
         </div>
       </div>
       <div className="cart-col-4">
-        <h5 className="price">${(price * quantity).toFixed(2)}</h5>
+        <h5 className="price">${price * quantity}</h5>
       </div>
     </div>
   );
 };
 
-export default CartItem;
+export default Item;

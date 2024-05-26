@@ -1,6 +1,7 @@
 import React from "react";
 
-const PaymentItem = ({id, tittle, img, price, quantity}) => {
+const PaymentItem = ({ product, quantity }) => {
+  const { id, name, images, price } = product;
   return (
     <div className="d-flex align-items-center gap-10 mb-2">
       <div className="w-75 d-flex gap-10">
@@ -11,14 +12,14 @@ const PaymentItem = ({id, tittle, img, price, quantity}) => {
           >
             {quantity}
           </span>
-          <img className="img-fluid" src={img} alt="watch" />
+          <img className="img-fluid" src={images[0]} alt={name} />
         </div>
         <div>
-          <h5 className="total-price">{tittle}</h5>
+          <h5 className="total-price">{name}</h5>
         </div>
       </div>
       <div className="flex-grow-1">
-        <h5 className="total">$ {(quantity * price).toFixed(2)}</h5>
+        <h5 className="total">₫ {(quantity * price)}</h5>
       </div>
     </div>
   );

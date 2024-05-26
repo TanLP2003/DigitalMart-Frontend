@@ -8,13 +8,40 @@ import SignUp from "./pages/Auth/Signup";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import { getProducts } from "./redux/fake-apis/product-fake-api";
 import ExamplePage from "./pages/Customer/ExamplePage";
-import Cart from "./pages/Customer/Cart";
+import CategoryAdmin from "./pages/Admin/CategoryAdmin";
+import ProductAdmin from "./pages/Admin/ProductAdmin";
+import OrderAdmin from "./pages/Admin/OrderAdmin";
+import ChatAdmin from "./pages/Admin/ChatAdmin";
+import Home from "./pages/Home";
+import OurStore from "./pages/Our Store";
+import Blogs from "./pages/blogs";
+import Contact from "./pages/Contact";
+import Dashboard from "./pages/Admin/Dashboard";
+import Inventory from "./pages/Admin/Inventory";
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Basket from "./pages/Customer/Basket";
 import Checkout from "./pages/Customer/Checkout";
+
 function App() {
-  const products = getProducts();
-  console.log(products);
+  // const products = getProducts();
+  // console.log(products);
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+        style={{ zIndex: 99999999999999 }}
+      />
       <Router>
         <Routes>
           <Route path="/auth" element={<AuthLayout />}>
@@ -22,16 +49,27 @@ function App() {
             <Route path="signup" element={<SignUp />} />
           </Route>
           <Route path="/" element={<CustomerLayout />}>
-            <Route index element={<ExamplePage />} />
+            <Route index element={<Home />} />
             <Route path="about" element={<ExamplePage />} />
-            <Route path="contact" element={<ExamplePage />} />
-            <Route path="products" element={<ExamplePage />} />
-            <Route path="blogs" element={<ExamplePage />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="products" element={<OurStore />} />
+            <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
             <Route path="login" element={<ExamplePage />} />
-            <Route path="cart" element={<Cart />} />
+            <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Checkout />} />
+          </Route>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute role="admin" element={<AdminLayout />} />}
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="category" element={<CategoryAdmin />} />
+            <Route path="product" element={<ProductAdmin />} />
+            <Route path="order" element={<OrderAdmin />} />
+            <Route path="inventory" element={<Inventory />} />
+            <Route path="chat" element={<ChatAdmin />} />
           </Route>
           <Route
             path="/admin"

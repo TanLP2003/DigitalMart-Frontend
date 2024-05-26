@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 
-const CartHeader = () => {
+const BasketHeader = () => {
   return (
     <div className="cart-header d-flex justify-content-between align-items-center">
       <h4 className="cart-col-1">Product</h4>
@@ -11,4 +11,4 @@ const CartHeader = () => {
   );
 };
 
-export default memo(CartHeader);
+export default memo(BasketHeader);

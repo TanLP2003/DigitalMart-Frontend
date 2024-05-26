@@ -1,49 +1,26 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-const instance = axios.create({
-  baseURL: "http://localhost:3000/form", // fix later
-});
+import { createSlice } from "@reduxjs/toolkit";
+import { getAllOrder, getOrderOfUser } from "../apis/order-api";
 
-const initialState = {
-  firstname: "",
-  lastname: "",
-  email: "",
-  address: "",
-  city: "",
-  district: "",
-  wards: "",
-  phone: "",
-};
+const initialValue = {
+    orders: [],
+    allOrders: []
+}
 
-export const postOrderForm = createAsyncThunk(
-  "order/postOrderForm",
-  async (name, thunkAPI) => {
-    try {
-      console.log(thunkAPI.getState().order);
-      await instance.post(`/`, thunkAPI.getState().order);
-    } catch (error) {
-      console.log("error");
-      // return thunkAPI.rejectWithValue("something went wrong in order post...");
+export const orderSlice = createSlice({
+    name: 'orders',
+    initialState: initialValue,
+    reducers: {
+
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getOrderOfUser.fulfilled, (state, action) => {
+            state.orders = action.payload
+        })
+        builder.addCase(getAllOrder.fulfilled, (state, action) => {
+            state.allOrders = action.payload    
+        })
     }
-  }
-);
+})
 
-const orderSlice = createSlice({
-  name: "order",
-  initialState,
-  reducers: {
-    storeFormData: (state, action) => {
-      return action.payload;
-    },
-    resetFormData: (state) => {
-      return initialState;
-    },
-  },
-  //   extraReducers: (builder) => {
-  //     // builder.addCase();
-  //   },
-});
-
-export const { storeFormData, resetFormData } = orderSlice.actions;
-
-export default orderSlice.reducer;
+export const { } = orderSlice.actions;
+export const orderReducers = orderSlice.reducer;

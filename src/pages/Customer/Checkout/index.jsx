@@ -5,7 +5,8 @@ import PaymentItemList from "./PaymentItemList";
 import Modal from "../../../components/common/Modal";
 import { useSelector } from "react-redux";
 const Checkout = () => {
-  const { isOpen } = useSelector((store) => store.modal);
+  const { orders } = useSelector((state) => state.orders);
+  const { isOpen } = useSelector((state) => state.modal);
   console.log(isOpen);
   return (
     <>

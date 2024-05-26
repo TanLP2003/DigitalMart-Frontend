@@ -1,0 +1,108 @@
+.create-product {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+}
+
+.product-form {
+    width: 100%;
+    max-width: 550px;
+
+    &-item {
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type='text'],
+        input[type='number'],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+    }
+
+    button[type='submit'] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}
+
+.images-holder {
+    width: 100%;
+    height: 150px;
+    background-color: #ccc;
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    // white-space: nowrap;
+    cursor: pointer;
+
+    &-item {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .add-btn {
+        background-color: #979696;
+        transition: background-color 0.2s ease;
+        border-radius: 10px;
+        min-width: 80px;
+
+        &:hover {
+            background-color: #727272;
+        }
+    }
+
+    .preview {
+        position: relative;
+
+
+        &-image {
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: cover;
+            z-index: 1;
+
+            &:hover {
+                visibility: hidden;
+            }
+        }
+
+        &-cls {
+            // visibility: hidden;
+            position: absolute;
+            max-width: 150px;
+            max-height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #000;
+        }
+    }
+}

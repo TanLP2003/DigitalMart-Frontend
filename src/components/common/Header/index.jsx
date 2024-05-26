@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import "./styles.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Header = () => {
-  const { amount } = useSelector((store) => store.cart);
-  useEffect(() => {}, [amount]); // fix later
+  // const { amount } = useSelector((store) => store.cart);
+  // useEffect(() => {}, [amount]); // fix later
   return (
     <>
       <header className="header-top-strip py-3">
@@ -59,7 +59,11 @@ const Header = () => {
                     className="d-flex align-items-center gap-10 text-white"
                     to={"/compare-products"}
                   >
-                    <img src="images/compare.svg" alt="compare" />
+                    <img
+                      src="images/compare.svg"
+                      alt="compare"
+                      className="bg-transparent"
+                    />
                     <p className="mb-0">
                       Compare <br /> Products
                     </p>
@@ -70,7 +74,11 @@ const Header = () => {
                     className="d-flex align-items-center gap-10 text-white"
                     to={"/wishlist"}
                   >
-                    <img src="images/wishlist.svg" alt="wishlist" />
+                    <img
+                      src="images/wishlist.svg"
+                      alt="wishlist"
+                      className="bg-transparent"
+                    />
                     <p className="mb-0">
                       Favourite <br /> Wishlist
                     </p>
@@ -81,7 +89,11 @@ const Header = () => {
                     className="d-flex align-items-center gap-10 text-white"
                     to={"/login"}
                   >
-                    <img src="images/user.svg" alt="user" />
+                    <img
+                      src="images/user.svg"
+                      alt="user"
+                      className="bg-transparent"
+                    />
                     <p className="mb-0">
                       Login <br /> My Account
                     </p>
@@ -90,11 +102,15 @@ const Header = () => {
                 <div>
                   <Link
                     className="d-flex align-items-center gap-10 text-white"
-                    to={"/cart"}
+                    to={"/basket"}
                   >
-                    <img src="images/cart.svg" alt="cart" />
+                    <img
+                      src="images/cart.svg"
+                      alt="basket"
+                      className="bg-transparent"
+                    />
                     <div className="d-flex flex-column gap-10">
-                      <span className="badge bg-white text-dark">{amount}</span>
+                      <span className="badge bg-white text-dark">{0}</span>
                       <p className="mb-0">$ 500</p>
                     </div>
                   </Link>
