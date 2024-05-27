@@ -5,6 +5,7 @@ import { categoryReducers } from './slices/categorySlice';
 import { basketReducers } from "./slices/basketSlice";
 import { orderReducers } from "./slices/orderSlice";
 import { inventoryReducers } from "./slices/inventorySlice";
+import { favoriteReducers } from "./slices/favoriteSlice";
 
 const rootReducer = combineReducers({
     user: userReducers,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     categories: categoryReducers,
     baskets: basketReducers,
     orders: orderReducers,
-    inventories: inventoryReducers
+    inventories: inventoryReducers,
+    favorites: favoriteReducers
 });
 
 export const store = configureStore({

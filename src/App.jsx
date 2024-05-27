@@ -22,6 +22,7 @@ import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
 import { Bounce, ToastContainer } from "react-toastify";
 import { MyProfile } from "./pages/Customer/My Profile";
+import { WishList } from "./pages/Customer/WishList";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
             <Route path="products" element={<OurStore />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
-            <Route path="wishlist" element={<ExamplePage />} />
+            <Route path="wishlist" element={<WishList />} />
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />

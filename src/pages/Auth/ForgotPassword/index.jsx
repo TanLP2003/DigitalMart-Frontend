@@ -7,9 +7,10 @@ import "./styles.css";
 import * as yup from "yup";
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { forgotPassword } from "./../../../redux/apis/user-api";
 
 const forgotPasswordSchema = yup.object({
-    email: yup.string().email("Email should be valid")
+    email: yup.string().email("Email should be valid").required("Email is required")
 });
 
 const ForgotPassword = () => {
@@ -22,7 +23,7 @@ const ForgotPassword = () => {
         },
         validationSchema: forgotPasswordSchema,
         onSubmit: (values) => {
-           dispatch(registerUser(values)); 
+            dispatch(forgotPassword(values));
         }
     });
     return (
@@ -31,38 +32,39 @@ const ForgotPassword = () => {
             <BreadCrumb title="Forgot Password" />
 
             <div className="container-xxl">
-            <div className='login-wrapper py-5 home-wrapper-2'>
-                <div className="row">
-                    <div className="col-12">
-                        <div className="auth-card">
-                            <h3 className='text-center mb-3'>Enter your Email</h3>
-                            <form action="" className='d-flex flex-column gap-30'>
-                                <CustomInput 
+                <div className='login-wrapper py-5 home-wrapper-2'>
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="auth-card">
+                                <h3 className='text-center mb-3'>Enter your Email</h3>
+                                <form action="" onSubmit={formik.handleSubmit} className='d-flex flex-column gap-30'>
+                                    <CustomInput
                                         type="email"
                                         name="email"
                                         placeholder="email"
                                         value={formik.values.email}
                                         onChange={formik.handleChange("email")}
                                         onBlur={formik.handleBlur("email")}
-                                />
-                                <div className='error'>
-                                    {formik.touched.email && formik.errors.email}
-                                </div>
-                            </form>
+                                    />
+                                    <div className='error'>
+                                        {formik.touched.email && formik.errors.email}
+                                    </div>
+                                    <div>
+                                        <div className='mt-3 d-flex justify-content-center gap-15 align-items-center'>
+                                            <button className='button login' type="submit">Submit</button>
+                                            <Link className='button login' to='/login'>Back to Login Page</Link>
+                                        </div>
 
-                            <div>
-                                <div className='mt-3 d-flex justify-content-center gap-15 align-items-center'>
-                                    <Link className='button login' to='/login'>Back to Login Page</Link>
-                                    <Link className='button login' to='/reset-password'>Submit</Link>
-                                </div>
+                                    </div>
+                                </form>
+
 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-            
+
         </>
     )
 }
