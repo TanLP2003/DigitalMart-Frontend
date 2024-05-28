@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../../common/Header";
-import { Footer } from "../../common/Footer";
+import Header from "../../common/Header";
+import Footer from "../../common/Footer";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "../../hooks/AuthContext";
 import "react-toastify/ReactToastify.css";
@@ -8,7 +8,6 @@ import "react-toastify/ReactToastify.css";
 const CustomerLayout = () => {
   return (
     <>
-
       <AuthProvider>
         <Header />
         <Outlet />
@@ -26,7 +25,6 @@ const CustomerLayout = () => {
           theme="light"
         />
       </AuthProvider>
-      
     </>
   );
 };

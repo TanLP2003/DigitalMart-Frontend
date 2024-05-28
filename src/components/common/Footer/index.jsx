@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsGithub, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
 import "./styles.css"
-export const Footer = () => {
+const Footer = () => {
   return (
     <>
       <footer className="py-3">
@@ -52,7 +52,7 @@ export const Footer = () => {
                   href="mailto:thanhnguyent472003@gmail.com"
                   className="text-white mt-4 d-block mb-2"
                 >
-                  thanhnguyent______@gmail.com
+                  anon@gmail.com
                 </a>
                 <div className="social_icons d-flex align-items-center gap-30 mt-4">
                   <a className="text-white" href="#">
@@ -105,7 +105,7 @@ export const Footer = () => {
           <div className="row">
             <div className="col-12">
               <p className="text-center mb-0 text-white">
-                &copy; {new Date().getFullYear()} Powered by thanhnguyen
+                &copy; {new Date().getFullYear()} hi there
               </p>
             </div>
           </div>

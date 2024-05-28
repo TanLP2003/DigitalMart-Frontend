@@ -1,29 +1,31 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import NotFound from "./pages/NotFound"
-import AdminLayout from "./components/layouts/AdminLayout"
-import CustomerLayout from "./components/layouts/CustomerLayout"
-import Login from "./pages/Auth/Login"
-import AuthLayout from "./components/layouts/AuthLayout"
-import SignUp from "./pages/Auth/Signup"
-import ForgotPassword from "./pages/Auth/ForgotPassword"
-import ResetPassword from "./pages/Auth/ResetPassword"
-import ProtectedRoute from "./components/common/ProtectedRoute"
-import { getProducts } from "./redux/fake-apis/product-fake-api"
-import ExamplePage from "./pages/Customer/ExamplePage"
-import CategoryAdmin from "./pages/Admin/CategoryAdmin"
-import ProductAdmin from "./pages/Admin/ProductAdmin"
-import OrderAdmin from "./pages/Admin/OrderAdmin"
-import ChatAdmin from "./pages/Admin/ChatAdmin"
-import Home from "./pages/Home"
-import OurStore from "./pages/Our Store"
-import Blogs from "./pages/blogs"
-import Contact from "./pages/Contact"
-import Dashboard from "./pages/Admin/Dashboard"
-import Inventory from "./pages/Admin/Inventory"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import AdminLayout from "./components/layouts/AdminLayout";
+import CustomerLayout from "./components/layouts/CustomerLayout";
+import Login from "./pages/Auth/Login";
+import AuthLayout from "./components/layouts/AuthLayout";
+import SignUp from "./pages/Auth/Signup";
+import ProtectedRoute from "./components/common/ProtectedRoute";
+import { getProducts } from "./redux/fake-apis/product-fake-api";
+import ExamplePage from "./pages/Customer/ExamplePage";
+import CategoryAdmin from "./pages/Admin/CategoryAdmin";
+import ProductAdmin from "./pages/Admin/ProductAdmin";
+import OrderAdmin from "./pages/Admin/OrderAdmin";
+import ChatAdmin from "./pages/Admin/ChatAdmin";
+import Home from "./pages/Home";
+import OurStore from "./pages/Our Store";
+import Blogs from "./pages/blogs";
+import Contact from "./pages/Contact";
+import Dashboard from "./pages/Admin/Dashboard";
+import Inventory from "./pages/Admin/Inventory";
 import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Basket from "./pages/Customer/Basket";
+import Checkout from "./pages/Customer/Checkout";
+import BillInfo from "./pages/Customer/BillInfo";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
 import { MyProfile } from "./pages/Customer/My Profile";
-import 'react-toastify/dist/ReactToastify.css';
-
 function App() {
   // const products = getProducts();
   // console.log(products);
@@ -57,27 +59,35 @@ function App() {
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
+            <Route path="basket" element={<Basket />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="customer-bill-info" element={<BillInfo />} />
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="reset-password" element={<ResetPassword />} />
-            <Route path="cart" element={<ExamplePage />} />
           </Route>
-          <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute role="admin" element={<AdminLayout />} />}
+          >
             <Route index element={<Dashboard />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="product" element={<ProductAdmin />} />
             <Route path="order" element={<OrderAdmin />} />
             <Route path="inventory" element={<Inventory />} />
             <Route path="chat" element={<ChatAdmin />} />
-
           </Route>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute role="admin" element={<AdminLayout />} />}
+          ></Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
