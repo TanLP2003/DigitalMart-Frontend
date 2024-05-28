@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import authAxios from "../authAxios";
-import { getOrder, updateOrderFake } from "../fake-apis/order-fake-api";
+import {
+  getOrder,
+  updateOrderFake,
+  getAllFakeOrder,
+} from "../fake-apis/order-fake-api";
 import { pause } from "../config";
 
 export const getOrderOfUser = createAsyncThunk(
@@ -19,11 +23,16 @@ export const getOrderOfUser = createAsyncThunk(
 export const getAllOrder = createAsyncThunk(
   "get-all-order",
   async (_, { rejectWithValue }) => {
-    const response = await authAxios.get("order/all");
-    if (response.status < 200 || response.status >= 300) {
-      rejectWithValue(response);
+    // const response = await authAxios.get("order/all");
+    // if (response.status < 200 || response.status >= 300) {
+    //   rejectWithValue(response);
+    // }
+    // return response.data;
+    try {
+      return getAllFakeOrder();
+    } catch (error) {
+      return rejectWithValue(error);
     }
-    return response.data;
   }
 );
 

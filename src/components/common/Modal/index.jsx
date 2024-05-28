@@ -2,11 +2,11 @@ import React from "react";
 import { closeModal } from "../../../redux/slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateOrderOfUser } from "../../../redux/apis/order-api";
 const Modal = () => {
-  const { orders } = useSelector((state) => state.orders);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const shippingFee = 15000;
   const handleConfirm = () => {
@@ -20,18 +20,15 @@ const Modal = () => {
       totalPrice: subtotal + shippingFee,
       createdAt: today,
     };
-    // console.log(today);
     dispatch(updateOrderOfUser(newOrders));
-    console.log(orders);
-    console.log(newOrders);
+    navigate("customer-bill-info");
   };
   return (
     <aside className={styles.modal_container}>
       <div className={styles.modal}>
         <h4>Are you sure?</h4>
         <div className={styles.btn_container}>
-          <Link
-            to="/customer-bill-info"
+          <button
             className="button confirm-btn"
             onClick={() => {
               dispatch(closeModal());
@@ -39,7 +36,7 @@ const Modal = () => {
             }}
           >
             confirm
-          </Link>
+          </button>
           <button
             type="button"
             className="button cancel-btn"
