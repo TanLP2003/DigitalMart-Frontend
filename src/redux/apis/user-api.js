@@ -64,11 +64,14 @@ export const changePassword = createAsyncThunk(
 
 export const changeAvatar = createAsyncThunk(
     'change-avatar',
+    
     async (data, { rejectWithValue }) => {
-        const response = await authAxios.put('user/changeAvatar', data);
+        const formData = new FormData();
+        formData.append('avatar', data);
+        const response = await authAxios.put('user/changeAvatar', formData);
         if (response.status < 200 || response.status >= 300) {
             rejectWithValue(response)
         }
-        return response.data;
+        return response.data.url;
     }
 )

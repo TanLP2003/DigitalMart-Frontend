@@ -23,7 +23,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Basket from "./pages/Customer/Basket";
 import Checkout from "./pages/Customer/Checkout";
 import BillInfo from "./pages/Customer/BillInfo";
-
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import { MyProfile } from "./pages/Customer/My Profile";
 function App() {
   // const products = getProducts();
   // console.log(products);
@@ -57,10 +59,14 @@ function App() {
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
-            <Route path="login" element={<ExamplePage />} />
             <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="customer-bill-info" element={<BillInfo />} />
+            <Route path="login" element={<Login />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="reset-password" element={<ResetPassword />} />
           </Route>
           <Route
             path="/admin"
