@@ -51,7 +51,7 @@ export const getBasketFake = () => {
 };
 
 export const updateBasketFake = (newItems) => {
-  fake_data.items = [...newItems];
+  fake_data.items = newItems;
   fake_data.totalPrice = fake_data.items.reduce(
     (total, item) => (total += item.product.price * item.quantity),
     0

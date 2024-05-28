@@ -14,7 +14,6 @@ const Item = ({ product, quantity }) => {
   const dispatch = useDispatch();
   const { id, name, description, images, brand, category, metadata, price } =
     product;
-  // console.log(items, 1);
   return (
     <div className="cart-data d-flex justify-content-between align-items-center mb-2">
       <div className="cart-col-1 d-flex align-items-center gap-15">

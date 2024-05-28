@@ -4,18 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { openModal } from "../../../redux/slices/modalSlice";
 import Select from "react-select";
-const CustomerForm = ({ userName }) => {
+const CustomerForm = ({
+  userName,
+  address,
+  phoneNumber,
+  paymentMethod,
+  cardNumber,
+}) => {
   const dispatch = useDispatch();
   const [info, setInfo] = useState({
     userName: userName,
-    address: "",
-    phoneNumber: "",
-    paymentMethod: "cash",
-    cardNumber: "",
+    address: address,
+    phoneNumber: phoneNumber,
+    paymentMethod: paymentMethod,
+    cardNumber: cardNumber,
   });
-
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
+  };
+
+  const handleContinueShopping = () => {
+    localStorage.setItem("customer-info", JSON.stringify(info));
   };
   const paymentOptions = [
     { value: "cash", label: "Cash On Delivery" },
@@ -55,7 +64,7 @@ const CustomerForm = ({ userName }) => {
         </ol>
       </nav>
       <h4 className="title total">Contact Information</h4>
-      <p className="user-details total">${userName}</p>
+      <p className="user-details total">- {userName}</p>
       <h4 className="mb-3">Shipping Address</h4>
       <form
         action=""
@@ -112,7 +121,8 @@ const CustomerForm = ({ userName }) => {
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(openModal());
-                console.log(info);
+                handleContinueShopping();
+                // console.log(info);
               }}
             >
               Continue to Shipping

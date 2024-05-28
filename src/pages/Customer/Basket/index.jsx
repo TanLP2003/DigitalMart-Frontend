@@ -6,8 +6,6 @@ import "./styles.css";
 import Item from "./Item";
 import BasketHeader from "./BasketHeader";
 import { useDispatch, useSelector } from "react-redux";
-import { calculateSubtotal } from "../../../redux/slices/basketSlice";
-import { memo } from "react";
 import { getBasket, updateBasket } from "../../../redux/apis/basket-api";
 import useFetchData from "../../../components/hooks/useFetchData";
 
@@ -27,7 +25,6 @@ const Basket = () => {
       prevItems.current = items;
     }
   }, [items]);
-  console.log(items);
   return (
     <>
       <BreadCrumb title="Basket" />

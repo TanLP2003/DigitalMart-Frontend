@@ -22,6 +22,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Basket from "./pages/Customer/Basket";
 import Checkout from "./pages/Customer/Checkout";
+import BillInfo from "./pages/Customer/BillInfo";
 
 function App() {
   // const products = getProducts();
@@ -59,6 +60,7 @@ function App() {
             <Route path="login" element={<ExamplePage />} />
             <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="customer-bill-info" element={<BillInfo />} />
           </Route>
           <Route
             path="/admin"
