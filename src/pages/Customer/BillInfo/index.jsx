@@ -6,10 +6,8 @@ import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 const BillInfo = () => {
   const { orders } = useSelector((state) => state.orders);
-  // console.log(orders.createAt);
   const { userName, items, totalPrice, createdAt, address, paymentMethod } =
     orders;
-  console.log(items);
   let i = 1;
   return (
     <>
@@ -59,7 +57,7 @@ const BillInfo = () => {
                   <tbody>
                     {items.map((item) => {
                       return (
-                        <tr>
+                        <tr key={item.product.id}>
                           <th scope="row">{i++}</th>
                           <td>
                             <img

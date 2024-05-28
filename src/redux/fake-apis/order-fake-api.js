@@ -37,6 +37,18 @@ const fake_order = {
   paymentMethod: "Cash On Delivery",
   cardNumber: "XX-XXXX-XXXX",
 };
+
+const fake_all_order = [
+  {
+    orderId: "123456789",
+    orderDetails: fake_order,
+  },
+  {
+    orderId: "888888888",
+    orderDetails: fake_order,
+  },
+];
+
 export const getOrder = () => {
   return fake_order;
 };
@@ -50,4 +62,8 @@ export const updateOrderFake = (newOrder) => {
   fake_order.paymentMethod = newOrder.paymentMethod;
   fake_order.cardNumber = newOrder.cardNumber;
   return fake_order;
+};
+
+export const getAllFakeOrder = () => {
+  return fake_all_order;
 };

@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+} from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import AdminLayout from "./components/layouts/AdminLayout";
 import CustomerLayout from "./components/layouts/CustomerLayout";
@@ -26,6 +31,7 @@ import BillInfo from "./pages/Customer/BillInfo";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import { MyProfile } from "./pages/Customer/My Profile";
+import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
 function App() {
   // const products = getProducts();
   // console.log(products);
@@ -60,8 +66,10 @@ function App() {
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
             <Route path="basket" element={<Basket />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="customer-bill-info" element={<BillInfo />} />
+            <Route path="checkout" element={<Outlet />}>
+              <Route index element={<Checkout />} />
+              <Route path="customer-bill-info" element={<BillInfo />} />
+            </Route>
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />
@@ -75,7 +83,10 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="product" element={<ProductAdmin />} />
-            <Route path="order" element={<OrderAdmin />} />
+            <Route path="order" element={<Outlet />}>
+              <Route index element={<OrderAdmin />} />
+              <Route path="details" element={<OrderDetails />} />
+            </Route>
             <Route path="inventory" element={<Inventory />} />
             <Route path="chat" element={<ChatAdmin />} />
           </Route>
