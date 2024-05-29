@@ -32,6 +32,7 @@ import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import { MyProfile } from "./pages/Customer/My Profile";
 import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
+import ProductDetail from "./pages/Our Store/ProductDetail/ProductDetail";
 function App() {
   // const products = getProducts();
   // console.log(products);
@@ -62,6 +63,7 @@ function App() {
             <Route path="about" element={<ExamplePage />} />
             <Route path="contact" element={<Contact />} />
             <Route path="products" element={<OurStore />} />
+              <Route path="products/product_detail" element={<ProductDetail/>}/>
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
