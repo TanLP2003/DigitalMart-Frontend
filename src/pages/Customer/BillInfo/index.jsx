@@ -75,14 +75,14 @@ const BillInfo = () => {
                   </tbody>
                 </table>
               </div>
-              <div className="">
+              <div className="col-12">
                 <div className="small-row d-flex justify-content-end me-5">
                   <p className="me-2">Shipping Fee: </p>
                   <p>₫ 2000000</p>
                 </div>
                 <div className="small-row d-flex justify-content-end me-5">
-                  <p className="me-2">Total: </p>
-                  <p>₫ {totalPrice}</p>
+                  <p className={`me-2 ${styles.bold}`}>Total: </p>
+                  <p className={` ${styles.bold}`}>₫ {totalPrice}</p>
                 </div>
               </div>
 
