@@ -13,3 +13,18 @@ export const getAllCategory = createAsyncThunk(
         return response.data
     }
 )
+
+export const createCategory = createAsyncThunk(
+    'create-category',
+    async (data, { rejectWithValue }) => {
+        const formData = new FormData();
+        formData.append('image', data.image);
+        formData.append('name', data.name);
+        const response = await axios.post(`${SERVER}/category/`,formData);
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response);
+        }
+        // console.log(response.data);
+        return response.data
+    }
+)

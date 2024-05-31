@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/common/ProtectedRoute"
 import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
 import CategoryAdmin from "./pages/Admin/CategoryAdmin"
+import CreateCategory from "./pages/Admin/CategoryAdmin/CreateCategory"
 import ProductAdmin from "./pages/Admin/ProductAdmin"
 import OrderAdmin from "./pages/Admin/OrderAdmin"
 import ChatAdmin from "./pages/Admin/ChatAdmin"
@@ -49,6 +50,8 @@ function App() {
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Login />} />
             <Route path="signup" element={<SignUp />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="reset-password" element={<ResetPassword />} />
           </Route>
           <Route path="/" element={<CustomerLayout />}>
             <Route index element={<Home />} />
@@ -58,17 +61,15 @@ function App() {
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<WishList />} />
-            <Route path="login" element={<Login />} />
-            <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />
-            <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="reset-password" element={<ResetPassword />} />
+           
             <Route path="cart" element={<ExamplePage />} />
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
             <Route index element={<Dashboard />} />
             <Route path="profile" element={<MyProfile />} />
             <Route path="category" element={<CategoryAdmin />} />
+            <Route path="category/create" element={<CreateCategory />} />
             <Route path="product" element={<ProductAdmin />} />
             <Route path="order" element={<OrderAdmin />} />
             <Route path="inventory" element={<Inventory />} />

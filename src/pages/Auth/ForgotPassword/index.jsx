@@ -29,14 +29,12 @@ const ForgotPassword = () => {
     return (
         <>
             <Meta title={"Forgot Password"} />
-            <BreadCrumb title="Forgot Password" />
 
             <div className="container-xxl">
-                <div className='login-wrapper py-5 home-wrapper-2'>
-                    <div className="row">
+            <div className="row">
                         <div className="col-12">
                             <div className="auth-card">
-                                <h3 className='text-center mb-3'>Enter your Email</h3>
+                                <h3 className='text-center mb-3'>Forgot Password</h3>
                                 <form action="" onSubmit={formik.handleSubmit} className='d-flex flex-column gap-30'>
                                     <CustomInput
                                         type="email"
@@ -52,7 +50,7 @@ const ForgotPassword = () => {
                                     <div>
                                         <div className='mt-3 d-flex justify-content-center gap-15 align-items-center'>
                                             <button className='button login' type="submit">Submit</button>
-                                            <Link className='button login' to='/login'>Back to Login Page</Link>
+                                            <Link className='button login' to='/auth'>Back to Login Page</Link>
                                         </div>
 
                                     </div>
@@ -62,7 +60,6 @@ const ForgotPassword = () => {
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
 
         </>
