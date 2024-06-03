@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { changeAvatar, login, updateUserInfo, signup, logout, changePassword } from "../apis/user-api";
+import { changeAvatar, login, updateUserInfo, signup, logout, changePassword, forgotPassword } from "../apis/user-api";
 import { toast } from "react-toastify";
 const currentUser = localStorage.getItem('currentUser');
 
@@ -50,9 +50,14 @@ export const userSlice = createSlice({
             state.isError=false;
             state.isSuccess=true;
             state.user = action.payload;
-            if(state.isSuccess == true) {
+            if (state.isSuccess === true) {
                 toast.info("User Logged In Successfully!");
-                window.location.href = '/';
+                
+                if (state.user.role === 'CUSTOMER') {
+                    window.location.href = '/';
+                } else if (state.user.role === 'ADMIN') {
+                    window.location.href = '/admin';
+                }
             }
         })
         .addCase(login.rejected, (state, action)=>{
@@ -145,6 +150,29 @@ export const userSlice = createSlice({
 
             if(state.isError == true) {
                 toast.info(action.error);
+            }
+        })
+        .addCase(forgotPassword.pending, (state) => {
+            state.isLoading = true;
+            state.isSuccess=false;
+            state.isError=false;
+        })
+        .addCase(forgotPassword.fulfilled, (state) => {
+            state.isSuccess=true;
+            state.isLoading=false;
+            state.isError=false;
+            if(state.isSuccess == true) {
+                toast.info("New password have send to your email!");
+            }
+        })
+        .addCase(forgotPassword.rejected, (state) => {
+            state.isLoading = false;
+            state.isSuccess=false;
+            state.isError=true;
+
+
+            if(state.isError == true) {
+                toast.info("Email is not corrrect!");
             }
         })
     }

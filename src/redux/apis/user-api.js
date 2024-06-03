@@ -75,3 +75,15 @@ export const changeAvatar = createAsyncThunk(
         return response.data.url;
     }
 )
+
+export const forgotPassword = createAsyncThunk(
+    'forgot-password',
+    
+    async (data, { rejectWithValue }) => {
+        const response = await authAxios.put('user/forgotPassword', data);
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response)
+        }
+        return response.data.url;
+    }
+)
