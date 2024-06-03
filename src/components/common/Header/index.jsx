@@ -55,40 +55,10 @@ export const Header = () => {
               </div>
             </div>
             <div className="col-5">
-              <div className="header-upper-links d-flex align-items-center justify-content-between">
-                <div>
-                  <Link
-                    className="d-flex align-items-center gap-10 text-white"
-                    to={"/compare-products"}
-                  >
-                    <img
-                      src="images/compare.svg"
-                      alt="compare"
-                      className="bg-transparent"
-                    />
-                    <p className="mb-0">
-                      Compare <br /> Products
-                    </p>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    className="d-flex align-items-center gap-10 text-white"
-                    to={"/wishlist"}
-                  >
-                    <img
-                      src="images/wishlist.svg"
-                      alt="wishlist"
-                      className="bg-transparent"
-                    />
-                    <p className="mb-0">
-                      Favourite <br /> Wishlist
-                    </p>
-                  </Link>
-                </div>
-                <div>
+              <div className="header-upper-links d-flex align-items-center justify-content-between"> 
+                <div style={{marginLeft:'60%'}}>
                   <Link className="d-flex align-items-center gap-10 text-white" to={isAuthenticated ? '/profile' : '/login'}>
-                    <img src="images/user.svg" alt="user" />
+                    <img src="../images/user.svg" alt="user" />
                     <p className='mb-0'>
                       {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}
                     </p>
@@ -100,7 +70,7 @@ export const Header = () => {
                     to={"/basket"}
                   >
                     <img
-                      src="images/cart.svg"
+                      src="../images/cart.svg"
                       alt="basket"
                       className="bg-transparent"
                     />

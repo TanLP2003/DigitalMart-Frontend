@@ -36,6 +36,13 @@ import ProductDetail from "./pages/Our Store/ProductDetail/ProductDetail";
 function App() {
   // const products = getProducts();
   // console.log(products);
+  const images = [
+    '../images/watch.jpg',
+    '../images/watch1.png',
+    '../images/watch2.png',
+    '../images/watch3.jpg',
+    '../images/watch4.jpg',
+  ];
   return (
     <>
       <ToastContainer
@@ -63,7 +70,7 @@ function App() {
             <Route path="about" element={<ExamplePage />} />
             <Route path="contact" element={<Contact />} />
             <Route path="products" element={<OurStore />} />
-              <Route path="products/product_detail" element={<ProductDetail/>}/>
+              <Route path="products/product_detail" element={<ProductDetail images={images} interval={3000}/>}/>
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
