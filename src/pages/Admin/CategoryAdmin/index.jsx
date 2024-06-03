@@ -10,10 +10,16 @@ const CategoryAdmin = () => {
     const renderCategoryList = () => {
         return categories.map((item, index) => {
             return (
-                <div className="category-item" key={index}>
+                <Link
+                key={index}
+                to={`/admin/category/${item._id}`} // Assuming you have a unique id for each category
+                className="category-item-link"
+            >
+                <div className="category-item">
                     <img src="https://loremflickr.com/320/240" alt="" />
                     <div>{item.name}</div>
                 </div>
+            </Link>
             )
         })
     }

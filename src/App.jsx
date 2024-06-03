@@ -12,6 +12,7 @@ import { getProducts } from "./redux/fake-apis/product-fake-api"
 import ExamplePage from "./pages/Customer/ExamplePage"
 import CategoryAdmin from "./pages/Admin/CategoryAdmin"
 import CreateCategory from "./pages/Admin/CategoryAdmin/CreateCategory"
+import ViewCategory from "./pages/Admin/CategoryAdmin/ViewCategory"
 import ProductAdmin from "./pages/Admin/ProductAdmin"
 import OrderAdmin from "./pages/Admin/OrderAdmin"
 import ChatAdmin from "./pages/Admin/ChatAdmin"
@@ -70,6 +71,7 @@ function App() {
             <Route path="profile" element={<MyProfile />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="category/create" element={<CreateCategory />} />
+            <Route path="/admin/category/:categoryId" element={<ViewCategory />} />
             <Route path="product" element={<ProductAdmin />} />
             <Route path="order" element={<OrderAdmin />} />
             <Route path="inventory" element={<Inventory />} />

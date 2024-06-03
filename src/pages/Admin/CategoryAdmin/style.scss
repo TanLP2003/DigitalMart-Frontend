@@ -4,7 +4,10 @@
     gap: 20px;
     flex-wrap: wrap;
 
-
+    .category-item-link {
+        color: black; // Set text color to black
+        text-decoration: none; // Remove underline
+    }
 
     .header {
         width: 100%;
