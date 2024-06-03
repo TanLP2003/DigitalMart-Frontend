@@ -4,6 +4,9 @@ import { getAllOrder } from "../../../redux/apis/order-api";
 import { BsEyeFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import BreadCrumb from "../../../components/common/BreadCrumb";
+import Meta from "../../../components/common/Meta";
+
 const OrderAdmin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,7 +22,8 @@ const OrderAdmin = () => {
   };
   return (
     <>
-      <h3 className="fs-3 text-center my-4">Order List</h3>
+      <BreadCrumb title="Orders" />
+      <Meta title="Orders" />
       <div className="mx-4">
         <table className="table">
           <thead>

@@ -11,7 +11,6 @@ import Login from "./pages/Auth/Login";
 import AuthLayout from "./components/layouts/AuthLayout";
 import SignUp from "./pages/Auth/Signup";
 import ProtectedRoute from "./components/common/ProtectedRoute";
-import { getProducts } from "./redux/fake-apis/product-fake-api";
 import ExamplePage from "./pages/Customer/ExamplePage";
 import CategoryAdmin from "./pages/Admin/CategoryAdmin";
 import ProductAdmin from "./pages/Admin/ProductAdmin";
