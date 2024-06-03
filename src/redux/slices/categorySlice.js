@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllCategory, createCategory } from "../apis/category-api";
+import { getAllCategory, createCategory, editCategory } from "../apis/category-api";
 import { toast } from "react-toastify";
 
 
@@ -54,7 +54,26 @@ const categorySlice = createSlice({
             state.categories = action.payload;
 
             if(state.isError == true) {
-                toast.info(action.error);
+                toast.info("This name is existed.")
+            }
+        })
+        .addCase(editCategory.pending, (state) => {
+            state.isLoading=true;
+        })
+        .addCase(editCategory.fulfilled, (state, action) => {
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.categories = action.payload
+        })
+        .addCase(editCategory.rejected, (state, action) => {
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.categories = action.payload;
+
+            if(state.isError == true) {
+                toast.info("This name is existed.")
             }
         })
     }

@@ -7,6 +7,8 @@ const CategoryAdmin = () => {
     const dispatch = useDispatch();
     const isFetched = useFetchData(() => [dispatch(getAllCategory())]);
     const categories = useSelector((state) => state.categories.categories);
+
+    localStorage.setItem("categories", JSON.stringify(categories));
     const renderCategoryList = () => {
         return categories.map((item, index) => {
             return (
@@ -14,9 +16,9 @@ const CategoryAdmin = () => {
                 key={index}
                 to={`/admin/category/${item._id}`} // Assuming you have a unique id for each category
                 className="category-item-link"
-            >
+                >
                 <div className="category-item">
-                    <img src="https://loremflickr.com/320/240" alt="" />
+                    <img src={item.image}  alt="" />
                     <div>{item.name}</div>
                 </div>
             </Link>

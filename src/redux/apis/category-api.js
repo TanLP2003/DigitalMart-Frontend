@@ -28,3 +28,18 @@ export const createCategory = createAsyncThunk(
         return response.data
     }
 )
+
+export const editCategory = createAsyncThunk(
+    'edit-category',
+    async ({ categoryId, data }, { rejectWithValue }) => {
+        try {
+            const response = await axios.put(`${SERVER}/category/${categoryId}`, data);
+            if (response.status < 200 || response.status >= 300) {
+                return rejectWithValue(response);
+            }
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);

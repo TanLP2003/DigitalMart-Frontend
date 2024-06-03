@@ -9,9 +9,28 @@
         margin-bottom: 20px;
 
         h2 {
+            a {
+                color:  #333;
+                text-decoration: none; /* Removes the underline */
+            }
             margin: 0;
             font-size: 20px;
             color: #333;
+        }
+
+        .edit-btn {
+            background-color: var(--color-131921);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+    
+            &:hover {
+                background-color: var(--color-febd69);
+                color: var(--color-131921);
+            }
         }
     }
 
@@ -24,6 +43,39 @@
             flex-direction: column;
             gap: 20px;
             width: 100%;
+
+            .button-group {
+                display: flex;
+                justify-content: flex-end;
+                .save-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: var(--color-131921);
+                    color: white;
+
+                    &:hover {
+                        background-color: var(--color-febd69);
+                        color: var(--color-131921);
+                    }
+                }
+                .cancel-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: #ccc;
+                    color: #333;
+                    margin-right: 20px;
+        
+                    &:hover {
+                        background-color: #bbb;
+                    }
+                }
+            }
 
             .row {
                 display: flex;
@@ -55,7 +107,7 @@
                             text-align: center;
 
                             img {
-                                max-width: 100%;
+                                max-width: 300px !important;
                                 height: auto;
                                 margin-bottom: 10px;
                             }

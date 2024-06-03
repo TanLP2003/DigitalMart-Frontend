@@ -64,7 +64,7 @@ export const Header = () => {
                   </Link>
                 </div>
                 <div>
-                  <Link className="d-flex align-items-center gap-10 text-white" to={isAuthenticated ? '/profile' : '/login'}>
+                  <Link className="d-flex align-items-center gap-10 text-white" to={isAuthenticated ? '/profile' : '/auth'}>
                     <img src="images/user.svg" alt="user" />
                     <p className='mb-0'>
                       {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}

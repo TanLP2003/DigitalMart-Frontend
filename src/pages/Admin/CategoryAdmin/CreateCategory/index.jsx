@@ -22,7 +22,6 @@ const CreateCategory = () => {
         }),
         onSubmit: (values) => {
             dispatch(createCategory(values));
-            
         }
     });
 
@@ -40,6 +39,12 @@ const CreateCategory = () => {
             </div>
             <div className="content">
                 <form id="category-form" onSubmit={formik.handleSubmit} className="category-form">
+                    <div className="button-group">
+                        <Link to='/admin/category' className="cancel-btn-link">
+                            <button className="cancel-btn">X Cancel</button>
+                        </Link>
+                        <button className="add-btn" type="submit">+ Add</button>
+                    </div>
                     <div className="row">
                         <div className="col-6">
                             <div className="images-section">
@@ -56,6 +61,7 @@ const CreateCategory = () => {
                                         name="image" 
                                         onChange={handleFileChange} 
                                         accept="image/*"
+                                        style={{ display: 'none' }} // Hide the input
                                     />
                                     <button type="button" onClick={() => document.getElementById('image').click()}>Add Image</button>
                                     {formik.touched.image && formik.errors.image ? (
@@ -81,12 +87,6 @@ const CreateCategory = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="form-footer">
-                        <Link to='/admin/category' className="cancel-btn-link">
-                            <button className="cancel-btn">X Cancel</button>
-                        </Link>
-                        <button className="add-btn" type="submit">+ Add</button>
                     </div>
                 </form>
             </div>

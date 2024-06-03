@@ -9,6 +9,10 @@
         margin-bottom: 20px;
 
         h2 {
+            a {
+                color:  #333;
+                text-decoration: none; /* Removes the underline */
+            }
             margin: 0;
             font-size: 20px;
             color: #333;
@@ -24,6 +28,44 @@
             flex-direction: column;
             gap: 20px;
             width: 100%;
+
+            .button-group {
+                display: flex;
+                justify-content: flex-end;
+
+                .cancel-btn-link {
+                    text-decoration: none;
+                }
+        
+                .cancel-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: #ccc;
+                    color: #333;
+                    margin-right: 20px;
+        
+                    &:hover {
+                        background-color: #bbb;
+                    }
+                }
+                .add-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: var(--color-131921);
+                    color: white;
+
+                    &:hover {
+                        background-color: var(--color-febd69);
+                        color: var(--color-131921);
+                    }
+                }
+            }
 
             .row {
                 display: flex;
@@ -55,7 +97,7 @@
                             text-align: center;
 
                             img {
-                                max-width: 100%;
+                                max-width: 300px !important;
                                 height: auto;
                                 margin-bottom: 10px;
                             }
@@ -96,44 +138,6 @@
                             margin-top: 5px;
                             font-size: 12px;
                         }
-                    }
-                }
-            }
-
-            .form-footer {
-                display: flex;
-                justify-content: flex-end;
-
-                .cancel-btn-link {
-                    text-decoration: none;
-                }
-        
-                .cancel-btn {
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    background-color: #ccc;
-                    color: #333;
-                    margin-right: 20px;
-        
-                    &:hover {
-                        background-color: #bbb;
-                    }
-                }
-                .add-btn {
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    background-color: var(--color-131921);
-                    color: white;
-
-                    &:hover {
-                        background-color: var(--color-febd69);
-                        color: var(--color-131921);
                     }
                 }
             }
