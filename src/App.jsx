@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import NotFound from "./pages/NotFound"
 import AdminLayout from "./components/layouts/AdminLayout"
@@ -22,10 +23,19 @@ import Blogs from "./pages/blogs"
 import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
+
 import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Basket from "./pages/Customer/Basket";
+import Checkout from "./pages/Customer/Checkout";
+import BillInfo from "./pages/Customer/BillInfo";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
 import { MyProfile } from "./pages/Customer/My Profile";
+
 import { WishList } from "./pages/Customer/WishList";
 import 'react-toastify/dist/ReactToastify.css';
+import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
 
 function App() {
   // const products = getProducts();
@@ -61,28 +71,44 @@ function App() {
             <Route path="products" element={<OurStore />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
+
             <Route path="wishlist" element={<WishList />} />
             <Route path="profile" element={<MyProfile />} />
            
             <Route path="cart" element={<ExamplePage />} />
+             <Route path="basket" element={<Basket />} />
+            <Route path="checkout" element={<Outlet />}>
+              <Route index element={<Checkout />} />
+              <Route path="customer-bill-info" element={<BillInfo />} />
+            </Route>
+
           </Route>
-          <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute role="admin" element={<AdminLayout />} />}
+          >
             <Route index element={<Dashboard />} />
             <Route path="profile" element={<MyProfile />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="category/create" element={<CreateCategory />} />
             <Route path="/admin/category/:categoryId" element={<ViewCategory />} />
             <Route path="product" element={<ProductAdmin />} />
-            <Route path="order" element={<OrderAdmin />} />
+            <Route path="order" element={<Outlet />}>
+              <Route index element={<OrderAdmin />} />
+              <Route path="details" element={<OrderDetails />} />
+            </Route>
             <Route path="inventory" element={<Inventory />} />
             <Route path="chat" element={<ChatAdmin />} />
-
           </Route>
+          <Route
+            path="/admin"
+            element={<ProtectedRoute role="admin" element={<AdminLayout />} />}
+          ></Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
