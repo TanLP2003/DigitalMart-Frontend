@@ -11,13 +11,18 @@ const OrderAdmin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { allOrders } = useSelector((state) => state.orders);
-  const isFetched = useFetchData(() => [dispatch(getAllOrder())]);
+  // const { allOrders } = useSelector((state) => state.orders);
+  // const isFetched = useFetchData(() => [dispatch(getAllOrder())]);
   let i = 1;
 
-  const handleClick = (orderId) => {
-    const myOrder = allOrders.find((order) => order.orderId === orderId);
-    localStorage.setItem("myOrder", JSON.stringify(myOrder));
+  // const handleClick = (orderId) => {
+  //   const myOrder = allOrders.find((order) => order.orderId === orderId);
+  //   localStorage.setItem("myOrder", JSON.stringify(myOrder));
+  //   navigate("details");
+  // };
+  const handleClick = () => {
+    // const myOrder = allOrders.find((order) => order.orderId === orderId);
+    // localStorage.setItem("myOrder", JSON.stringify(myOrder));
     navigate("details");
   };
   return (
@@ -37,7 +42,23 @@ const OrderAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {isFetched &&
+          <tr>
+                    <th scope="row">{i++}</th>
+                    <td>foiweoiae</td>
+                    <td>username</td>
+                    <td>0</td>
+                    <td>2i3o</td>
+                    <td className="">
+                      <button
+                        className="border-0 bg-transparent"
+                      onClick={() => handleClick()}>
+                        <BsEyeFill
+                          className={`fs-5 text-dark ${styles.action}`}
+                        />
+                      </button>
+                    </td>
+                  </tr>
+            {/* {isFetched &&
               allOrders.map((order) => {
                 return (
                   <tr key={order.orderId}>
@@ -57,7 +78,7 @@ const OrderAdmin = () => {
                     </td>
                   </tr>
                 );
-              })}
+              })} */}
           </tbody>
         </table>
       </div>

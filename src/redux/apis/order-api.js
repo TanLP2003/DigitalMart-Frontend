@@ -5,14 +5,15 @@ import {
   updateOrderFake,
   getAllFakeOrder,
 } from "../fake-apis/order-fake-api";
-import { pause } from "../config";
+import { pause, SERVER } from "../config";
+import axios from "axios";
 
 export const getOrderOfUser = createAsyncThunk(
   "get-order-of-user",
   async (_, { rejectWithValue }) => {
-    const response = await authAxios.get('order');
+    const response = await authAxios.get("order");
     if (response.status < 200 || response.status >= 300) {
-        rejectWithValue(response);
+      rejectWithValue(response);
     }
     return response.data;
     // await pause(1000);
@@ -45,5 +46,16 @@ export const updateOrderOfUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
+  }
+);
+
+export const getOrderById = createAsyncThunk(
+  "get-order-by-id",
+  async (id, { rejectWithValue }) => {
+    const response = await axios.get(`${SERVER}/order/${id}`);
+    if (response.status < 200 || response.status >= 300) {
+      rejectWithValue(response);
+    }
+    return response.data;
   }
 );

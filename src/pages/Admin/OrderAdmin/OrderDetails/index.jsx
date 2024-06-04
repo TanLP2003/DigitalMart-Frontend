@@ -12,7 +12,7 @@ const OrderDetails = () => {
         <div className="container-xxl">
           <div className="row bg-white mx-2 rounded py-4">
             <h4 className="fs-4">Invoice</h4>
-            <div className="col-12 d-flex justify-content-between">
+            <div className="col-12 d-flex">
               <div className={`${styles.field}`}>
                 <p className={`${styles.label}`}>Order Id</p>
                 <input
@@ -32,7 +32,7 @@ const OrderDetails = () => {
                 />
               </div>
             </div>
-            <div className="col-12 d-flex justify-content-between mt-3">
+            <div className="col-12 d-flex mt-3">
               <div className={`${styles.field}`}>
                 <p className={`${styles.label}`}>Customer Name</p>
                 <input
@@ -47,7 +47,7 @@ const OrderDetails = () => {
 
           <div className="row bg-white mx-2 rounded mt-5 py-4">
             <h4 className="fs-4">Address</h4>
-            <div className="col-12 d-flex justify-content-between">
+            <div className="col-12 d-flex">
               <div className={`${styles.field2}`}>
                 <p className={`${styles.label}`}>Customer Address</p>
                 <input
@@ -74,27 +74,50 @@ const OrderDetails = () => {
                   </tr>
                 </thead>
                 <tbody>
-                      <tr key="">
-                        <th scope="row">{++i}</th>
-                        <td>
-                          <img
-                            src=""
-                            alt=""
-                          />
-                        </td>
-                        <td>item_name</td>
-                        <td>0</td>
-                        <td>₫ 0</td>
-                        <td>₫ 0</td>
-                      </tr>
+                  <tr key="">
+                    <th scope="row">{++i}</th>
+                    <td>
+                      <img src="" alt="" />
+                    </td>
+                    <td>item_name</td>
+                    <td>0</td>
+                    <td>₫ 0</td>
+                    <td>₫ 0</td>
+                  </tr>
+                  <tr key="">
+                    <th scope="row">{++i}</th>
+                    <td>
+                      <img src="" alt="" />
+                    </td>
+                    <td>item_name</td>
+                    <td>0</td>
+                    <td>₫ 0</td>
+                    <td>₫ 0</td>
+                  </tr>
+                  <tr key="">
+                    <th scope="row">{++i}</th>
+                    <td>
+                      <img src="" alt="" />
+                    </td>
+                    <td>item_name</td>
+                    <td>0</td>
+                    <td>₫ 0</td>
+                    <td>₫ 0</td>
+                  </tr>
+                  <tr key="">
+                    <th scope="row">{++i}</th>
+                    <td>
+                      <img src="" alt="" />
+                    </td>
+                    <td>item_name</td>
+                    <td>0</td>
+                    <td>₫ 0</td>
+                    <td>₫ 0</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <div className="">
-              <div className="small-row d-flex justify-content-end me-5">
-                <p className="me-2">Shipping Fee: </p>
-                <p>₫ 2000000</p>
-              </div>
               <div className="small-row d-flex justify-content-end me-5">
                 <p className="me-2">Total: </p>
                 <p>₫ -</p>

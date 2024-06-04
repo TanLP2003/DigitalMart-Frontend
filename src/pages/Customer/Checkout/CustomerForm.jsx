@@ -80,7 +80,7 @@ const CustomerForm = ({
             onChange={handleChange}
           />
         </div>
-        <div className="w-100">
+        {/* <div className="w-100">
           <input
             type="tel"
             placeholder="Phone number"
@@ -89,8 +89,8 @@ const CustomerForm = ({
             value={info.phoneNumber}
             onChange={handleChange}
           />
-        </div>
-        <div className="w-100">
+        </div> */}
+        {/* <div className="w-100">
           <Select
             options={paymentOptions}
             placeholder="Choose one payment method"
@@ -109,7 +109,7 @@ const CustomerForm = ({
             onChange={handleChange}
             disabled
           />
-        </div>
+        </div> */}
         <div className="w-100">
           <div className="d-flex justify-content-between align-items-center">
             <Link to="/basket" className="text-dark mb-0">

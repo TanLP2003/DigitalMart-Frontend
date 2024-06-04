@@ -33,11 +33,17 @@ const Item = ({ product, quantity }) => {
         <div className="d-flex align-items-center gap-10">
           <button
             onClick={() => {
-              if (quantity === 1) {
-                dispatch(removeItem(id));
-                return;
-              }
-              dispatch(decreaseItem(id));
+              // if (quantity === 1) {
+              //   dispatch(removeItem(id));
+              //   return;
+              // }
+              // dispatch(decreaseItem(id));
+              dispatch(
+                updateBasket({
+                  product: product,
+                  incrementBy: -1,
+                })
+              );
             }}
           >
             <FaChevronCircleLeft style={{ fontSize: "1.4rem" }} />
@@ -45,9 +51,12 @@ const Item = ({ product, quantity }) => {
           <p className="mb-0 fs-5">{quantity}</p>
           <button
             onClick={() => {
-              if (quantity < 10) {
-                dispatch(increaseItem(id));
-              }
+              dispatch(
+                updateBasket({
+                  product: product,
+                  incrementBy: 1,
+                })
+              );
             }}
           >
             <FaChevronCircleRight style={{ fontSize: "1.4rem" }} />
@@ -57,7 +66,12 @@ const Item = ({ product, quantity }) => {
           <RiDeleteBinFill
             className="fs-3 text-danger"
             onClick={() => {
-              dispatch(removeItem(id));
+              dispatch(
+                updateBasket({
+                  product: product,
+                  incrementBy: -quantity,
+                })
+              );
             }}
           />
         </div>

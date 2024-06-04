@@ -38,3 +38,15 @@ export const updateBasket = createAsyncThunk(
   //   }
   // }
 );
+
+export const checkoutBasket = createAsyncThunk(
+  "checkout-basket",
+  async (data, { rejectWithValue }) => {
+    const response = await authAxios.post("basket/checkout", data);
+    if (response.status < 200 || response.status >= 300) {
+      rejectWithValue(response);
+    }
+    const vnpUrl = response.data;
+    window.location.href = vnpUrl;
+  }
+);

@@ -5,6 +5,7 @@ const initialValue = {
   // userId: "",
   items: [],
   totalPrice: 0,
+  selectedItems: [],
 };
 
 export const basketSlice = createSlice({
@@ -26,12 +27,14 @@ export const basketSlice = createSlice({
     decreaseItem: (state, action) => {
       const item = state.items.find((i) => i.product.id === action.payload);
       item.quantity--;
-
     },
     removeItem: (state, action) => {
       state.items = state.items.filter(
         (item) => item.product.id !== action.payload
       );
+    },
+    setSelectedItems: (state, action) => {
+      state.selectedItems = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -46,6 +49,11 @@ export const basketSlice = createSlice({
   },
 });
 
-export const { calculateSubtotal, increaseItem, decreaseItem, removeItem } =
-  basketSlice.actions;
+export const {
+  calculateSubtotal,
+  increaseItem,
+  decreaseItem,
+  removeItem,
+  setSelectedItems,
+} = basketSlice.actions;
 export const basketReducers = basketSlice.reducer;
