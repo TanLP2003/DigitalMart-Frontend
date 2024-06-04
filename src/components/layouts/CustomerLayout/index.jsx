@@ -5,9 +5,14 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "../../hooks/AuthContext";
 import "react-toastify/ReactToastify.css";
 
+const customerLayoutStyles = {
+  minHeight: '100vh',
+};
+
+
 const CustomerLayout = () => {
   return (
-    <>
+    <div style={customerLayoutStyles}> 
       <AuthProvider>
         <Header />
         <Outlet />
@@ -25,7 +30,7 @@ const CustomerLayout = () => {
           theme="light"
         />
       </AuthProvider>
-    </>
+    </div>
   );
 };
 

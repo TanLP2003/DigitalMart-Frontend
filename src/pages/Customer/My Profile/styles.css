@@ -44,9 +44,9 @@
 }
 
 .profile-picture-preview {
-  margin-top: 10px;
-  max-width: 100px;
-  border-radius: 50%;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .form-actions {
@@ -57,17 +57,19 @@
 .edit-button,
 .save-button {
   padding: 10px 20px;
-  background-color: #ff5722;
-  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
+  background-color: var(--color-131921);
+  color: white;
+  margin-right: 20px;
 }
 
 .edit-button:hover,
 .save-button:hover {
-  background-color: #e64a19;
+  background-color: var(--color-febd69);
+  color: var(--color-131921);
 }
 
 

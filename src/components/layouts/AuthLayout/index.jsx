@@ -7,6 +7,7 @@ import { useAuth } from "./../../hooks/AuthContext";
 const AuthLayout = () => {
     return (
         <div>
+            
             <header className="header-upper py-3 mb-5">
                 <div className="container-xxl">
                     <div className="row align-items-center">

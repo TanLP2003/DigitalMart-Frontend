@@ -24,14 +24,12 @@ import Blogs from "./pages/blogs"
 import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
-
+import { Outlet } from "react-router-dom"
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Basket from "./pages/Customer/Basket";
 import Checkout from "./pages/Customer/Checkout";
 import BillInfo from "./pages/Customer/BillInfo";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
-import ResetPassword from "./pages/Auth/ResetPassword";
 import { MyProfile } from "./pages/Customer/My Profile";
 
 import { WishList } from "./pages/Customer/WishList";

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './styles.css';
 import { useDispatch } from 'react-redux';
-import { logout, updateUserInfo, changeAvatar } from '../../../redux/apis/user-api';
+import { updateUserInfo, changeAvatar } from '../../../redux/apis/user-api';
 import { toast } from 'react-toastify';
 import { de } from '@faker-js/faker';
+import "./styles.css";
 
 export const AdminProfile = () => {
 
@@ -92,7 +92,7 @@ export const AdminProfile = () => {
           <div className="col-6">
             <div className="general-infor">
               <div className="form-group">
-                <label>Tên đăng nhập</label>
+                <label>Username</label>
                 <input
                   type="text"
                   value={username}
@@ -111,7 +111,7 @@ export const AdminProfile = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Số điện thoại</label>
+                <label>Phonenumber</label>
                 <input
                   type="text"
                   value={phonenumber}
@@ -121,7 +121,7 @@ export const AdminProfile = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Giới tính</label>
+                <label>Gender</label>
                 <div className="gender-options">
                   <input
                     type="radio"
@@ -132,7 +132,7 @@ export const AdminProfile = () => {
                     onChange={(e) => setGender(e.target.value)}
                     disabled={!isEditable}
                   />
-                  <label htmlFor="male">Nam</label>
+                  <label htmlFor="male">Male</label>
                   <input
                     type="radio"
                     id="female"
@@ -142,7 +142,7 @@ export const AdminProfile = () => {
                     onChange={(e) => setGender(e.target.value)}
                     disabled={!isEditable}
                   />
-                  <label htmlFor="female">Nữ</label>
+                  <label htmlFor="female">Female</label>
                   <input
                     type="radio"
                     id="other"
@@ -152,7 +152,7 @@ export const AdminProfile = () => {
                     onChange={(e) => setGender(e.target.value)}
                     disabled={!isEditable}
                   />
-                  <label htmlFor="other">Khác</label>
+                  <label htmlFor="other">Other</label>
                 </div>
               </div>
             </div>

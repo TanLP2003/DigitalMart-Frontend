@@ -33,20 +33,21 @@ export const WishList = () => {
                         {error && <p>Error: {error}</p>}
                         {favorites && favorites.length > 0 ? (
                             favorites.map(product => (
-                                <div className="row" key={product._id}>
-                                    <div className="col-10">
-                                        <ProductCard
-                                            id={product.id}
-                                            name={product.name}
-                                            description={product.description}
-                                            price={product.price}
-                                            images={product.images}
-                                            brand={product.brand}
-                                        />
-                                    </div>
-                                    <div className="col-2">
-                                        <button onClick={() => handleUnlike(product._id)}>Unlike</button>
-                                    </div>
+                                <div className="col-4 mb-3" key={product._id}>
+                                    <ProductCard
+                                        id={product._id}
+                                        name={product.name}
+                                        description={product.description}
+                                        price={product.price}
+                                        images={product.images[0]} // Assuming images is an array
+                                        brand={product.brand}
+                                    />
+                                    <button 
+                                        className="btn btn-danger mt-2" 
+                                        onClick={() => handleUnlike(product._id)}
+                                    >
+                                        Unlike
+                                    </button>
                                 </div>
                             ))
                         ) : (
@@ -58,3 +59,5 @@ export const WishList = () => {
         </>
     );
 }
+
+export default WishList;
