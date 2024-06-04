@@ -34,6 +34,7 @@
 body {
   font-family: "Rubik", sans-serif;
   background-color: var(--color-ededed);
+  overflow-x: hidden;
 }
 
 a {

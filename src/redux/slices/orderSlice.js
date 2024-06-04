@@ -8,6 +8,7 @@ import {
 const initialValue = {
   orders: {},
   allOrders: [],
+  newOrder: {}
 };
 
 export const orderSlice = createSlice({

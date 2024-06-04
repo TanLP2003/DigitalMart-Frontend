@@ -1,7 +1,11 @@
 import React from "react";
 import PaymentItem from "./PaymentItem";
+import { useSelector } from "react-redux";
 const PaymentItemList = () => {
-  const paymentList = JSON.parse(localStorage.getItem("payment-list"));
+  // new code
+  const paymentList = useSelector(state => state.baskets.selectedItems);
+  //
+  // const paymentList = JSON.parse(localStorage.getItem("payment-list"));
   const subtotal = JSON.parse(localStorage.getItem("totalPrice"));
   return (
     <>
@@ -14,14 +18,14 @@ const PaymentItemList = () => {
         })}
       </div>
       <div className="border-bottom py-4">
-        <div className="d-flex justify-content-between align-items-center">
+        {/* <div className="d-flex justify-content-between align-items-center">
           <p className="total">Subtotal</p>
           <p className="total-price">₫ {subtotal}</p>
         </div>
         <div className="d-flex justify-content-between align-items-center">
           <p className="total mb-0">Shipping Fee</p>
           <p className="total-price mb-0">₫ 15000</p>
-        </div>
+        </div> */}
       </div>
       <div className="d-flex justify-content-between align-items-center border-bottom py-4">
         <h4 className="total">Total Payment</h4>
@@ -30,5 +34,5 @@ const PaymentItemList = () => {
     </>
   );
 };
-
+ 
 export default PaymentItemList;
