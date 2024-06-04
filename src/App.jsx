@@ -16,6 +16,7 @@ import ViewCategory from "./pages/Admin/CategoryAdmin/ViewCategory"
 import ProductAdmin from "./pages/Admin/ProductAdmin"
 import OrderAdmin from "./pages/Admin/OrderAdmin"
 import ChatAdmin from "./pages/Admin/ChatAdmin"
+import AdminProfile from "./pages/Admin/AdminProfile"
 import Home from "./pages/Home"
 import OurStore from "./pages/Our Store"
 import Blogs from "./pages/blogs"
@@ -68,7 +69,7 @@ function App() {
           </Route>
           <Route path="/admin" element={<ProtectedRoute role="admin" element={<AdminLayout />} />}>
             <Route index element={<Dashboard />} />
-            <Route path="profile" element={<MyProfile />} />
+            <Route path="profile" element={<AdminProfile />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="category/create" element={<CreateCategory />} />
             <Route path="/admin/category/:categoryId" element={<ViewCategory />} />
