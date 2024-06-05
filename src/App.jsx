@@ -65,10 +65,12 @@ function App() {
             <Route path="compare-products" element={<ExamplePage />} />
             <Route path="wishlist" element={<ExamplePage />} />
             <Route path="basket" element={<Basket />} />
-            <Route path="checkout" element={<Outlet />}>
+            {/* <Route path="checkout" element={<Outlet />}>
               <Route index element={<Checkout />} />
               <Route path="customer-bill-info" element={<BillInfo />} />
-            </Route>
+            </Route> */}
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="customer-bill-info/:id" element={<BillInfo />} />
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />
