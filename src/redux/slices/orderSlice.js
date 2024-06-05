@@ -9,7 +9,8 @@ import {
 const initialValue = {
   orders: {},
   allOrders: [],
-  newOrder: {}
+  newOrder: {},
+  orderDetail: null
 };
 
 export const orderSlice = createSlice({
@@ -26,9 +27,7 @@ export const orderSlice = createSlice({
     builder.addCase(updateOrderOfUser.fulfilled, (state, action) => {
       state.orders = action.payload;
     });
-    builder.addCase(getOrderById.fulfilled, (state, action) => {
-      state.newOrder = action.payload
-    })
+    builder.addCase(getOrderById.fulfilled)
   },
 });
 

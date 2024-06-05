@@ -2,15 +2,23 @@ import React from "react";
 import BreadCrumb from "../../../../components/common/BreadCrumb";
 import Meta from "../../../../components/common/Meta";
 import styles from "./styles.module.css";
+import useFetchData from "../../../../components/hooks/useFetchData";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrderById } from "../../../../redux/apis/order-api";
+import { useParams } from "react-router-dom";
 const OrderDetails = () => {
   let i = 0;
+  const {id} = useParams();
+  const dispatch = useDispatch();
+  const isFetched = useFetchData(() => [dispatch(getOrderById(id))])
+  const {order} = useSelector(state => state.orders.order);
   return (
     <>
       <BreadCrumb title="Order Details" />
       <Meta title="Order Details" />
       <div className="cart-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
-          <div className="row bg-white mx-2 rounded py-4">
+        {isFetched && (<div className="container-xxl">
+        <div className="row bg-white mx-2 rounded py-4">
             <h4 className="fs-4">Invoice</h4>
             <div className="col-12 d-flex">
               <div className={`${styles.field}`}>
@@ -124,7 +132,7 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
       </div>
     </>
   );
