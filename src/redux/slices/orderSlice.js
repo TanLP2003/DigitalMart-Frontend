@@ -9,7 +9,7 @@ import {
 const initialValue = {
   orders: {},
   allOrders: [],
-  newOrder: {}
+  orderDetail: {},
 };
 
 export const orderSlice = createSlice({
@@ -27,8 +27,8 @@ export const orderSlice = createSlice({
       state.orders = action.payload;
     });
     builder.addCase(getOrderById.fulfilled, (state, action) => {
-      state.newOrder = action.payload
-    })
+      state.orderDetail = action.payload;
+    });
   },
 });
 

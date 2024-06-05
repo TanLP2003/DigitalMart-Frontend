@@ -4,12 +4,14 @@ import { RiBillLine } from "react-icons/ri";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { RiProductHuntLine } from "react-icons/ri";
 import { MdOutlineCategory, MdOutlineChatBubbleOutline } from "react-icons/md";
+import { FaUser, FaSignOutAlt } from 'react-icons/fa';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
     const navigate = useNavigate();
     const paths = useLocation().pathname.split('/');
+
 
     const sidebarList = [
         {
@@ -60,6 +62,27 @@ const Sidebar = () => {
         <div className='sidebar'>
             <div className='menu'>
                 {menuList}
+            </div>
+
+            <div className='bottom-menu'>
+                <div 
+                    className='menu-item profile'
+                    onClick={() => {
+                        navigate('profile')
+                    }}
+                >
+                    <FaUser/>
+                    Profile
+                </div>
+                <div
+                    className='menu-item logout'
+                    onClick={() => {
+                        navigate('logout')
+                    }}
+                >
+                    <FaSignOutAlt/>
+                    Logout
+                </div>
             </div>
         </div>
     )

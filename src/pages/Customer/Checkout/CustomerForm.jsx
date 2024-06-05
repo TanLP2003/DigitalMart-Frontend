@@ -23,13 +23,9 @@ const CustomerForm = ({
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
 
-  const handleContinueShopping = () => {
+  const handleContinueCheckout = () => {
     localStorage.setItem("customer-info", JSON.stringify(info));
   };
-  const paymentOptions = [
-    { value: "cash", label: "Cash On Delivery" },
-    { value: "paypal", label: "Paypal Checkout" },
-  ];
   return (
     <div className="checkout-left-data">
       <h3 className="website-name">Hi!</h3>
@@ -121,11 +117,11 @@ const CustomerForm = ({
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(openModal());
-                handleContinueShopping();
+                handleContinueCheckout();
                 // console.log(info);
               }}
             >
-              Continue to Shipping
+              Continue to Checkout
             </Link>
           </div>
         </div>

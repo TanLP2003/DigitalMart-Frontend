@@ -17,6 +17,21 @@
             font-size: 20px;
             color: #333;
         }
+
+        .edit-btn {
+            background-color: var(--color-131921);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+    
+            &:hover {
+                background-color: var(--color-febd69);
+                color: var(--color-131921);
+            }
+        }
     }
 
     .content {
@@ -32,11 +47,20 @@
             .button-group {
                 display: flex;
                 justify-content: flex-end;
+                .save-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: var(--color-131921);
+                    color: white;
 
-                .cancel-btn-link {
-                    text-decoration: none;
+                    &:hover {
+                        background-color: var(--color-febd69);
+                        color: var(--color-131921);
+                    }
                 }
-        
                 .cancel-btn {
                     padding: 10px 20px;
                     border: none;
@@ -49,20 +73,6 @@
         
                     &:hover {
                         background-color: #bbb;
-                    }
-                }
-                .add-btn {
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    background-color: var(--color-131921);
-                    color: white;
-
-                    &:hover {
-                        background-color: var(--color-febd69);
-                        color: var(--color-131921);
                     }
                 }
             }
@@ -138,6 +148,44 @@
                             margin-top: 5px;
                             font-size: 12px;
                         }
+                    }
+                }
+            }
+
+            .form-footer {
+                display: flex;
+                justify-content: flex-end;
+
+                .cancel-btn-link {
+                    text-decoration: none;
+                }
+        
+                .cancel-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: #ccc;
+                    color: #333;
+                    margin-right: 20px;
+        
+                    &:hover {
+                        background-color: #bbb;
+                    }
+                }
+                .add-btn {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    background-color: var(--color-131921);
+                    color: white;
+
+                    &:hover {
+                        background-color: var(--color-febd69);
+                        color: var(--color-131921);
                     }
                 }
             }

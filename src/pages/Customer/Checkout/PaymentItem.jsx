@@ -19,7 +19,7 @@ const PaymentItem = ({ product, quantity }) => {
         </div>
       </div>
       <div className="flex-grow-1">
-        <h5 className="total">₫ {(quantity * price)}</h5>
+        <h5 className="total">₫ {(quantity * price).toLocaleString('vi-VN')}</h5>
       </div>
     </div>
   );

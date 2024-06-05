@@ -6,13 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import BreadCrumb from "../../../components/common/BreadCrumb";
 import Meta from "../../../components/common/Meta";
+import { formatDate } from "../../../redux/config";
 
 const OrderAdmin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const { allOrders } = useSelector((state) => state.orders);
-  // const isFetched = useFetchData(() => [dispatch(getAllOrder())]);
+  const { allOrders } = useSelector((state) => state.orders);
+  const isFetched = useFetchData(() => [dispatch(getAllOrder())]);
   let i = 1;
 
   // const handleClick = (orderId) => {
@@ -20,13 +21,13 @@ const OrderAdmin = () => {
   //   localStorage.setItem("myOrder", JSON.stringify(myOrder));
   //   navigate("details");
   // };
-  const handleClick = () => {
-    // const myOrder = allOrders.find((order) => order.orderId === orderId);
+  const handleClick = (id) => {
+    // const myOrder = allOrders.find((order) => order._id === _id);
     // localStorage.setItem("myOrder", JSON.stringify(myOrder));
-    navigate("details");
+    navigate(`details/${id}`);
   };
   return (
-    <>
+    <div className={`${styles.order_admin}`}>
       <BreadCrumb title="Orders" />
       <Meta title="Orders" />
       <div className="mx-4">
@@ -42,7 +43,7 @@ const OrderAdmin = () => {
             </tr>
           </thead>
           <tbody>
-          <tr>
+            {/* <tr>
                     <th scope="row">{i++}</th>
                     <td>foiweoiae</td>
                     <td>username</td>
@@ -57,20 +58,23 @@ const OrderAdmin = () => {
                         />
                       </button>
                     </td>
-                  </tr>
-            {/* {isFetched &&
+                  </tr> */}
+            {isFetched &&
               allOrders.map((order) => {
                 return (
-                  <tr key={order.orderId}>
+                  <tr key={order._id} className={styles.tr}>
                     <th scope="row">{i++}</th>
-                    <td>{order.orderId}</td>
-                    <td>{order.orderDetails.userName}</td>
-                    <td>{order.orderDetails.totalPrice}</td>
-                    <td>{order.orderDetails.createdAt}</td>
+                    <div className="d-flex align-item-center">
+                      <td>{order._id}</td>
+                    </div>
+                    <td>{order.user}</td>
+                    <td>₫ {order.totalPrice.toLocaleString("vi-VN")}</td>
+                    <td>{formatDate(order.createdAt)}</td>
                     <td className="">
                       <button
                         className="border-0 bg-transparent"
-                      onClick={() => handleClick(order.orderId)}>
+                        onClick={() => handleClick(order._id)}
+                      >
                         <BsEyeFill
                           className={`fs-5 text-dark ${styles.action}`}
                         />
@@ -78,11 +82,11 @@ const OrderAdmin = () => {
                     </td>
                   </tr>
                 );
-              })} */}
+              })}
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

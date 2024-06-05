@@ -53,7 +53,7 @@ const Basket = () => {
                   Continue to Shopping
                 </Link>
                 <div className="d-flex align-items-end flex-column">
-                  <h4>Subtotal: ${getTotalPrice()}</h4>
+                  <h4>Subtotal: ₫ {getTotalPrice().toLocaleString('vi-VN')}</h4>
                   <p>Taxes and shipping calculated at checkout</p>
 
                   {getTotalPrice() === 0 ? (
