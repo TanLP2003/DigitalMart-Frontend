@@ -51,7 +51,6 @@
 
 .form-actions {
   display: flex;
-  gap: 10px;
 }
 
 .edit-button,
@@ -63,7 +62,6 @@
   font-size: 14px;
   background-color: var(--color-131921);
   color: white;
-  margin-right: 20px;
 }
 
 .edit-button:hover,

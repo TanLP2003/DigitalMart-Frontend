@@ -3,6 +3,7 @@ import './styles.css';
 import { useDispatch } from 'react-redux';
 import { logout, updateUserInfo, changeAvatar } from '../../../redux/apis/user-api';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export const MyProfile = () => {
 
@@ -157,10 +158,17 @@ export const MyProfile = () => {
           <button className="edit-button" onClick={handleEditToggle}>
             {isEditable ? 'Cancel' : 'Edit Profile'}
           </button>
-          {isEditable && (
-            <button className="save-button" onClick={handleSave}>Save</button>
-          )}
-          <button className="edit-button" onClick={handleLogout}>Logout</button>
+
+          {isEditable 
+          ? (<>
+              <Link to='/change-password'>
+                <button className="edit-button">Change Password</button>
+              </Link>
+              
+              <button className="save-button" onClick={handleSave}>Save</button>
+            </>
+            ) 
+          : (<button className="edit-button" onClick={handleLogout}>Logout</button>)}
         </div>
 
       </div>

@@ -61,7 +61,7 @@ function App() {
             <Route index element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="reset-password" element={<ResetPassword />} />
+            
           </Route>
           <Route path="/" element={<CustomerLayout />}>
             <Route index element={<Home />} />
@@ -73,7 +73,7 @@ function App() {
 
             <Route path="wishlist" element={<WishList />} />
             <Route path="profile" element={<MyProfile />} />
-           
+            <Route path="change-password" element={<ResetPassword />} />
             <Route path="cart" element={<ExamplePage />} />
              <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Outlet />}>
