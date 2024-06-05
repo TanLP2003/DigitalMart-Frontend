@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllOrder,
+  getOrderById,
   getOrderOfUser,
   updateOrderOfUser,
 } from "../apis/order-api";
@@ -25,6 +26,9 @@ export const orderSlice = createSlice({
     builder.addCase(updateOrderOfUser.fulfilled, (state, action) => {
       state.orders = action.payload;
     });
+    builder.addCase(getOrderById.fulfilled, (state, action) => {
+      state.newOrder = action.payload
+    })
   },
 });
 

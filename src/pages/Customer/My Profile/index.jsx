@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 import { useDispatch } from 'react-redux';
-import { logout, updateUserInfo, changeAvatar } from './../../../redux/apis/user-api';
+import { logout, updateUserInfo, changeAvatar } from '../../../redux/apis/user-api';
 import { toast } from 'react-toastify';
 
 export const MyProfile = () => {
