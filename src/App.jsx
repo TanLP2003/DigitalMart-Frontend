@@ -29,8 +29,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Basket from "./pages/Customer/Basket";
 import Checkout from "./pages/Customer/Checkout";
 import BillInfo from "./pages/Customer/BillInfo";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
-import ResetPassword from "./pages/Auth/ResetPassword";
+
+import { Outlet } from "react-router-dom"
 import { MyProfile } from "./pages/Customer/My Profile";
 
 import { WishList } from "./pages/Customer/WishList";
@@ -76,7 +76,8 @@ function App() {
             <Route path="about" element={<ExamplePage />} />
             <Route path="contact" element={<Contact />} />
             <Route path="products" element={<OurStore />} />
-              <Route path="products/product_detail" element={<ProductDetail images={images} interval={3000}/>}/>
+              {/* <Route path="products/product_detail" element={<ProductDetail images={images} interval={3000}/>}/>*/}
+im
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} />
 
