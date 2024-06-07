@@ -17,20 +17,19 @@ import ViewCategory from "./pages/Admin/CategoryAdmin/ViewCategory"
 import ProductAdmin from "./pages/Admin/ProductAdmin"
 import OrderAdmin from "./pages/Admin/OrderAdmin"
 import ChatAdmin from "./pages/Admin/ChatAdmin"
+import AdminProfile from "./pages/Admin/AdminProfile"
 import Home from "./pages/Home"
 import OurStore from "./pages/Our Store"
 import Blogs from "./pages/blogs"
 import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
-
+import { Outlet } from "react-router-dom"
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Basket from "./pages/Customer/Basket";
 import Checkout from "./pages/Customer/Checkout";
 import BillInfo from "./pages/Customer/BillInfo";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
-import ResetPassword from "./pages/Auth/ResetPassword";
 import { MyProfile } from "./pages/Customer/My Profile";
 
 import { WishList } from "./pages/Customer/WishList";
@@ -62,7 +61,7 @@ function App() {
             <Route index element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="reset-password" element={<ResetPassword />} />
+            
           </Route>
           <Route path="/" element={<CustomerLayout />}>
             <Route index element={<Home />} />
@@ -74,7 +73,7 @@ function App() {
 
             <Route path="wishlist" element={<WishList />} />
             <Route path="profile" element={<MyProfile />} />
-           
+            <Route path="change-password" element={<ResetPassword />} />
             <Route path="cart" element={<ExamplePage />} />
              <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Outlet />}>
@@ -88,7 +87,7 @@ function App() {
             element={<ProtectedRoute role="admin" element={<AdminLayout />} />}
           >
             <Route index element={<Dashboard />} />
-            <Route path="profile" element={<MyProfile />} />
+            <Route path="profile" element={<AdminProfile />} />
             <Route path="category" element={<CategoryAdmin />} />
             <Route path="category/create" element={<CreateCategory />} />
             <Route path="/admin/category/:categoryId" element={<ViewCategory />} />
