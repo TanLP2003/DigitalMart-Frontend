@@ -29,15 +29,15 @@ const ResetPassword = () => {
     });
     return (
         <>
-            <Meta title={"Reset Password"} />
-            <BreadCrumb title="Reset Password" />
+            <Meta title={"Change Password"} />
+            <BreadCrumb title="Change Password" />
 
             <div className="container-xxl">
             <div className='login-wrapper py-5 home-wrapper-2'>
                 <div className="row">
                     <div className="col-12">
                         <div className="auth-card">
-                            <h3 className='text-center mb-3'>Reset Password</h3>
+                            <h3 className='text-center mb-3'>Change Password</h3>
                             <form action=""  onSubmit={formik.handleSubmit} className='d-flex flex-column gap-30'>
                                 <CustomInput 
                                     type="password"

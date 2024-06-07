@@ -1,28 +1,49 @@
-
-import React from 'react'
+import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
-import "./styles.css"
+import { FaHeart, FaUser, FaShoppingCart } from 'react-icons/fa';
+import "./styles.css";
 import { useAuth } from "./../../hooks/AuthContext";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategory } from "../../../redux/apis/category-api";
+import useFetchData from "../../../components/hooks/useFetchData";
 
 export const Header = () => {
-
   const { isAuthenticated } = useAuth();
+  const dispatch = useDispatch();
+  const isFetched = useFetchData(() => [dispatch(getAllCategory())]);
+  const categories = useSelector((state) => state.categories.categories);
+
+  useEffect(() => {
+    localStorage.setItem("categories", JSON.stringify(categories));
+  }, [categories]);
+
+  const renderCategoryList = () => {
+    return categories.map((item, index) => (
+      <Link
+        key={index}
+        to={``}
+        className="dropdown-item"
+      >
+        {item.name}
+      </Link>
+    ));
+  };
 
   return (
     <>
-      <header className="header-top-strip py-3">
+      <header className="header-top-strip">
         <div className="container-xxl">
           <div className="row">
             <div className="col-6">
-              <p className="text-white mb-0">
+              <p className="text-black mb-0">
                 Free Shipping Over $100 & Free Returns
               </p>
             </div>
             <div className="col-6">
-              <p className="text-end text-white">
+              <p className="text-end text-black">
                 Hotline:{" "}
-                <a className="text-white" href="tel:+91 213127316">
+                <a className="text-black" href="tel:+91 213127316">
                   +91 213127316
                 </a>
               </p>
@@ -36,11 +57,33 @@ export const Header = () => {
             <div className="col-2">
               <h2>
                 <Link className="text-white" to={""}>
-                  Developers.
+                  DigitalMart
                 </Link>
               </h2>
             </div>
-            <div className="col-5">
+            <div className="col-2">
+              <div className="dropdown">
+                <button
+                  className="btn btn-secondary 
+                                    dropdown-toggle 
+                                    bg-transparent 
+                                    border-0 
+                                    gap-15 me-5 d-flex 
+                                    align-items-center
+                                    "
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img src="images/menu.svg" alt="menu" />
+                  <span className="me-5 d-inline-block">Shop Categories</span>
+                </button>
+                <ul className="dropdown-menu">
+                  {renderCategoryList()}
+                </ul>
+              </div>
+            </div>
+            <div className="col-4">
               <div className="input-group">
                 <input
                   type="text"
@@ -54,41 +97,28 @@ export const Header = () => {
                 </span>
               </div>
             </div>
-            <div className="col-5">
+            <div className="col-4">
               <div className="header-upper-links d-flex align-items-center justify-content-between">
                 <div>
                   <Link
-                    className="d-flex align-items-center gap-10 text-white"
-                    to={"/compare-products"}
-                  >
-                    <img
-                      src="images/compare.svg"
-                      alt="compare"
-                      className="bg-transparent"
-                    />
-                    <p className="mb-0">
-                      Compare <br /> Products
-                    </p>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    className="d-flex align-items-center gap-10 text-white"
+                    className="d-flex align-items-center text-white"
                     to={"/wishlist"}
                   >
-                    <img
-                      src="images/wishlist.svg"
-                      alt="wishlist"
-                      className="bg-transparent"
-                    />
+                    <div className="icon mt-2">
+                      <FaHeart className='fs-6' />
+                    </div>
+
                     <p className="mb-0">
-                      Favourite <br /> Wishlist
+                      Wishlist
                     </p>
                   </Link>
                 </div>
                 <div>
-                  <Link className="d-flex align-items-center gap-10 text-white" to={isAuthenticated ? '/profile' : '/auth'}>
-                    <img src="images/user.svg" alt="user" />
+                  <Link className="d-flex align-items-center text-white" to={isAuthenticated ? '/profile' : '/auth'}>
+                    <div className="icon mt-2">
+                      <FaUser className='fs-6' />
+                    </div>
+
                     <p className='mb-0'>
                       {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}
                     </p>
@@ -96,68 +126,17 @@ export const Header = () => {
                 </div>
                 <div>
                   <Link
-                    className="d-flex align-items-center gap-10 text-white"
+                    className="d-flex align-items-center text-white"
                     to={"/basket"}
                   >
-                    <img
-                      src="../images/cart.svg"
-                      alt="basket"
-                      className="bg-transparent"
-                    />
-                    <div className="d-flex flex-column gap-10">
+                    <div className="icon mt-2">
+                      <FaShoppingCart />
+                    </div>
+                    <div className="d-flex flex-column">
                       <span className="badge bg-white text-dark">{0}</span>
                       <p className="mb-0">$ 500</p>
                     </div>
                   </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <header className="header-bottom py-3">
-        <div className="container-xxl">
-          <div className="row">
-            <div className="col-12">
-              <div className="menu-bottom d-flex align-items-center gap-30 ">
-                <div className="dropdown">
-                  <button
-                    className="btn btn-secondary 
-                                    dropdown-toggle 
-                                    bg-transparent 
-                                    border-0 
-                                    gap-15 me-5 d-flex 
-                                    align-items-center
-                                    "
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <img src="images/menu.svg" alt="menu" />
-                    <span className="me-5 d-inline-block">Shop Categories</span>
-                  </button>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Link className="dropdown-item" to="" />
-                      Action
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="" />
-                      Another action
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="" />
-                      Something else here
-                    </li>
-                  </ul>
-                </div>
-                <div className="menu-links">
-                  <div className="d-flex aligin-items-center gap-15">
-                    <NavLink to={""}>Home</NavLink>
-                    <NavLink to={"/products"}>Our Store</NavLink>
-                    <NavLink to={"/blogs"}>Blogs</NavLink>
-                    <NavLink to={"/contact"}>Contact</NavLink>
-                  </div>
                 </div>
               </div>
             </div>
