@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './HomePage.scss'
 import useFetchData from '../../components/hooks/useFetchData';
 import { getAllCategory } from '../../redux/apis/category-api';
-import { getTenProductPerCategory } from '../../redux/apis/product-api';    
+import { getTenProductPerCategory } from '../../redux/apis/product-api';
 // import ProductCategory from './ProductCategory';
 // import "bootstrap/dist/js/bootstrap.min.js"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -11,17 +11,17 @@ import CategoryList from './CategoryList';
 import ProductCategory from './ProductCategory';
 
 const HomePage = () => {
-    // const dispatch = useDispatch();
-    // const isFetched = useFetchData(() => [dispatch(getAllCategory()), dispatch(getTenProductPerCategory())]);
-    // const categories = useSelector(state => state.categories.categories);
-    // const productOfCategory = useSelector(state => state.categories.productOfCategory);
-    // const renderProductCategory = () => {
-    //     return productOfCategory
-    //         .filter(item => item.tenProduct.length > 0)
-    //         .map((item, index) => {
-    //             return <ProductCategory category={item.category} products={item.tenProduct} />
-    //         })
-    // }
+    const dispatch = useDispatch();
+    const isFetched = useFetchData(() => [dispatch(getAllCategory()), dispatch(getTenProductPerCategory())]);
+    const categories = useSelector(state => state.categories.categories);
+    const productOfCategory = useSelector(state => state.categories.productOfCategory);
+    const renderProductCategory = () => {
+        return productOfCategory
+            .filter(item => item.tenProduct.length > 0)
+            .map((item, index) => {
+                return <ProductCategory category={item.category} products={item.tenProduct} />
+            })
+    }
     return (
         <div>
             {/* asdfasdf */}
@@ -59,7 +59,7 @@ const HomePage = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-            {/* {isFetched && (
+            {isFetched && (
                 <div>
                     <div className="container bg-light normal-height mt-3" style={{ padding: 0 }}>
                         <p className='p-2 fs-5'>Danh mục</p>
@@ -69,7 +69,7 @@ const HomePage = () => {
                         {renderProductCategory()}
                     </div>
                 </div>
-            )} */}
+            )}
 
         </div>
     )

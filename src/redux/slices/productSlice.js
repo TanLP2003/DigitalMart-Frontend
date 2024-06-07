@@ -2,7 +2,12 @@ import { createSlice } from "@reduxjs/toolkit"
 import { getAllProduct, getProductByCategory, getProductDetail, searchProduct } from "../apis/product-api";
 
 const initialValue = {
-    products: []
+    products: [],
+    searchResult: [],
+    productDetail: {
+        product: null,
+        inventory: null
+    }
 }
 
 export const productSlice = createSlice({

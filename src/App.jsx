@@ -36,7 +36,7 @@ import { MyProfile } from "./pages/Customer/My Profile";
 import { WishList } from "./pages/Customer/WishList";
 //import 'react-toastify/dist/ReactToastify.css';
 import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
-import ProductDetail from "./pages/Our Store/ProductDetail/ProductDetail"
+import ProductDetail from "./pages/HomePage/ProductDetail"
 import HomePage from "./pages/HomePage"
 import ProductSearchPage from "./pages/HomePage/ProductSearchPage"
 
@@ -84,13 +84,13 @@ function App() {
             <Route path="blogs" element={<Blogs />} />
             <Route path="compare-products" element={<ExamplePage />} /> */}
             <Route index element={<HomePage />} />
-            <Route path="product-detail/:productId" element={ProductDetail}/>
-            <Route path="product-search-page" element={<ProductSearchPage />}/>
+            <Route path="product-detail/:productId" element={<ProductDetail />} />
+            <Route path="product-search-page" element={<ProductSearchPage />} />
             <Route path="wishlist" element={<WishList />} />
             <Route path="profile" element={<MyProfile />} />
-           
+
             <Route path="cart" element={<ExamplePage />} />
-             <Route path="basket" element={<Basket />} />
+            <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Outlet />}>
               <Route index element={<Checkout />} />
               <Route path="customer-bill-info" element={<BillInfo />} />

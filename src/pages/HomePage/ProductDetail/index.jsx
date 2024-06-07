@@ -28,7 +28,7 @@ const ProductDetail = () => {
         const favoriteList = state.favorites.favorites;
         return favoriteList.some(element => element._id === product._id);
     })
-    console.log(isLiked);
+    // console.log(isLiked);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleBuy = async () => {
