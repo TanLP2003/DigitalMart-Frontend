@@ -5,6 +5,7 @@ const initialValue = {
   // userId: "",
   items: [],
   totalPrice: 0,
+  selectedItems: []
 };
 
 export const basketSlice = createSlice({
@@ -33,6 +34,9 @@ export const basketSlice = createSlice({
         (item) => item.product.id !== action.payload
       );
     },
+    setSelectedItems: (state, action) => {
+      state.selectedItems = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getBasket.fulfilled, (state, action) => {
@@ -46,6 +50,6 @@ export const basketSlice = createSlice({
   },
 });
 
-export const { calculateSubtotal, increaseItem, decreaseItem, removeItem } =
+export const { calculateSubtotal, increaseItem, decreaseItem, removeItem, setSelectedItems } =
   basketSlice.actions;
 export const basketReducers = basketSlice.reducer;
