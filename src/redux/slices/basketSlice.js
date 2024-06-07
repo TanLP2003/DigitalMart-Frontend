@@ -5,7 +5,7 @@ const initialValue = {
   // userId: "",
   items: [],
   totalPrice: 0,
-  selectedItems: [],
+  selectedItems: []
 };
 
 export const basketSlice = createSlice({
@@ -49,11 +49,6 @@ export const basketSlice = createSlice({
   },
 });
 
-export const {
-  calculateSubtotal,
-  increaseItem,
-  decreaseItem,
-  removeItem,
-  setSelectedItems,
-} = basketSlice.actions;
+export const { calculateSubtotal, increaseItem, decreaseItem, removeItem, setSelectedItems } =
+  basketSlice.actions;
 export const basketReducers = basketSlice.reducer;

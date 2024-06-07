@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getProductByCategory } from "../apis/product-api";
+import { getAllProduct, getProductByCategory, getProductDetail, searchProduct } from "../apis/product-api";
 
 const initialValue = {
-    products: []
+    products: [],
+    searchResult: [],
+    productDetail: {
+        product: null,
+        inventory: null
+    }
 }
 
 export const productSlice = createSlice({
@@ -14,6 +19,15 @@ export const productSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getProductByCategory.fulfilled, (state, action) => {
             state.products = action.payload
+        })
+        builder.addCase(searchProduct.fulfilled, (state, action) => {
+            state.searchResult = action.payload
+        })
+        builder.addCase(getAllProduct.fulfilled, (state, action) => {
+            state.products = action.payload.products;
+        })
+        builder.addCase(getProductDetail.fulfilled, (state, action) => {
+            state.productDetail = action.payload;
         })
     }
 })

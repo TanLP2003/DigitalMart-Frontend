@@ -28,3 +28,36 @@ export const getAllProduct = createAsyncThunk(
         return response.data
     }
 )
+
+export const getTenProductPerCategory = createAsyncThunk(
+    'get-ten-product-per-category',
+    async (_, { rejectWithValue }) => {
+        const response = await axios.get(`${SERVER}/product/ten-product-per-category`);
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response)
+        }
+        return response.data;
+    }
+)
+
+export const searchProduct = createAsyncThunk(
+    'search-product',
+    async (input, { rejectWithValue }) => {
+        const response = await axios.get(`${SERVER}/product/search/${input}`);
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response)
+        }
+        return response.data;
+    }
+)
+
+export const getProductDetail = createAsyncThunk(
+    'get-product-detail',
+    async (productId, { rejectWithValue }) => {
+        const response = await axios.get(`${SERVER}/product/product-detail/${productId}`);
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response)
+        }
+        return response.data;
+    }
+)
