@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategory } from '../../../../redux/apis/category-api';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import CustomInput from '../../../Auth/CustomInput';
 
 const CreateProduct = () => {
     const dispatch = useDispatch();
