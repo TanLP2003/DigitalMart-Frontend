@@ -27,7 +27,6 @@ export const basketSlice = createSlice({
     decreaseItem: (state, action) => {
       const item = state.items.find((i) => i.product.id === action.payload);
       item.quantity--;
-
     },
     removeItem: (state, action) => {
       state.items = state.items.filter(
