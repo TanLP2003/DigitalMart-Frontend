@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsGithub, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
-import "./styles.css"
+import "./styles.css";
 const Footer = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
-      <footer className="py-3">
+      {/* <footer className="py-3">
         <div className="container-xxl">
           <div className="row align-items-center">
             <div className="col-5">
@@ -30,8 +33,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </footer>
-      <footer className="py-3">
+      </footer> */}
+      <footer className="py-4">
         <div className="container-xxl">
           <div className="row">
             <div className="col-4">
@@ -43,13 +46,13 @@ const Footer = () => {
                   Pin code: 10jqk
                 </address>
                 <a
-                  href="tel:+84 37432345678910jqk"
                   className="text-white mt-4 d-block mb-2"
+                  href="#"
                 >
                   +84 37432345678910jqk
                 </a>
                 <a
-                  href="mailto:thanhnguyent472003@gmail.com"
+                  href="#"
                   className="text-white mt-4 d-block mb-2"
                 >
                   anon@gmail.com
@@ -105,7 +108,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-12">
               <p className="text-center mb-0 text-white">
-                &copy; {new Date().getFullYear()} hi there
+                &copy; {new Date().getFullYear()} Digital mart
               </p>
             </div>
           </div>
