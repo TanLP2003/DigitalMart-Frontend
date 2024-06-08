@@ -4,31 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { openModal } from "../../../redux/slices/modalSlice";
 import Select from "react-select";
-const CustomerForm = ({
-  userName,
-  address,
-  phoneNumber,
-  paymentMethod,
-  cardNumber,
-}) => {
+const CustomerForm = ({ username, email, phonenumber }) => {
   const dispatch = useDispatch();
   const [info, setInfo] = useState({
-    userName: userName,
-    address: address,
-    phoneNumber: phoneNumber,
-    paymentMethod: paymentMethod,
-    cardNumber: cardNumber,
+    address: "",
   });
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
+    if (e.target.address !== "") {
+      document.querySelector(".addr-alert").classList.add("hidden");
+    }
   };
-
   const handleContinueCheckout = () => {
     localStorage.setItem("customer-info", JSON.stringify(info));
   };
   return (
     <div className="checkout-left-data">
-      <h3 className="website-name">Hi!</h3>
+      <h3 className="website-name">Digital Mart</h3>
       <nav style={{ "--bs-breadcrumb-divider": ">" }} aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -60,7 +52,15 @@ const CustomerForm = ({
         </ol>
       </nav>
       <h4 className="title total">Contact Information</h4>
-      <p className="user-details total">- {userName}</p>
+      <p className="user-details total fs-6">
+        - Customer name: <span className="fw-bold">{username}</span>
+      </p>
+      <p className="user-details total">
+        - Email: <span className="fw-bold">{email}</span>{" "}
+      </p>
+      <p className="user-details total">
+        - Phone number: <span className="fw-bold">{phonenumber}</span>
+      </p>
       <h4 className="mb-3">Shipping Address</h4>
       <form
         action=""
@@ -75,6 +75,7 @@ const CustomerForm = ({
             value={info.address}
             onChange={handleChange}
           />
+          <p className="addr-alert error hidden">The address cannot be empty</p>
         </div>
         {/* <div className="w-100">
           <input
@@ -116,8 +117,14 @@ const CustomerForm = ({
               className="button"
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(openModal());
-                handleContinueCheckout();
+                if (info.address !== "") {
+                  dispatch(openModal());
+                  handleContinueCheckout();
+                } else {
+                  document
+                    .querySelector(".addr-alert")
+                    .classList.remove("hidden");
+                }
                 // console.log(info);
               }}
             >

@@ -9,7 +9,8 @@ import { getOrderOfUser } from "../../../redux/apis/order-api";
 const Checkout = () => {
   const dispatch = useDispatch();
   const isFetched = useFetchData(() => [dispatch(getOrderOfUser())]);
-  const { orders } = useSelector((state) => state.orders);
+  const { user } = useSelector((state) => state.user);
+  console.log(user);
   const { isOpen } = useSelector((state) => state.modal);
   return (
     <>
@@ -20,11 +21,11 @@ const Checkout = () => {
             <div className="row">
               <div className="col-7">
                 <CustomerForm
-                  userName={orders.userName}
-                  address={orders.address}
-                  phoneNumber={orders.phoneNumber}
-                  paymentMethod={orders.paymentMethod}
-                  cardNumber={orders.cardNumber}
+                  username={user.username}
+                  email={user.email}
+                  phonenumber={user.phonenumber}
+                  // paymentMethod={orderDetail.paymentMethod}
+                  // cardNumber={orders.cardNumber}
                 />
               </div>
               <div className="col-5">

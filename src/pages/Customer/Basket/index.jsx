@@ -20,13 +20,13 @@ const Basket = () => {
     return totalPrice;
   };
   const handleCheckout = () => {
-    localStorage.setItem("payment-list", JSON.stringify(items));
+    // localStorage.setItem("payment-list", JSON.stringify(items));
     localStorage.setItem("totalPrice", JSON.stringify(getTotalPrice()));
     // dispatch(updateBasket(items));
     dispatch(setSelectedItems(items));
   };
   const isFetched = useFetchData(() => [dispatch(getBasket())]);
-  const prevItems = useRef([]);
+  // const prevItems = useRef([]);
   // useEffect(() => {
   //   if (JSON.stringify(items) !== JSON.stringify(prevItems.current)) {
   //     dispatch(updateBasket(items));
@@ -44,7 +44,7 @@ const Basket = () => {
               <BasketHeader />
               {isFetched &&
                 items.map((item) => {
-                  return <Item key={item.product.id} {...item} />;
+                  return <Item key={item.product._id} {...item} />;
                 })}
             </div>
             <div className="col-12 py-2 mt-4">
@@ -53,7 +53,7 @@ const Basket = () => {
                   Continue to Shopping
                 </Link>
                 <div className="d-flex align-items-end flex-column">
-                  <h4>Subtotal: ₫ {getTotalPrice().toLocaleString('vi-VN')}</h4>
+                  <h4>Subtotal: ₫ {getTotalPrice().toLocaleString("vi-VN")}</h4>
                   <p>Taxes and shipping calculated at checkout</p>
 
                   {getTotalPrice() === 0 ? (

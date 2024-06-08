@@ -12,9 +12,9 @@ const PaymentItem = ({ product, quantity }) => {
           >
             {quantity}
           </span>
-          <img className="img-fluid" src={images[0]} alt={name} />
+          <img className="img-fluid" src={images[0]} alt={name} style={{"width": "75px", "height": "75px"}}/>
         </div>
-        <div>
+        <div className="align-content-center">
           <h5 className="total-price">{name}</h5>
         </div>
       </div>
