@@ -74,7 +74,7 @@ function App() {
             <Route index element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
-            
+
           </Route>
           <Route path="/" element={<CustomerLayout />}>
             {/* <Route index element={<Home />} />
@@ -88,11 +88,11 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="product-detail/:productId" element={<ProductDetail />} />
             <Route path="product-search-page" element={<ProductSearchPage />} />
-            <Route path="wishlist" element={<WishList />} />
-            <Route path="profile" element={<MyProfile />} />
-            <Route path="change-password" element={<ResetPassword />} />
+            <Route path="wishlist" element={<ProtectedRoute role='customer' element={<WishList />} />} />
+            <Route path="profile" element={<ProtectedRoute role='customer' element={<MyProfile />} />} />
+            <Route path="change-password" element={<ProtectedRoute role='customer' element={<ResetPassword />} />} />
             <Route path="cart" element={<ExamplePage />} />
-            <Route path="basket" element={<Basket />} />
+            <Route path="basket" element={<ProtectedRoute role='customer' element={<Basket />} />} />
             <Route path="checkout" element={<Outlet />}>
               <Route index element={<Checkout />} />
               <Route path="customer-bill-info" element={<BillInfo />} />
