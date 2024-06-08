@@ -24,6 +24,9 @@ import Blogs from "./pages/blogs"
 import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
+import CreateProduct from "./pages/Admin/ProductAdmin/CreateProduct"
+import ViewProduct from "./pages/Admin/ProductAdmin/ViewProduct"
+import EditProduct from "./pages/Admin/ProductAdmin/EditProduct"
 import { Outlet } from "react-router-dom"
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,12 +36,22 @@ import BillInfo from "./pages/Customer/BillInfo";
 import { MyProfile } from "./pages/Customer/My Profile";
 
 import { WishList } from "./pages/Customer/WishList";
-import 'react-toastify/dist/ReactToastify.css';
+//import 'react-toastify/dist/ReactToastify.css';
 import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
+import ProductDetail from "./pages/HomePage/ProductDetail"
+import HomePage from "./pages/HomePage"
+import ProductSearchPage from "./pages/HomePage/ProductSearchPage"
 
 function App() {
   // const products = getProducts();
   // console.log(products);
+  const images = [
+    '../images/watch.jpg',
+    '../images/watch1.png',
+    '../images/watch2.png',
+    '../images/watch3.jpg',
+    '../images/watch4.jpg',
+  ];
   return (
     <>
       <ToastContainer
@@ -64,16 +77,20 @@ function App() {
             
           </Route>
           <Route path="/" element={<CustomerLayout />}>
-            <Route index element={<Home />} />
+            {/* <Route index element={<Home />} />
             <Route path="about" element={<ExamplePage />} />
             <Route path="contact" element={<Contact />} />
             <Route path="products" element={<OurStore />} />
-            <Route path="blogs" element={<Blogs />} />
-            <Route path="compare-products" element={<ExamplePage />} />
+               <Route path="products/product_detail" element={<ProductDetail images={images} interval={3000}/>}/>
 
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="compare-products" element={<ExamplePage />} /> */}
+            <Route index element={<HomePage />} />
+            <Route path="product-detail/:productId" element={<ProductDetail />} />
+            <Route path="product-search-page" element={<ProductSearchPage />} />
             <Route path="wishlist" element={<WishList />} />
             <Route path="profile" element={<MyProfile />} />
-
+            <Route path="change-password" element={<ResetPassword />} />
             <Route path="cart" element={<ExamplePage />} />
             <Route path="basket" element={<Basket />} />
             <Route path="checkout" element={<Outlet />}>
@@ -101,6 +118,9 @@ function App() {
               <Route path="order/details/:id" element={<OrderDetails />} />
             {/* </Route> */}
             <Route path="inventory" element={<Inventory />} />
+            <Route path="create-product" element={<CreateProduct />} />
+            <Route path="view-product" element={<ViewProduct />} />
+            <Route path="edit-product" element={<EditProduct />} />
             <Route path="chat" element={<ChatAdmin />} />
           </Route>
           <Route

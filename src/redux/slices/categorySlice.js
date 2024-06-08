@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllCategory, createCategory, editCategory } from "../apis/category-api";
 import { toast } from "react-toastify";
+import { getTenProductPerCategory } from "../apis/product-api";
 
 
 const categorySlice = createSlice({
@@ -9,7 +10,8 @@ const categorySlice = createSlice({
         categories: [],
         isError: false,
         isSuccess: false,
-        isLoading: false
+        isLoading: false,
+        productOfCategory: []
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -75,6 +77,9 @@ const categorySlice = createSlice({
             if(state.isError == true) {
                 toast.info("This name is existed.")
             }
+        })
+        .addCase(getTenProductPerCategory.fulfilled, (state, action) => {
+            state.productOfCategory = action.payload
         })
     }
 })
