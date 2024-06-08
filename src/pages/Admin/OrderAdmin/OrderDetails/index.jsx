@@ -5,14 +5,12 @@ import useFetchData from "../../../../components/hooks/useFetchData";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderById } from "../../../../redux/apis/order-api";
 import { useParams } from "react-router-dom";
-import { formatDate } from "../../../../redux/config";
 const OrderDetails = () => {
   let i = 0;
-  const { id } = useParams();
+  const {id} = useParams();
   const dispatch = useDispatch();
-  const isFetched = useFetchData(() => [dispatch(getOrderById(id))]);
-  const { orderDetail } = useSelector((state) => state.orders);
-  console.log(orderDetail);
+  const isFetched = useFetchData(() => [dispatch(getOrderById(id))])
+  const {order} = useSelector(state => state.orders.order);
   return (
     <>
       <Meta title="Order Details" />
