@@ -27,17 +27,23 @@ const Item = ({ product, quantity }) => {
         </div>
       </div>
       <div className="cart-col-2">
-        <h5 className="price">${price}</h5>
+        <h5 className="price">₫ {price.toLocaleString('vi-VN')}</h5>
       </div>
       <div className="cart-col-3 d-flex align-items-center gap-15">
         <div className="d-flex align-items-center gap-10">
           <button
             onClick={() => {
-              if (quantity === 1) {
-                dispatch(removeItem(id));
-                return;
-              }
-              dispatch(decreaseItem(id));
+              // if (quantity === 1) {
+              //   dispatch(removeItem(id));
+              //   return;
+              // }
+              // dispatch(decreaseItem(id));
+              dispatch(
+                updateBasket({
+                  product: product,
+                  incrementBy: -1,
+                })
+              );
             }}
           >
             <FaChevronCircleLeft style={{ fontSize: "1.4rem" }} />
@@ -45,9 +51,12 @@ const Item = ({ product, quantity }) => {
           <p className="mb-0 fs-5">{quantity}</p>
           <button
             onClick={() => {
-              if (quantity < 10) {
-                dispatch(increaseItem(id));
-              }
+              dispatch(
+                updateBasket({
+                  product: product,
+                  incrementBy: 1,
+                })
+              );
             }}
           >
             <FaChevronCircleRight style={{ fontSize: "1.4rem" }} />
@@ -57,13 +66,18 @@ const Item = ({ product, quantity }) => {
           <RiDeleteBinFill
             className="fs-3 text-danger"
             onClick={() => {
-              dispatch(removeItem(id));
+              dispatch(
+                updateBasket({
+                  product: product,
+                  incrementBy: -quantity,
+                })
+              );
             }}
           />
         </div>
       </div>
       <div className="cart-col-4">
-        <h5 className="price">${price * quantity}</h5>
+        <h5 className="price">₫ {(price * quantity).toLocaleString('vi-VN')}</h5>
       </div>
     </div>
   );
