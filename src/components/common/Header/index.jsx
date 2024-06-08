@@ -111,7 +111,7 @@ export const Header = () => {
                     to={"/wishlist"}
                   >
                     <div className="icon mt-2">
-                      <FaHeart className='fs-6' />
+                      <FaHeart className='fs-4' />
                     </div>
                     <p className="mb-0">
                       Wishlist
@@ -121,7 +121,7 @@ export const Header = () => {
                 <div>
                   <Link className="d-flex align-items-center text-white" to={isAuthenticated ? '/profile' : '/auth'}>
                     <div className="icon mt-2">
-                      <FaUser className='fs-6' />
+                      <FaUser className='fs-4' />
                     </div>
                     <p className='mb-0'>
                       {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}
@@ -134,11 +134,11 @@ export const Header = () => {
                     to={"/basket"}
                   >
                     <div className="icon mt-2">
-                      <FaShoppingCart />
+                      <FaShoppingCart className='fs-4'/>
                     </div>
                     <div className="d-flex flex-column">
-                      <span className="badge bg-white text-dark">{0}</span>
-                      <p className="mb-0">$ 500</p>
+                      {/* <span className="badge bg-white text-dark">{0}</span> */}
+                      <p className="mb-0">My Basket</p>
                     </div>
                   </Link>
                 </div>
