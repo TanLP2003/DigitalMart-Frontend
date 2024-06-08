@@ -24,6 +24,9 @@ import Blogs from "./pages/blogs"
 import Contact from "./pages/Contact"
 import Dashboard from "./pages/Admin/Dashboard"
 import Inventory from "./pages/Admin/Inventory"
+import CreateProduct from "./pages/Admin/ProductAdmin/CreateProduct"
+import ViewProduct from "./pages/Admin/ProductAdmin/ViewProduct"
+import EditProduct from "./pages/Admin/ProductAdmin/EditProduct"
 import { Outlet } from "react-router-dom"
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -111,6 +114,9 @@ function App() {
               <Route path="details" element={<OrderDetails />} />
             </Route>
             <Route path="inventory" element={<Inventory />} />
+            <Route path="create-product" element={<CreateProduct />} />
+            <Route path="view-product" element={<ViewProduct />} />
+            <Route path="edit-product" element={<EditProduct />} />
             <Route path="chat" element={<ChatAdmin />} />
           </Route>
           <Route
