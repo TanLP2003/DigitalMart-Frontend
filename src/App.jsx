@@ -95,15 +95,13 @@ function App() {
             <Route path="profile" element={<ProtectedRoute role='customer' element={<MyProfile />} />} />
             <Route path="change-password" element={<ProtectedRoute role='customer' element={<ResetPassword />} />} />
             <Route path="cart" element={<ExamplePage />} />
-            <Route path="basket" element={<Basket />} />
-            <Route path="checkout" element={<Checkout />} />
+            <Route path="basket" element={<ProtectedRoute element={<Basket />} role='customer' />} />
+            <Route path="checkout" element={<ProtectedRoute element={<Checkout />} role='customer' />} />
             <Route path="customer-bill-info/:id" element={<BillInfo />} />
 
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />
-            <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="reset-password" element={<ResetPassword />} />
           </Route>
           <Route
             path="/admin"
