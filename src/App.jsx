@@ -95,12 +95,13 @@ function App() {
             <Route path="profile" element={<ProtectedRoute role='customer' element={<MyProfile />} />} />
             <Route path="change-password" element={<ProtectedRoute role='customer' element={<ResetPassword />} />} />
             <Route path="cart" element={<ExamplePage />} />
-            <Route path="basket" element={<ProtectedRoute role='customer' element={<Basket />} />} />
-            <Route path="checkout" element={<Outlet />}>
-              <Route index element={<Checkout />} />
-              <Route path="customer-bill-info" element={<BillInfo />} />
-            </Route>
+            <Route path="basket" element={<ProtectedRoute element={<Basket />} role='customer' />} />
+            <Route path="checkout" element={<ProtectedRoute element={<Checkout />} role='customer' />} />
+            <Route path="customer-bill-info/:id" element={<BillInfo />} />
 
+            <Route path="login" element={<Login />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="profile" element={<MyProfile />} />
           </Route>
           <Route
             path="/admin"
@@ -112,10 +113,10 @@ function App() {
             <Route path="category/create" element={<CreateCategory />} />
             <Route path="/admin/category/:categoryId" element={<ViewCategory />} />
             <Route path="product" element={<ProductAdmin />} />
-            <Route path="order" element={<Outlet />}>
-              <Route index element={<OrderAdmin />} />
-              <Route path="details" element={<OrderDetails />} />
-            </Route>
+            {/* <Route path="order" element={<Outlet />}> */}
+            <Route path="order" element={<OrderAdmin />} />
+            <Route path="order/details/:id" element={<OrderDetails />} />
+            {/* </Route> */}
             <Route path="inventory" element={<Inventory />} />
             <Route path="create-product" element={<CreateProduct />} />
             <Route path="view-product" element={<ViewProduct />} />
