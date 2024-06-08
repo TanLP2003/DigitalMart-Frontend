@@ -61,6 +61,7 @@ export const MyProfile = () => {
       <div className="profile-form">
         <div className="row mt-3">
           <div className="col-6">
+            <div className="avatar">
             <div className="form-group">
               <label>Avatar</label>
               <img
@@ -84,6 +85,8 @@ export const MyProfile = () => {
               )}
 
             </div>
+            </div>
+            
           </div>
           <div className="col-6">
             <div className="form-group">

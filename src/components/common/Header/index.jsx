@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
-import { FaHeart, FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaHeart, FaUser, FaShoppingCart, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import "./styles.css";
 import { useAuth } from "./../../hooks/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import { getAllCategory } from "../../../redux/apis/category-api";
 import useFetchData from "../../../components/hooks/useFetchData";
 
 export const Header = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isAuthenticated } = useAuth();
   const dispatch = useDispatch();
   const isFetched = useFetchData(() => [dispatch(getAllCategory())]);
@@ -28,6 +29,10 @@ export const Header = () => {
         {item.name}
       </Link>
     ));
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -69,18 +74,19 @@ export const Header = () => {
                                     bg-transparent 
                                     border-0 
                                     gap-15 me-5 d-flex 
-                                    align-items-center
-                                    "
+                                    align-items-center"
                   type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  onClick={toggleDropdown}
                 >
-                  <img src="images/menu.svg" alt="menu" />
+                  {isDropdownOpen ? <FaCaretUp className="dropdown-icon" /> : <FaCaretDown className="dropdown-icon" />}
+
                   <span className="me-5 d-inline-block">Shop Categories</span>
                 </button>
-                <ul className="dropdown-menu">
-                  {renderCategoryList()}
-                </ul>
+                {isDropdownOpen && (
+                  <ul className="dropdown-menu show">
+                    {renderCategoryList()}
+                  </ul>
+                )}
               </div>
             </div>
             <div className="col-4">
@@ -107,7 +113,6 @@ export const Header = () => {
                     <div className="icon mt-2">
                       <FaHeart className='fs-6' />
                     </div>
-
                     <p className="mb-0">
                       Wishlist
                     </p>
@@ -118,7 +123,6 @@ export const Header = () => {
                     <div className="icon mt-2">
                       <FaUser className='fs-6' />
                     </div>
-
                     <p className='mb-0'>
                       {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}
                     </p>
