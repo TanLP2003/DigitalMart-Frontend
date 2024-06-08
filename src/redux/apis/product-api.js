@@ -1,11 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { SERVER } from "../config";
+import authAxios from "../authAxios";
 
 export const createProduct = createAsyncThunk(
     'create-product',
     async (data, { rejectWithValue }) => {
-        const response = await axios.post(`${SERVER}/product`, data);
+        const response = await authAxios.post(`${SERVER}/product`, data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
         console.log(response.data);
         return response.data;
     }

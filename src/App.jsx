@@ -41,6 +41,8 @@ import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
 import ProductDetail from "./pages/HomePage/ProductDetail"
 import HomePage from "./pages/HomePage"
 import ProductSearchPage from "./pages/HomePage/ProductSearchPage"
+import { useSelector } from "react-redux"
+import Loading from "./components/common/Loading"
 
 function App() {
   // const products = getProducts();
@@ -52,6 +54,7 @@ function App() {
     '../images/watch3.jpg',
     '../images/watch4.jpg',
   ];
+  const isLoading = useSelector(state => state.loading.loading);
   return (
     <>
       <ToastContainer
@@ -126,6 +129,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      {isLoading && <Loading />}
     </>
   );
 }
