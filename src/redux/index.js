@@ -9,6 +9,7 @@ import { orderReducers } from "./slices/orderSlice";
 import { inventoryReducers } from "./slices/inventorySlice";
 import { favoriteReducers } from "./slices/favoriteSlice";
 import { paginateReducers } from "./slices/paginationSlice";
+import { loadingReducers } from "./slices/loadingSlice";
 
 const rootReducer = combineReducers({
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     inventories: inventoryReducers,
     favorites: favoriteReducers,
     modal: modalReducer,
-    paginates: paginateReducers
+    paginates: paginateReducers,
+    loading: loadingReducers
 });
 
 export const store = configureStore({
