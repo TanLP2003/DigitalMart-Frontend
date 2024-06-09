@@ -123,34 +123,34 @@ export const MyProfile = () => {
               <div className="gender-options">
                 <input
                   type="radio"
-                  id="male"
+                  id="MALE"
                   name="gender"
-                  value="male"
-                  checked={gender === 'male'}
+                  value="MALE"
+                  checked={gender === 'MALE'}
                   onChange={(e) => setGender(e.target.value)}
                   disabled={!isEditable}
                 />
-                <label htmlFor="male">Male</label>
+                <label htmlFor="MALE">Male</label>
                 <input
                   type="radio"
-                  id="female"
+                  id="FEMALE"
                   name="gender"
-                  value="female"
-                  checked={gender === 'female'}
+                  value="FEMALE"
+                  checked={gender === 'FEMALE'}
                   onChange={(e) => setGender(e.target.value)}
                   disabled={!isEditable}
                 />
-                <label htmlFor="female">Female</label>
+                <label htmlFor="FEMALE">Female</label>
                 <input
                   type="radio"
-                  id="other"
+                  id="CUSTOM"
                   name="gender"
-                  value="other"
-                  checked={gender === 'other'}
+                  value="CUSTOM"
+                  checked={gender === 'CUSTOM'}
                   onChange={(e) => setGender(e.target.value)}
                   disabled={!isEditable}
                 />
-                <label htmlFor="other">Other</label>
+                <label htmlFor="CUSTOM">Custom</label>
               </div>
             </div>
           </div>

@@ -123,37 +123,37 @@ export const AdminProfile = () => {
               <div className="form-group">
                 <label>Gender</label>
                 <div className="gender-options">
-                  <input
-                    type="radio"
-                    id="male"
-                    name="gender"
-                    value="male"
-                    checked={gender === 'male'}
-                    onChange={(e) => setGender(e.target.value)}
-                    disabled={!isEditable}
-                  />
-                  <label htmlFor="male">Male</label>
-                  <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    value="female"
-                    checked={gender === 'female'}
-                    onChange={(e) => setGender(e.target.value)}
-                    disabled={!isEditable}
-                  />
-                  <label htmlFor="female">Female</label>
-                  <input
-                    type="radio"
-                    id="other"
-                    name="gender"
-                    value="other"
-                    checked={gender === 'other'}
-                    onChange={(e) => setGender(e.target.value)}
-                    disabled={!isEditable}
-                  />
-                  <label htmlFor="other">Other</label>
-                </div>
+                <input
+                  type="radio"
+                  id="MALE"
+                  name="gender"
+                  value="MALE"
+                  checked={gender === 'MALE'}
+                  onChange={(e) => setGender(e.target.value)}
+                  disabled={!isEditable}
+                />
+                <label htmlFor="MALE">Male</label>
+                <input
+                  type="radio"
+                  id="FEMALE"
+                  name="gender"
+                  value="FEMALE"
+                  checked={gender === 'FEMALE'}
+                  onChange={(e) => setGender(e.target.value)}
+                  disabled={!isEditable}
+                />
+                <label htmlFor="FEMALE">Female</label>
+                <input
+                  type="radio"
+                  id="CUSTOM"
+                  name="gender"
+                  value="CUSTOM"
+                  checked={gender === 'CUSTOM'}
+                  onChange={(e) => setGender(e.target.value)}
+                  disabled={!isEditable}
+                />
+                <label htmlFor="CUSTOM">Custom</label>
+              </div>
               </div>
             </div>
           </div>
