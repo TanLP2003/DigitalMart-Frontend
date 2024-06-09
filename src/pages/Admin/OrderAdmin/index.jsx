@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import BreadCrumb from "../../../components/common/BreadCrumb";
 import Meta from "../../../components/common/Meta";
+import { formatDate } from "../../../redux/config";
 
 const OrderAdmin = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const OrderAdmin = () => {
             </tr>
           </thead>
           <tbody>
-          {/* <tr>
+            {/* <tr>
                     <th scope="row">{i++}</th>
                     <td>foiweoiae</td>
                     <td>username</td>
@@ -61,16 +62,19 @@ const OrderAdmin = () => {
             {isFetched &&
               allOrders.map((order) => {
                 return (
-                  <tr key={order.orderId}>
+                  <tr key={order._id} className={styles.tr}>
                     <th scope="row">{i++}</th>
-                    <td>{order._id}</td>
+                    <div className="d-flex align-item-center">
+                      <td>{order._id}</td>
+                    </div>
                     <td>{order.user}</td>
-                    <td>{order.totalPrice}</td>
-                    <td>{order.createdAt}</td>
+                    <td>₫ {order.totalPrice.toLocaleString("vi-VN")}</td>
+                    <td>{formatDate(order.createdAt)}</td>
                     <td className="">
                       <button
                         className="border-0 bg-transparent"
-                      onClick={() => handleClick(order._id)}>
+                        onClick={() => handleClick(order._id)}
+                      >
                         <BsEyeFill
                           className={`fs-5 text-dark ${styles.action}`}
                         />

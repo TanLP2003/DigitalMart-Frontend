@@ -6,13 +6,15 @@ import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchData from "../../../components/hooks/useFetchData";
 import { getOrderById } from "../../../redux/apis/order-api";
+import { formatDate } from "../../../redux/config";
 const BillInfo = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   console.log(id);
-  const newOrder = useSelector((state) => state.orders.newOrder);
   const isFetched = useFetchData(() => [dispatch(getOrderById(id))]);
-  const { user, items, totalPrice, createdAt, address } = newOrder;
+  const orderDetail = useSelector((state) => state.orders.orderDetail);
+  console.log(orderDetail);
+  const { user, items, totalPrice, createdAt, address } = orderDetail;
   let i = 1;
   return (
     <>
@@ -37,15 +39,11 @@ const BillInfo = () => {
                         <p className="me-2">Address: </p>
                         <p className="">{address}</p>
                       </div>
-                      {/* <div className="small-row d-flex justify-content-start py-0">
-                    <p className="me-2">Payment: </p>
-                    <p className="">{paymentMethod}</p>
-                  </div> */}
                     </div>
                     <div className="right">
                       <div className="small-row d-flex justify-content-end py-0">
                         <p className="me-2">Date: </p>
-                        <p className="">{createdAt}</p>
+                        <p className="">{formatDate(createdAt)}</p>
                       </div>
                     </div>
                   </div>
@@ -81,8 +79,15 @@ const BillInfo = () => {
                               </td>
                               <td>{item.product.name}</td>
                               <td>{item.quantity}</td>
-                              <td>₫ {item.product.price}</td>
-                              <td>₫ {item.product.price * item.quantity}</td>
+                              <td>
+                                ₫ {item.product.price.toLocaleString("vi-VN")}
+                              </td>
+                              <td>
+                                ₫{" "}
+                                {(
+                                  item.product.price * item.quantity
+                                ).toLocaleString("vi-VN")}
+                              </td>
                             </tr>
                           );
                         })}
@@ -92,7 +97,7 @@ const BillInfo = () => {
                   <div className="">
                     <div className="small-row d-flex justify-content-end me-5">
                       <p className="me-2">Total: </p>
-                      <p>₫ {totalPrice}</p>
+                      <p>₫ {totalPrice.toLocaleString("vi-VN")}</p>
                     </div>
                   </div>
 

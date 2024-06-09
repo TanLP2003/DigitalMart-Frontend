@@ -11,7 +11,6 @@ export const getBasket = createAsyncThunk(
     if (response.status < 200 || response.status >= 300) {
       rejectWithValue(response);
     }
-    console.log(response.data);
     return response.data;
 
     // await pause(1000);

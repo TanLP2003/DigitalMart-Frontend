@@ -12,14 +12,14 @@ const PaymentItem = ({ product, quantity }) => {
           >
             {quantity}
           </span>
-          <img className="img-fluid" src={images[0]} alt={name} />
+          <img className="img-fluid" src={images[0]} alt={name} style={{"width": "75px", "height": "75px"}}/>
         </div>
-        <div>
+        <div className="align-content-center">
           <h5 className="total-price">{name}</h5>
         </div>
       </div>
       <div className="flex-grow-1">
-        <h5 className="total">₫ {(quantity * price)}</h5>
+        <h5 className="total">₫ {(quantity * price).toLocaleString('vi-VN')}</h5>
       </div>
     </div>
   );

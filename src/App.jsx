@@ -41,6 +41,8 @@ import OrderDetails from "./pages/Admin/OrderAdmin/OrderDetails";
 import ProductDetail from "./pages/HomePage/ProductDetail"
 import HomePage from "./pages/HomePage"
 import ProductSearchPage from "./pages/HomePage/ProductSearchPage"
+import { useSelector } from "react-redux"
+import Loading from "./components/common/Loading"
 
 function App() {
   // const products = getProducts();
@@ -52,6 +54,7 @@ function App() {
     '../images/watch3.jpg',
     '../images/watch4.jpg',
   ];
+  const isLoading = useSelector(state => state.loading.loading);
   return (
     <>
       <ToastContainer
@@ -74,7 +77,7 @@ function App() {
             <Route index element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
-            
+
           </Route>
           <Route path="/" element={<CustomerLayout />}>
             {/* <Route index element={<Home />} />
@@ -88,20 +91,17 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="product-detail/:productId" element={<ProductDetail />} />
             <Route path="product-search-page" element={<ProductSearchPage />} />
-            <Route path="wishlist" element={<WishList />} />
-            <Route path="profile" element={<MyProfile />} />
-            <Route path="change-password" element={<ResetPassword />} />
+            <Route path="wishlist" element={<ProtectedRoute role='customer' element={<WishList />} />} />
+            <Route path="profile" element={<ProtectedRoute role='customer' element={<MyProfile />} />} />
+            <Route path="change-password" element={<ProtectedRoute role='customer' element={<ResetPassword />} />} />
             <Route path="cart" element={<ExamplePage />} />
-            <Route path="basket" element={<Basket />} />
-            <Route path="checkout" element={<Outlet />}>
-              <Route index element={<Checkout />} />
-              <Route path="customer-bill-info" element={<BillInfo />} />
-            </Route>
+            <Route path="basket" element={<ProtectedRoute element={<Basket />} role='customer' />} />
+            <Route path="checkout" element={<ProtectedRoute element={<Checkout />} role='customer' />} />
+            <Route path="customer-bill-info/:id" element={<BillInfo />} />
+
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="profile" element={<MyProfile />} />
-            <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="reset-password" element={<ResetPassword />} />
           </Route>
           <Route
             path="/admin"
@@ -114,8 +114,8 @@ function App() {
             <Route path="/admin/category/:categoryId" element={<ViewCategory />} />
             <Route path="product" element={<ProductAdmin />} />
             {/* <Route path="order" element={<Outlet />}> */}
-              <Route path="order" element={<OrderAdmin />} />
-              <Route path="order/details/:id" element={<OrderDetails />} />
+            <Route path="order" element={<OrderAdmin />} />
+            <Route path="order/details/:id" element={<OrderDetails />} />
             {/* </Route> */}
             <Route path="inventory" element={<Inventory />} />
             <Route path="create-product" element={<CreateProduct />} />
@@ -130,6 +130,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      {isLoading && <Loading />}
     </>
   );
 }

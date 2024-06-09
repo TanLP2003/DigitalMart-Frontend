@@ -1,3 +1,7 @@
+.bread_crumb {
+  margin-left: 1rem;
+}
+
 .field {
   width: 49%;
   padding-left: 5px;
@@ -25,7 +29,6 @@
   margin: 5px 0;
 }
 
-.table tbody{
-  overflow-y: scroll;
-  height: 10px;
+.total_price {
+  padding-right: 90px;
 }

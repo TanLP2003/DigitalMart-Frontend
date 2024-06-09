@@ -27,7 +27,7 @@ const Item = ({ product, quantity }) => {
         </div>
       </div>
       <div className="cart-col-2">
-        <h5 className="price">${price}</h5>
+        <h5 className="price">₫ {price.toLocaleString('vi-VN')}</h5>
       </div>
       <div className="cart-col-3 d-flex align-items-center gap-15">
         <div className="d-flex align-items-center gap-10">
@@ -77,7 +77,7 @@ const Item = ({ product, quantity }) => {
         </div>
       </div>
       <div className="cart-col-4">
-        <h5 className="price">${price * quantity}</h5>
+        <h5 className="price">₫ {(price * quantity).toLocaleString('vi-VN')}</h5>
       </div>
     </div>
   );

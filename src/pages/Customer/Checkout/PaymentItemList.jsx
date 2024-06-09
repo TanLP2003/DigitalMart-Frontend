@@ -29,7 +29,7 @@ const PaymentItemList = () => {
       </div>
       <div className="d-flex justify-content-between align-items-center border-bottom py-4">
         <h4 className="total">Total Payment</h4>
-        <h5 className="total-price">₫ {(subtotal + 15000)}</h5>
+        <h5 className="total-price">₫ {(subtotal.toLocaleString('vi-VN'))}</h5>
       </div>
     </>
   );

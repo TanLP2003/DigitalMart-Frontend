@@ -8,16 +8,18 @@ import { checkoutBasket } from "../../../redux/apis/basket-api";
 const Modal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
- 
+
   const shippingFee = 15000;
   //new code
-  const selectedItems = useSelector(state => state.baskets.selectedItems.map(item => item.product._id));
+  const selectedItems = useSelector((state) =>
+    state.baskets.selectedItems.map((item) => item.product._id)
+  );
   //
   const handleConfirm = () => {
-    // const info = JSON.parse(localStorage.getItem("customer-info"));
+    const info = JSON.parse(localStorage.getItem("customer-info"));
     // const paymentList = JSON.parse(localStorage.getItem("payment-list"));
     // const subtotal = JSON.parse(localStorage.getItem("totalPrice"));
- 
+
     // const today = getFormattedDate();
     // const newOrders = {
     //   ...info,
@@ -27,13 +29,12 @@ const Modal = () => {
     // };
     // dispatch(updateOrderOfUser(newOrders));
     // navigate("customer-bill-info");
- 
- 
+
     // new code
     const newOrder = {
       selectedItems: selectedItems,
-      address: "221B Baker Street, London, England"
-    }
+      address: info.address,
+    };
     dispatch(checkoutBasket(newOrder));
     dispatch(closeModal());
     //
@@ -43,10 +44,7 @@ const Modal = () => {
       <div className={styles.modal}>
         <h4>Are you sure?</h4>
         <div className={styles.btn_container}>
-          <button
-            className="button confirm-btn"
-            onClick={handleConfirm}
-          >
+          <button className="button confirm-btn" onClick={handleConfirm}>
             confirm
           </button>
           <button
@@ -63,14 +61,14 @@ const Modal = () => {
     </aside>
   );
 };
- 
+
 export default Modal;
- 
+
 const getFormattedDate = () => {
   const date = new Date();
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng trong JavaScript bắt đầu từ 0
   const year = date.getFullYear();
- 
+
   return `${day}-${month}-${year}`;
 };
