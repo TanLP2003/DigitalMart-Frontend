@@ -11,6 +11,7 @@ import { changePassword } from './../../../redux/apis/user-api';
 const resetPasswordSchema = yup.object({
     oldPassword: yup.string().required("Old Password is required"),
     newPassword: yup.string().required("New Password is required"),
+    retypePassword: yup.string().required("Retype Password is required")
 });
 
 const ResetPassword = () => {
@@ -20,7 +21,8 @@ const ResetPassword = () => {
     const formik = useFormik({
         initialValues: {
             oldPassword: "",
-            newPassword: ""
+            newPassword: "",
+            retypePassword: ""
         },
         validationSchema: resetPasswordSchema,
         onSubmit: (values) => {
@@ -60,6 +62,17 @@ const ResetPassword = () => {
                                 />
                                 <div className='error'>
                                     {formik.touched.newPassword && formik.errors.newPassword}
+                                </div>
+                                <CustomInput 
+                                    type="password"
+                                    name="retypePassword"
+                                    placeholder="retypePassword"
+                                    value={formik.values.retypePassword}
+                                    onChange={formik.handleChange("retypePassword")}
+                                    onBlur={formik.handleBlur("retypePassword")}
+                                />
+                                <div className='error'>
+                                    {formik.touched.retypePassword && formik.errors.retypePassword}
                                 </div>
 
                                 <div className='mt-3 d-flex justify-content-center gap-15 align-items-center'>

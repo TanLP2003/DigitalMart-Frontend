@@ -79,9 +79,9 @@ export const userSlice = createSlice({
             state.isSuccess=true;
             state.user = action.payload;
 
-            if(state.isSuccess == true) {
-                toast.info("Your Password Is Changed Successfully!");
-            }
+            // if(state.isSuccess == true) {
+            //     toast.info("Your Password Is Changed Successfully!");
+            // }
         })
         .addCase(changePassword.rejected, (state, action)=>{
             state.isLoading=false;
