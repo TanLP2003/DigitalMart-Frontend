@@ -5,19 +5,21 @@
     color: #fff;
     display: flex;
     align-items: center;
-    position: fixed;
-    top: 0;
-    z-index: 9999;
+    position: fixed; /* Fixed at the top */
+    top: 0; /* Positioned at the very top */
+    left: 0; /* Aligned to the left edge */
+    z-index: 1000; /* Stays above other elements */
 }
 
 .brand {
     font-size: 30px;
-    padding: 0 20px
+    padding: 0 20px;
 }
 
 .topbar-list-profile {
     color: white;
 }
+
 .topbar-list {
     flex-grow: 1;
     display: flex;
@@ -34,7 +36,7 @@
     &-bell {
         cursor: pointer;
         &:hover {
-            color: #ffd333
+            color: #ffd333;
         }
     }
 }
@@ -43,4 +45,9 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+/* Add this class for your main content */
+.main-content {
+    margin-top: 80px; /* Add top margin to prevent content from being hidden */
 }
