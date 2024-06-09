@@ -20,13 +20,13 @@
     align-items: center; /* Center the items horizontally */
 }
 
-.title {
-    background-color: var(--color-232f3e); /* Background color for the title */
+.logout-title {
+    background-color: var(--color-232f3e); 
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 10px; /* Add margin below the title */
-    text-align: center; /* Center-align the text */
-    width: 100%; /* Ensure title takes up full width */
+    margin-bottom: 10px; 
+    text-align: center; 
+    width: 100%; 
     color: white;
     font-size: 18px;
 }

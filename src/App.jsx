@@ -121,8 +121,8 @@ function App() {
             {/* </Route> */}
             <Route path="inventory" element={<Inventory />} />
             <Route path="create-product" element={<CreateProduct />} />
-            <Route path="view-product" element={<ViewProduct />} />
-            <Route path="edit-product" element={<EditProduct />} />
+            <Route path="view-product/:productId" element={<ViewProduct />} />
+            <Route path="edit-product/:productId" element={<EditProduct />} />
             <Route path="logout" element={<Logout />} />
           </Route>
           <Route
