@@ -37,7 +37,7 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <header className='header-wrapper'>
       <header className="header-top-strip">
         <div className="container-xxl">
           <div className="row">
@@ -148,7 +148,7 @@ export const Header = () => {
           </div>
         </div>
       </header>
-    </>
+    </header>
   );
 };
 
