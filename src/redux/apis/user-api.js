@@ -87,3 +87,14 @@ export const forgotPassword = createAsyncThunk(
         return response.data.url;
     }
 )
+
+export const getNumberOfUsers = createAsyncThunk(
+    'get-number-of-users',
+    async (_, {rejectWithValue}) => {
+        const response = await axios.get(`${SERVER}/user/number-of-customers`);
+        if(response.status < 200 || response.status >= 300){
+            rejectWithValue(response)
+        }
+        return response.data
+    }
+)

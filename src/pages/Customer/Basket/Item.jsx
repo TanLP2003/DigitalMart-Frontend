@@ -23,7 +23,7 @@ const Item = ({ product, quantity }) => {
         <div className="w-75">
           <h5 className="title mb-0">{name}</h5>
           <p className="mb-0">{brand}</p>
-          <p className="mb-0">{description}</p>
+          <p className="mb-0 text-truncate">{description}</p>
         </div>
       </div>
       <div className="cart-col-2">

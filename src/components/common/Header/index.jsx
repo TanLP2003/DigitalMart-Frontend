@@ -7,13 +7,14 @@ import { useAuth } from "./../../hooks/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategory } from "../../../redux/apis/category-api";
 import useFetchData from "../../../components/hooks/useFetchData";
+import { getAllProduct } from '../../../redux/apis/product-api';
 
 export const Header = () => {
   const { isAuthenticated } = useAuth();
   const dispatch = useDispatch();
-  const isFetched = useFetchData(() => [dispatch(getAllCategory())]);
+  const isFetched = useFetchData(() => [dispatch(getAllCategory()), dispatch(getAllProduct())]);
   const categories = useSelector((state) => state.categories.categories);
-
+  const product = useSelector(state => state.products.products)
   useEffect(() => {
     localStorage.setItem("categories", JSON.stringify(categories));
   }, [categories]);

@@ -50,7 +50,7 @@ const CardProduct = ({ product, width, height }) => {
             </div>
 
             <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
+                <h5 className="card-title text-truncate">{product.name}</h5>
                 <p className="card-text text-secondary text-truncate"
                 >
                     {product.description}
