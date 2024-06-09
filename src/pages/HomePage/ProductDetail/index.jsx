@@ -9,6 +9,7 @@ import { getProductDetail } from "../../../redux/apis/product-api";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { likeProduct, unlikeProduct } from "../../../redux/apis/favorite-api";
 import { getFavorites } from '../../../redux/apis/favorite-api';
+import { toast } from "react-toastify";
 
 const ProductDetail = () => {
     // const location = useLocation();
@@ -16,6 +17,9 @@ const ProductDetail = () => {
     // if (!product) {
     //     return <Navigate to='/home-page' />
     // }
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const { productId } = useParams();
     const isFetched = useFetchData(() => [dispatch(getProductDetail(productId)), dispatch(getFavorites())])
     const { product, inventory } = useSelector(state => {
@@ -24,14 +28,23 @@ const ProductDetail = () => {
             inventory: state.products.productDetail.inventory
         }
     });
+    useEffect(() => {
+        dispatch(getProductDetail(productId));
+        dispatch(getFavorites());
+    }, [productId]);
     const isLiked = useSelector(state => {
         const favoriteList = state.favorites.favorites;
         return favoriteList.some(element => element._id === product._id);
     })
     // console.log(isLiked);
+    const currentUser = localStorage.getItem('currentUser');
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleBuy = async () => {
+        if(!currentUser) {
+            navigate('/auth')
+            return;
+        }
         dispatch(updateBasket({
             product: product,
             incrementBy: 1
@@ -43,15 +56,38 @@ const ProductDetail = () => {
         navigate('/checkout')
     }
     const handleAddToCart = () => {
+        if (!currentUser) {
+            navigate('/auth')
+            return;
+        }
         dispatch(updateBasket({
             product: product,
             incrementBy: 1
         }))
+            .unwrap()
+            .then(result => {
+                dispatch(getProductDetail(productId))
+            })
+            .catch(err => {
+                if (!product.isPublished) {
+                    toast.error("Sản phẩm hiện không hoạt động")
+                } else toast.error("Số lượng sản phẩm quá mức cho phép")
+            })
+            .finally(() => dispatch(getProductDetail(productId)))
+
     }
     const handleLikeProduct = () => {
+        if (!currentUser) {
+            navigate('/auth')
+            return;
+        }
         dispatch(likeProduct(product));
     }
     const handleUnlikeProduct = () => {
+        if (!currentUser) {
+            navigate('/auth')
+            return;
+        }
         dispatch(unlikeProduct(product._id));
     }
     return (
@@ -68,7 +104,7 @@ const ProductDetail = () => {
                                     <h1>{product.name}</h1>
                                     <p className="fs-5 text-body-secondary">Thương hiệu
                                         <span className="text-primary"> {product.brand} </span>
-                                        {/* | {product.isPublished ? <span className="text-success">In stock</span> : <span>Out of stock</span>} */}
+                                        | {product.isPublished ? '' : <span className="text-danger">Không hoạt động</span>}
                                     </p>
                                     <p className="fs-5 text-primary">{product.price.toLocaleString('vi-VN')} <span>VNĐ</span></p>
                                 </div>
