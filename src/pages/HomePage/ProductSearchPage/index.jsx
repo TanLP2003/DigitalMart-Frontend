@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ProductSearchPage.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import useFetchData from '../../../components/hooks/useFetchData';
 import { getAllProduct } from '../../../redux/apis/product-api';
 import CardProduct from '../CardProduct';
+import { useLocation } from 'react-router-dom';
 
 
 const ProductSearchPage = () => {
@@ -13,9 +14,30 @@ const ProductSearchPage = () => {
     const isFetched = useFetchData(() => [dispatch(getAllProduct())]);
     const products = useSelector(state => state.products.products);
     const { totalPages, page, hasPrevPage, hasNextPage } = useSelector(state => state.paginates)
-    console.log(products);
+    // console.log(products);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const categoryId = queryParams.get('category');
+    const searchQuery = queryParams.get('query');
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    useEffect(() => {
+        if (categoryId) {
+            const categoryProducts = products.filter(product => product.category === categoryId);
+            setFilteredProducts(categoryProducts);
+        } else if (searchQuery) {
+            const searchResults = products.filter(product =>
+                product.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setFilteredProducts(searchResults);
+        } else {
+            setFilteredProducts(products);
+        }
+    }, [location.search])
     const renderResultList = () => {
-        let sortedProduct = [...products];
+        let sortedProduct = [...filteredProducts];
         sortedProduct.sort((a, b) => (!timeOrder ? -1 : 1) * (new Date(b.createdAt) - new Date(a.createdAt)));
         sortedProduct.sort((a, b) => (priceOrder ? -1 : 1) * (b.price - a.price))
         return sortedProduct.map((item, index) => (
@@ -49,8 +71,8 @@ const ProductSearchPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-9 " style={{ minHeight: '1000px' }}>
-                    <div className="bg-light p-2 d-flex flex-column">
+                <div className="col-9 " style={{ minHeight: '900px' , overflowY: 'auto'}}>
+                    <div className="bg-light p-2 d-flex flex-column justify-content-between h-100">
                         <div className='result-list'>
                             {isFetched && renderResultList()}
                             {/* {isFetched && renderResultList()}
@@ -58,11 +80,11 @@ const ProductSearchPage = () => {
                             {isFetched && renderResultList()}
                             {isFetched && renderResultList()} */}
                         </div>
-                        <div className='result-pagination'>
+                        {/* <div className='result-pagination'>
                             <p onClick={handlePrev} className={'paginate-btn ' + (!hasPrevPage ? 'text-secondary disabled' : 'text-info')}>{'< Prev'}</p>
                             <p>{page} / {totalPages}</p>
                             <p onClick={handleNext} className={'paginate-btn ' + (!hasNextPage ? 'text-secondary disabled' : 'text-info')}>{'Next >'}</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
