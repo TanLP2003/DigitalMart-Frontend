@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'; // Updated import
 import ProductRow from './ProductRow';
-import { getAllProduct } from '../../../redux/apis/product-api';
+import { getAllProduct, getAllProductByAdmin } from '../../../redux/apis/product-api';
 import "./styles.scss";
 import useFetchData from '../../../components/hooks/useFetchData';
 const Inventory = () => {
@@ -14,7 +14,7 @@ const Inventory = () => {
   // useEffect(() => {
   //   dispatch(getAllProduct());
   // }, [dispatch]);
-  const isFetched = useFetchData(() => [dispatch(getAllProduct())]);
+  const isFetched = useFetchData(() => [dispatch(getAllProductByAdmin())]);
   const handleNewProductClick = () => {
     navigate('/admin/create-product'); // Updated method
   };
@@ -34,6 +34,7 @@ const Inventory = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Threshold</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>

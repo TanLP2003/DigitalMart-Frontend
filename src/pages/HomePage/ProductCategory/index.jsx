@@ -32,15 +32,17 @@ const ProductCategory = ({ category, products }) => {
         }
     };
     return (
-        <div>
-            <div style={{display: 'flex'}}w>
-                <p style={{ fontSize: '1.5rem' }}>{category} nổi bật</p>
-                <button className="arrow-button left" onClick={scrollLeft}>
-                    <FaArrowLeft />
-                </button>
-                <button className="arrow-button right" onClick={scrollRight}>
-                    <FaArrowRight />
-                </button>
+        <div className="mb-3">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'center' }}>
+                <p style={{ fontSize: '1.5rem' }}>{category}</p>
+                <div>
+                    <button className="arrow-button left" onClick={scrollLeft}>
+                        <FaArrowLeft />
+                    </button>
+                    <button className="arrow-button right" onClick={scrollRight}>
+                        <FaArrowRight />
+                    </button>
+                </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
 
@@ -50,9 +52,6 @@ const ProductCategory = ({ category, products }) => {
                 >
                     <div className="category-slider">
                         {products.map((item => <CardProduct key={item._id} product={item} width={'250px'} height={'400px'} />))}
-                        {/* {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
-                        {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
-                        {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))} */}
                     </div>
                 </div>
 

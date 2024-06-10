@@ -1,10 +1,11 @@
 import './Topbar.scss'
 import { GoBell } from "react-icons/go";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Topbar = () => {
+    const navigate = useNavigate();
     return (
         <div className="topbar">
-            <div className='brand'>Digital Mart</div>
+            <div className='brand' onClick={() => navigate('/')} style={{cursor: 'pointer'}}>Digital Mart</div>
         </div>
     )
 }

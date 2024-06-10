@@ -7,12 +7,13 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import useFetchData from '../../../../components/hooks/useFetchData';
 import { getAllCategory } from '../../../../redux/apis/category-api';
-import { getProductDetail } from '../../../../redux/apis/product-api';
+import { getProductDetail, updateProduct } from '../../../../redux/apis/product-api';
 import { MdOutlineDelete } from "react-icons/md";
 import { IoMdCloseCircle } from "react-icons/io";
 import { FcAddImage } from "react-icons/fc";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { RiCheckboxIndeterminateFill } from "react-icons/ri";
+import { setLoading } from '../../../../redux/slices/loadingSlice';
 
 const EditProduct = () => {
   const dispatch = useDispatch();
@@ -130,7 +131,7 @@ const EditProduct = () => {
       brand: Yup.string().required(),
       category: Yup.string().required(),
       metadata: Yup.object(),
-      images: Yup.array().min(1).required(),
+      // images: Yup.array().min(1).required(),
       stock: Yup.number().min(1),
       threshold: Yup.number().min(1),
       isPublished: Yup.boolean()
@@ -148,17 +149,36 @@ const EditProduct = () => {
       if (values.isPublished !== formik.initialValues.isPublished) formData.append(`data[isPublished]`, values.isPublished)
       if (values.category !== formik.initialValues.category) formData.append(`data[category]`, values.category)
       newImages.forEach((image) => formData.append('newImages', image))
-      deleteImages.forEach((image) => formData.append('deleteImages', image))
+      formData.append('deletedImages', '');
+      formData.append('deletedImages', '');
+      deleteImages.forEach((image) => formData.append('deletedImages', image))
       if (JSON.stringify(values.metadata) !== JSON.stringify(formik.initialValues.metadata)) {
         Object.entries(values.metadata).forEach(([key, value]) => {
-          formData.append(`data[metadat][${key}]`, value)
+          formData.append(`data[metadata][${key}]`, value)
         });
       }
-      console.log(formData)
+      dispatch(setLoading(true))
+      dispatch(updateProduct({
+        data: formData,
+        id: productId
+      }))
+        .unwrap()
+        .then((result) => {
+          toast.success("Success")
+          navigate(`/admin/view-product/${productId}`);
+        })
+        .catch(err => {
+          console.log(err);
+          toast.error("error");
+        })
+        .finally(() => dispatch(setLoading(false)))
     },
     validateOnChange: false,
     validateOnBlur: false
   });
+  const btnFormRef = useRef(null);
+  // console.log(formik.initialValues);
+  // console.log(formik.handleSubmit);
   return (
     <div className='common-product-wrapper'>
       <div className="common-product-header">
@@ -170,7 +190,9 @@ const EditProduct = () => {
         </div>
         <div className='common-product-btn'>
           <div className='btn btn-outline-danger' onClick={handleCancel}>X Cancel</div>
-          <div className='btn btn-dark' onClick={formik.handleSubmit}>Save</div>
+          <div className='btn btn-dark' onClick={() => {
+            btnFormRef.current.click()
+          }}>Save</div>
         </div>
       </div>
       {isFetched && (
@@ -324,13 +346,14 @@ const EditProduct = () => {
                   <select name="isPublished" id="isPublished" onChange={formik.handleChange}
                     value={formik.values.isPublished}
                   >
-                    <option value={false}>Unpublished</option>
-                    <option value={true}>Published</option>
+                    <option value={false}>Inactive</option>
+                    <option value={true}>Active</option>
                   </select>
                 </div>
               </div>
             </div>
           </div>
+          <button type='submit' ref={btnFormRef} hidden></button>
         </form>
       )}
     </div>
