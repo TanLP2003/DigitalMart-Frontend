@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUserInfo, changeAvatar } from '../../../redux/apis/user-api';
 import { toast } from 'react-toastify';
 import { de } from '@faker-js/faker';
@@ -9,13 +9,13 @@ export const AdminProfile = () => {
 
   const dispatch = useDispatch();
 
-  const userData = JSON.parse(localStorage.getItem('currentUser'));
-
-  const [username, setUsername] = useState(userData.username);
-  const [email] = useState(userData.email);
-  const [phonenumber, setPhonenumber] = useState(userData.phonenumber);
-  const [gender, setGender] = useState(userData.gender);
-  const [profilePicture, setProfilePicture] = useState(userData.avatar);
+  const user = useSelector((state) => state.user.user); // Assuming your user slice is named 'user'
+  
+  const [username, setUsername] = useState(user.username);
+  const [email] = useState(user.email);
+  const [phonenumber, setPhonenumber] = useState(user.phonenumber);
+  const [gender, setGender] = useState(user.gender);
+  const [profilePicture, setProfilePicture] = useState(user.avatar);
   const [isEditable, setIsEditable] = useState(false);
 
   const handleEditToggle = () => {
@@ -30,7 +30,7 @@ export const AdminProfile = () => {
         setProfilePicture(newAvatarUrl);
       }
     } catch (err) {
-      toast.error("Change avatar failed: " + err.message);
+      //toast.error("Change avatar failed: " + err.message);
     }
   };
 

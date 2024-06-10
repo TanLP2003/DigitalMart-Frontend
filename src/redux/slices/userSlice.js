@@ -123,31 +123,35 @@ export const userSlice = createSlice({
                 state.isError = true;
                 state.message = action.payload;
 
-                if (state.isError == true) {
-                    toast.info(action.error);
-                }
-            })
-            .addCase(changeAvatar.pending, (state) => {
-                state.isLoading = true;
-                state.isSuccess = false;
-                state.isError = false;
-            })
-            .addCase(changeAvatar.fulfilled, (state, action) => {
-                state.isSuccess = true;
-                state.isLoading = false;
-                state.isError = false;
-                const updatedUser = { ...state.user, ...action.payload };
-                state.user = updatedUser;
-                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-                if (state.isSuccess == true) {
-                    toast.info("Changed Avatar Successfully!");
-                }
-            })
-            .addCase(changeAvatar.rejected, (state, action) => {
-                state.isLoading = false;
-                state.isSuccess = false;
-                state.isError = true;
-                state.message = action.payload;
+            if(state.isError == true) {
+                toast.info(action.error);
+            }
+        })
+        .addCase(changeAvatar.pending, (state) => {
+            state.isLoading = true;
+            state.isSuccess=false;
+            state.isError=false;
+        })
+        .addCase(changeAvatar.fulfilled, (state, action) => {
+            state.isSuccess=true;
+            state.isLoading=false;
+            state.isError=false;
+
+            // Update the user data in the state
+            state.user.avatar = action.payload;
+
+            // Update localStorage
+            const updatedUser = { ...state.user, avatar: action.payload };
+            localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+            if(state.isSuccess == true) {
+                toast.info("Changed Avatar Successfully!");
+            }
+        })
+        .addCase(changeAvatar.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess=false;
+            state.isError=true;
+            state.message = action.payload;
 
                 if (state.isError == true) {
                     toast.info(action.error);
