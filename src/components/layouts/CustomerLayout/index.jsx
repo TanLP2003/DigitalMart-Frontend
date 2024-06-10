@@ -19,7 +19,7 @@ const CustomerLayout = () => {
           <Outlet />
         </div>
         <Footer />
-        <ToastContainer
+        {/* <ToastContainer
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}
@@ -30,7 +30,7 @@ const CustomerLayout = () => {
           draggable
           pauseOnHover
           theme="light"
-        />
+        /> */}
       </AuthProvider>
     </div>
   );

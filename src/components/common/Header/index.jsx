@@ -17,6 +17,8 @@ export const Header = () => {
   const isFetched = useFetchData(() => [dispatch(getAllCategory()), dispatch(getAllProduct())]);
   const categories = useSelector((state) => state.categories.categories);
   const products = useSelector(state => state.products.products)
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  console.log(currentUser)
   useEffect(() => {
     localStorage.setItem("categories", JSON.stringify(categories));
   }, [categories]);
@@ -191,12 +193,13 @@ export const Header = () => {
                   </Link>
                 </div>
                 <div>
-                  <Link className="d-flex align-items-center text-white" to={isAuthenticated ? '/profile' : '/auth'}>
+                  <Link className="d-flex align-items-center text-white" to={isAuthenticated ? (currentUser.role === "ADMIN" ? '/admin' : '/profile') : '/auth'}>
                     <div className="icon mt-2">
                       <FaUser className='fs-4' />
                     </div>
                     <p className='mb-0'>
-                      {isAuthenticated ? 'My Profile' : 'Login'} <br /> {isAuthenticated ? '' : 'My Account'}
+                      {isAuthenticated ? (currentUser.role === 'ADMIN' ? 'Dashboard' : 'My Profile') : 'Login'} <br />
+                      {isAuthenticated ? '' : 'My Account'}
                     </p>
                   </Link>
                 </div>

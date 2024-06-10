@@ -77,3 +77,18 @@ export const getAllProductByAdmin = createAsyncThunk(
         return response.data
     }
 )
+
+export const updateProduct = createAsyncThunk(
+    'update-product',
+    async ({ data, id }, { rejectWithValue }) => {
+        const response = await authAxios.put(`product/${id}`, data, {
+            headers: {
+                "Content-Type": 'multipart/form-data'
+            }
+        });
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response)
+        }
+        return response.data
+    }
+)
