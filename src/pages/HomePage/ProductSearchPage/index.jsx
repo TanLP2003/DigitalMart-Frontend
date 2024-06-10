@@ -49,8 +49,8 @@ const ProductSearchPage = () => {
             const difDate = new Date(b.createdAt) - new Date(a.createdAt);
             const difPrice = b.price - a.price
             if(order === 0) {
-                return -1 * difDate
-            }else if (order === 1) return difDate
+                return difDate
+            }else if (order === 1) return -1 * difDate
             else if(order === 2) return -1 * difPrice;
             else return difPrice;
         });
