@@ -3,7 +3,7 @@ import BreadCrumb from "../../../components/common/BreadCrumb";
 import Meta from "../../../components/common/Meta";
 import "./styles.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { ProductCard } from './ProductCard';
+import { CardProduct } from "./../../HomePage/CardProduct";
 import { getFavorites, unlikeProduct } from '../../../redux/apis/favorite-api';
 
 export const WishList = () => {
@@ -34,13 +34,8 @@ export const WishList = () => {
                         {favorites && favorites.length > 0 ? (
                             favorites.map(product => (
                                 <div className="col-4 mb-3" key={product._id}>
-                                    <ProductCard
-                                        id={product._id}
-                                        name={product.name}
-                                        description={product.description}
-                                        price={product.price}
-                                        images={product.images[0]} // Assuming images is an array
-                                        brand={product.brand}
+                                    <CardProduct
+                                        product = { product }
                                     />
                                     <button 
                                         className="btn btn-danger mt-2" 

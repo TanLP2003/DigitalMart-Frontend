@@ -4,7 +4,7 @@ import './CardProduct.scss'
 import { useNavigate } from "react-router-dom"
 // import "bootstrap/dist/css/bootstrap.min.css"
 
-const CardProduct = ({ product, width, height }) => {
+export const CardProduct = ({ product, width, height }) => {
     // useEffect(() => {
     //     const intervalId = setInterval(function () {
     //         const id = img-carousel-${product._id}
@@ -50,7 +50,7 @@ const CardProduct = ({ product, width, height }) => {
             </div>
 
             <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
+                <h5 className="card-title text-truncate">{product.name}</h5>
                 <p className="card-text text-secondary text-truncate"
                 >
                     {product.description}

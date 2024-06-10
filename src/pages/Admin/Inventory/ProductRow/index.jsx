@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom'; // Updated import
 const ProductRow = ({ product }) => {
   const navigate = useNavigate();
   const handleViewProductClick = () => {
-    navigate('/admin/view-product'); // Updated method
+    navigate(`/admin/view-product/${product._id}`); // Updated method
   };
-  const handleEidtProductClick = () => {
-    navigate('/admin/edit-product'); // Updated method
+  const handleEidtProductClick = (productId) => {
+    navigate(`/admin/edit-product/${product._id}`); // Updated method
   };
   return (
     <tr>

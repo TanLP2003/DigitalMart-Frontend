@@ -18,6 +18,8 @@ import ProductAdmin from "./pages/Admin/ProductAdmin"
 import OrderAdmin from "./pages/Admin/OrderAdmin"
 import ChatAdmin from "./pages/Admin/ChatAdmin"
 import AdminProfile from "./pages/Admin/AdminProfile"
+import Logout from "./pages/Admin/Logout"
+
 import Home from "./pages/Home"
 import OurStore from "./pages/Our Store"
 import Blogs from "./pages/blogs"
@@ -119,9 +121,9 @@ function App() {
             {/* </Route> */}
             <Route path="inventory" element={<Inventory />} />
             <Route path="create-product" element={<CreateProduct />} />
-            <Route path="view-product" element={<ViewProduct />} />
-            <Route path="edit-product" element={<EditProduct />} />
-            <Route path="chat" element={<ChatAdmin />} />
+            <Route path="view-product/:productId" element={<ViewProduct />} />
+            <Route path="edit-product/:productId" element={<EditProduct />} />
+            <Route path="logout" element={<Logout />} />
           </Route>
           <Route
             path="/admin"

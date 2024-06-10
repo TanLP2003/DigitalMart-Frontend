@@ -13,12 +13,12 @@
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 30px;
     // border: 1px solid #000;
     margin-bottom: 20px;
-
+    text-align: center;
     &-icon {
         font-size: 40px;
-        color: rgb(0, 162, 220);
     }
 }

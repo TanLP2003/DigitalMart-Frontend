@@ -8,6 +8,7 @@ import useFetchData from '../../../components/hooks/useFetchData';
 const Inventory = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products.products);
+  let sortedProduct = [...products];
   const navigate = useNavigate(); // Updated hook
 
   // useEffect(() => {
@@ -37,7 +38,7 @@ const Inventory = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
+            {sortedProduct.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((product, index) => (
               <ProductRow key={index} product={product} />
             ))}
           </tbody>

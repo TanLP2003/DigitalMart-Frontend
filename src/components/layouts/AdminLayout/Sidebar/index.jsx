@@ -30,20 +30,10 @@ const Sidebar = () => {
             icon: <MdOutlineInventory2 size={25} />
         },
         {
-            name: "Product",
-            link: "product",
-            icon: <RiProductHuntLine size={25} />
-        },
-        {
             name: "Category",
             link: "category",
             icon: <MdOutlineCategory size={25} />
         },
-        {
-            name: "Chat",
-            link: "chat",
-            icon: <MdOutlineChatBubbleOutline size={25} />
-        }
     ];
     const menuList = sidebarList.map((item, index) => {
         return (

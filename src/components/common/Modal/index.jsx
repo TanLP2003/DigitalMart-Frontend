@@ -12,7 +12,10 @@ const Modal = () => {
   const shippingFee = 15000;
   //new code
   const selectedItems = useSelector((state) =>
-    state.baskets.selectedItems.map((item) => item.product._id)
+    state.baskets.selectedItems.map((item) => ({
+      productId: item.product._id,
+      quantity: item.quantity
+    }))
   );
   //
   const handleConfirm = () => {
