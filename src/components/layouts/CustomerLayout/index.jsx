@@ -15,7 +15,7 @@ const CustomerLayout = () => {
     <div style={customerLayoutStyles}> 
       <AuthProvider>
         <Header />
-        <div style={{minHeight: '100vh'}}>
+        <div style={{minHeight: '100vh', paddingTop: '125px'}}>
           <Outlet />
         </div>
         <Footer />

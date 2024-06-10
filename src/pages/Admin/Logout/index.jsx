@@ -19,7 +19,7 @@ export const Logout = () => {
     return (
         <div className="logout-container">
             <div className="logout-box">
-                <div className="title">
+                <div className="logout-title">
                     <p>Are you sure you want to log out?</p>
                 </div>
                 <div className="button-group">

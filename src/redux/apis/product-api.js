@@ -1,11 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { SERVER } from "../config";
+import authAxios from "../authAxios";
 
 export const createProduct = createAsyncThunk(
     'create-product',
     async (data, { rejectWithValue }) => {
-        const response = await axios.post(`${SERVER}/product`, data);
+        const response = await authAxios.post(`product`, data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
         console.log(response.data);
         return response.data;
     }
@@ -59,5 +64,16 @@ export const getProductDetail = createAsyncThunk(
             rejectWithValue(response)
         }
         return response.data;
+    }
+)
+
+export const getAllProductByAdmin = createAsyncThunk(
+    'get-all-product-by-admin',
+    async (_, { rejectWithValue }) => {
+        const response = await authAxios.get(`product/all-by-admin`);
+        if (response.status < 200 || response.status >= 300) {
+            rejectWithValue(response)
+        }
+        return response.data
     }
 )

@@ -4,15 +4,17 @@ import { useNavigate } from 'react-router-dom'; // Updated import
 import ProductRow from './ProductRow';
 import { getAllProduct } from '../../../redux/apis/product-api';
 import "./styles.scss";
+import useFetchData from '../../../components/hooks/useFetchData';
 const Inventory = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products.products);
+  let sortedProduct = [...products];
   const navigate = useNavigate(); // Updated hook
 
-  useEffect(() => {
-    dispatch(getAllProduct());
-  }, [dispatch]);
-
+  // useEffect(() => {
+  //   dispatch(getAllProduct());
+  // }, [dispatch]);
+  const isFetched = useFetchData(() => [dispatch(getAllProduct())]);
   const handleNewProductClick = () => {
     navigate('/admin/create-product'); // Updated method
   };
@@ -36,7 +38,7 @@ const Inventory = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
+            {sortedProduct.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((product, index) => (
               <ProductRow key={index} product={product} />
             ))}
           </tbody>

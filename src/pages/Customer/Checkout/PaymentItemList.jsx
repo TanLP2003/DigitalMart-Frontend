@@ -4,9 +4,15 @@ import { useSelector } from "react-redux";
 const PaymentItemList = () => {
   // new code
   const paymentList = useSelector(state => state.baskets.selectedItems);
+  const getTotalPrice = () => {
+    const totalPrice = paymentList.reduce((value, item) => {
+      return value + item.product.price * item.quantity;
+    }, 0);
+    return totalPrice;
+  };
   //
   // const paymentList = JSON.parse(localStorage.getItem("payment-list"));
-  const subtotal = JSON.parse(localStorage.getItem("totalPrice"));
+  // const subtotal = JSON.parse(localStorage.getItem("totalPrice"));
   return (
     <>
       <div
@@ -29,7 +35,7 @@ const PaymentItemList = () => {
       </div>
       <div className="d-flex justify-content-between align-items-center border-bottom py-4">
         <h4 className="total">Total Payment</h4>
-        <h5 className="total-price">₫ {(subtotal.toLocaleString('vi-VN'))}</h5>
+        <h5 className="total-price">₫ {(getTotalPrice().toLocaleString('vi-VN'))}</h5>
       </div>
     </>
   );
