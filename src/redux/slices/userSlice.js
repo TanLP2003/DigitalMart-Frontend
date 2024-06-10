@@ -135,8 +135,12 @@ export const userSlice = createSlice({
             state.isSuccess=true;
             state.isLoading=false;
             state.isError=false;
-            const updatedUser = { ...state.user, ...action.payload };
-            state.user = updatedUser;
+
+            // Update the user data in the state
+            state.user.avatar = action.payload;
+
+            // Update localStorage
+            const updatedUser = { ...state.user, avatar: action.payload };
             localStorage.setItem('currentUser', JSON.stringify(updatedUser));
             if(state.isSuccess == true) {
                 toast.info("Changed Avatar Successfully!");
