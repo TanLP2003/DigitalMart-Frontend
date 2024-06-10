@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import './styles.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout, updateUserInfo, changeAvatar } from '../../../redux/apis/user-api';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { current } from '@reduxjs/toolkit';
 
 export const MyProfile = () => {
 
   const dispatch = useDispatch();
 
-  const userData = JSON.parse(localStorage.getItem('currentUser'));
+  const user = useSelector((state) => state.user.user); // Assuming your user slice is named 'user'
 
-  const [username, setUsername] = useState(userData.username);
-  const [email] = useState(userData.email);
-  const [phonenumber, setPhonenumber] = useState(userData.phonenumber);
-  const [gender, setGender] = useState(userData.gender);
-  const [profilePicture, setProfilePicture] = useState(userData.avatar);
+
+  const [username, setUsername] = useState(user.username);
+  const [email] = useState(user.email);
+  const [phonenumber, setPhonenumber] = useState(user.phonenumber);
+  const [gender, setGender] = useState(user.gender);
+  const [profilePicture, setProfilePicture] = useState(user.avatar);
   const [isEditable, setIsEditable] = useState(false);
 
 
@@ -28,9 +30,11 @@ export const MyProfile = () => {
         const file = e.target.files[0];
         const newAvatarUrl = await dispatch(changeAvatar(file)).unwrap();
         setProfilePicture(newAvatarUrl);
+        user.avatar = newAvatarUrl;
+        localStorage.setItem('currentUser', JSON.stringify(user));
       }
     } catch (err) {
-      toast.error("Change avatar failed: " + err.message);
+      //toast.error("Change avatar failed: " + err.message);
     }
   };
 
