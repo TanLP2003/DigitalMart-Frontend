@@ -130,7 +130,7 @@ const ViewProduct = () => {
                 <h5>Status</h5>
                 <div className='common-form-item'>
                   <label htmlFor="status">Status</label>
-                  <input type="text" id='status' value={product.isPublished ? "Published" : "Unpublished"} disabled />
+                  <input type="text" id='status' value={product.isPublished ? "Active" : "Inactive"} disabled />
                 </div>
               </div>
             </div>

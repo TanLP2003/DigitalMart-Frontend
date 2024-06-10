@@ -346,8 +346,8 @@ const EditProduct = () => {
                   <select name="isPublished" id="isPublished" onChange={formik.handleChange}
                     value={formik.values.isPublished}
                   >
-                    <option value={false}>Unpublished</option>
-                    <option value={true}>Published</option>
+                    <option value={false}>Inactive</option>
+                    <option value={true}>Active</option>
                   </select>
                 </div>
               </div>
