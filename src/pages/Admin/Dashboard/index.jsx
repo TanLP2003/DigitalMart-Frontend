@@ -7,16 +7,18 @@ import { getNumberOfUsers } from '../../../redux/apis/user-api'
 import { getAllProduct, getAllProductByAdmin } from '../../../redux/apis/product-api'
 import { getAllCategory } from '../../../redux/apis/category-api'
 import { getAllOrder } from '../../../redux/apis/order-api'
+import DailyRevenueChart from './DailyRevenueChart'
 
 const Dashboard = () => {
     const dispatch = useDispatch();
     const isFetched = useFetchData(() => [dispatch(getNumberOfUsers()), dispatch(getAllProductByAdmin()), dispatch(getAllCategory()), dispatch(getAllOrder())]);
-    const { numberOfUsers, numberOfProducts, numberOfCategories, numberOfOrders } = useSelector(state => {
+    const { numberOfUsers, numberOfProducts, numberOfCategories, numberOfOrders, orders } = useSelector(state => {
         return {
             numberOfUsers: state.user.numberOfUsers,
             numberOfProducts: state.products.products.length,
             numberOfCategories: state.categories.categories.length,
-            numberOfOrders: state.orders.allOrders.length
+            numberOfOrders: state.orders.allOrders.length,
+            orders: state.orders.allOrders
         }
     })
     return (
@@ -24,9 +26,11 @@ const Dashboard = () => {
             {isFetched && (
                 <div className='dashboard'>
                     <Statistic numberOfUsers={numberOfUsers} numberOfProducts={numberOfProducts} numberOfCategories={numberOfCategories} numberOfOrders={numberOfOrders} />
+                    <DailyRevenueChart orders={orders}/>
                     <RecentOrders />
                 </div>
             )}
+
         </>
     )
 }
