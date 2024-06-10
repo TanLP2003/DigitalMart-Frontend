@@ -49,10 +49,10 @@ const ProductCategory = ({ category, products }) => {
                     className="scroll-container"
                 >
                     <div className="category-slider">
+                        {products.map((item => <CardProduct key={item._id} product={item} width={'250px'} height={'400px'} />))}
+                        {/* {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
                         {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
-                        {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
-                        {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
-                        {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))}
+                        {products.map((item => <CardProduct product={item} width={'250px'} height={'400px'} />))} */}
                     </div>
                 </div>
 
